@@ -12,11 +12,11 @@
             "value": "S0"
         },        
         "mongoDbUserName": {
-            "value": "S0"
+            "value": "cosmicworksadmin"
         },
         
         "mongoDbPassword": {
-            "value": "meye$ecr3t"
+            "value": "<REDACTED>"
         }        
     }
 }
