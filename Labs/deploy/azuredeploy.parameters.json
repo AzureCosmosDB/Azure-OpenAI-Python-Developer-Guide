@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": { 
+            "value": "eastus"
+        },
+        "name": {
+            "value": "mongodb-aoai"
+        },
+        "openAiSku": {
+            "value": "S0"
+        },        
+        "mongoDbUserName": {
+            "value": "S0"
+        },
+        
+        "mongoDbPassword": {
+            "value": "meye$ecr3t"
+        }        
+    }
+}
