@@ -15,6 +15,7 @@ A prompt is an input or instruction provided to an Artificial Intelligence (AI) 
 Prompt engineering is the iterative process of designing, evaluating, and optimizing prompts to produce consistently accurate responses from language models for a particular problem domain. It involves designing and refining the prompts given to an AI model to achieve the desired outputs. Prompt engineers experiment with various prompts, test their effectiveness, and refine them to improve performance. Performance is measured using predefined metrics such as accuracy, relevance, and user satisfaction to assess the impact of prompt engineering.
 
 ## General anatomy of a prompt
+
 Instruction, context, input, output indicator
 
 ## Zero-shot prompting
