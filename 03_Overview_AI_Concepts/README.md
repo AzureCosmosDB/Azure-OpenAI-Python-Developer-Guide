@@ -36,7 +36,7 @@ https://learn.microsoft.com/en-us/training/modules/introduction-large-language-m
 
 ## Standard Patterns
 
-### RAG
+### Retrieval Augmentation Generation (RAG)
 
 Retrieval Augmentation Generation (RAG) is an architecture that augments the capabilities of a Large Language Model (LLM) like ChatGPT by adding an information retrieval system that provides grounding data. Adding an information retrieval system gives you control over grounding data used by an LLM when it formulates a response. For an enterprise solution, RAG architecture means that you can constrain generative AI to your enterprise content sourced from vectorized documents, images, audio, and video.
 
