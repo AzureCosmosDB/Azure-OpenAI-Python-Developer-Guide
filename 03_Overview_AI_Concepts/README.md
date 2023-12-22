@@ -57,7 +57,9 @@ https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-pro
 
 ### ReAct
 
-### Others?
+Reasoning and Acting (ReAct) leverages LLMs to generate both reasoning traces and task-specific actions. ReAct combines these to allow for greater synergy between the two. Reasoning traces help the model induce, track, and update action plans as well as handle exceptions, while actions allow it to interface with external data sources to gather additional information. When using LLMs to answer questions and verify facts, ReAct is used to overcome issues of hallucination and error propagation by interacting with the additional usage of external data sources.
+
+### Others
 
 #### Zero-shot prompting
 
@@ -65,7 +67,7 @@ Zero-shot prompting is what we would consider the “default”. This is when we
 
 #### Few-shot prompting
 
-Few-shot prompting provides examples to guide the model to the desired output.
+Few-shot prompting is a technique that enables in-context learning for the LLM by providing examples or further information within the prompt to steer the model to generate a better response. Providing additional information in the prompt helps particularly in areas where the data used to train the model isn't enough to generate the desired output from the model.
 
 https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions#provide-grounding-context
 

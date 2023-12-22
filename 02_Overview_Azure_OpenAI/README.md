@@ -35,7 +35,7 @@ Azure OpenAI stores and processes data to provide the service and to monitor for
 Here are a few important things to know in regards to the security and privacy of your prompts (inputs) and completions (outputs), your embeddings, and your training data when using Azure OpenAI:
 
 - are NOT available to other customers.
-- are NOT availabe to OpenAI.
+- are NOT available to OpenAI.
 - are NOT used to improve OpenAI models.
 - are NOT used to improve any Microsoft or 3rd party products or services.
 - are NOT used for automatically improving Azure OpenAI models for your use in your resource (The models are stateless, unless you explicitly fine-tune models with your training data).
