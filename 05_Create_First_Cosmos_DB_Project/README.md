@@ -14,6 +14,8 @@ Learn more about the pre-requisites and installation of the emulator [here](http
 
 >**NOTE**: When using the Azure CosmosDB emulator using the API for MongoDB it must be started with the [MongoDB endpoint options enabled](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#start-the-emulator) on the command-line.
 
+**The Azure Cosmos DB emulator does not support vector search. To complete the vector search and AI related labs, you must use an Azure Cosmos DB API for MongoDB vCore account in Azure.**
+
 ## Authentication
 
 Authentication to Azure Cosmos DB API for Mongo DB is done using a connection string. The connection string is a URL that contains the authentication information for your Azure Cosmos DB account or local emulator. The username and password used when provisioning the Azure Cosmos DB API for MongoDB service are used in the connection string when authenticating to Azure.

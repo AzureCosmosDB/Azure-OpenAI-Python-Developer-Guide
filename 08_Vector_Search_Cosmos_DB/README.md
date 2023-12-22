@@ -22,6 +22,16 @@ In this example, assume textual data is vectorized and stored within an Azure Co
 
 ## Lab 3 - Use vector search on embeddings in Azure Cosmos DB for MongoDB vCore
 
-In this lab, we'll use a notebook to demonstrate how to add an embedding field to a document, create a vector search index, and perform a vector search query.
+In this lab, a notebook is used to demonstrate how to add an embedding field to a document, create a vector search index, and perform a vector search query.
+
+Lab 3 requires the Azure OpenAI endpoint and access key to be added to the settings (`.env`) file. Access this information by opening [Azure OpenAI Studio](https://oai.azure.com/portal) and selecting the **Gear**/Settings icon located to the right in the top toolbar.
+
+![Azure OpenAI Studio displays with the Gear icon highlighted in the top toolbar.](media/azure_openai_studio_settings_icon.png)
+
+On the **Settings** screen, select the **Resource** tab, then copy and record the **Endpoint** and **Key** values for use in the lab.
+
+![The Azure OpenAI resource settings screen displays with the endpoint and key values highlighted.](media/azure_openai_settings.png)
+
+>**NOTE**: This lab can only be completed using a deployed Azure Cosmos DB API for MongoDB vCore account due to the use of vector search. The Azure Cosmos DB Emulator does not support vector search.
 
 Please visit the lab repository to complete this lab.
