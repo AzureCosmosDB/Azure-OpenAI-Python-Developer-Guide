@@ -1,3 +1,7 @@
+"""
+This module contains the model definitions of objects
+that are present in the Cosmic Works dataset.
+"""
 from .tag import Tag
 from .product import Product, ProductList
 from .address import Address
