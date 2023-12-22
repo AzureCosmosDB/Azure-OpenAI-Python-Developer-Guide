@@ -42,5 +42,3 @@ Here are a few important things to know in regards to the security and privacy o
 - Your fine-tuned Azure OpenAI models are available exclusively for your use.
 
 https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy#how-does-the-azure-openai-service-process-data
-
-

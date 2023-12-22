@@ -30,7 +30,7 @@ The DALL-E model, enables the use of a text prompt provided by a user as the inp
 
 ## Selecting an LLM
 
-Before a Large Language Model (LLM) can be implemented into a solution, the specific LLM to use must be chosen.
+Before a Large Language Model (LLM) can be implemented into a solution, an LLM model must be chosen.
 
 
 
