@@ -1,11 +1,11 @@
 # Provision Azure resources (Azure Cosmos DB workspace, Azure OpenAI, etc.)
 
-- Have deployment scripts
-- Walk through the deployed environment
+TBD once all other modules are complete.
 
-
-This should be included as a step in 05_Create_First_Cosmos_DB_Project
-
-NEEDS:
-- full solution architecture diagram
-- deployment scripts (ARM/Bicep?)
+Bicep deployment is available in the `deploy` folder of the lab repository.
+Currently deploying the following:
+    - Resource Group
+    - Azure Cosmos DB API for MongoDB vCore account
+    - Azure OpenAI resource
+      - Chat GPT-3.5 `completions` model
+      - text-embedding-ada-002 model `embeddings` model
