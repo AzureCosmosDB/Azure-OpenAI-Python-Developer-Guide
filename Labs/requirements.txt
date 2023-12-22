@@ -2,3 +2,5 @@ pymongo==4.6.1
 python-dotenv==1.0.0
 requests==2.31.0
 pydantic==2.5.2
+openai==1.6.0
+tenacity==8.2.3
