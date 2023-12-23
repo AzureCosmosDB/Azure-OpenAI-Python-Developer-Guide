@@ -1,3 +1,11 @@
+/* *************************************************************** 
+Azure Cosmos DB + Azure OpenAI Python developer guide lab
+******************************************************************
+This Azure resource deployment template uses some of the following practices:
+- [Abbrevation examples for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+*/
+
+
 
 /* *************************************************************** */
 /* Parameters */
@@ -88,7 +96,7 @@ var mongovCoreSettings = {
 
 var appServiceSettings = {
   plan: {
-    name: '${name}-web-plan'
+    name: '${name}-web'
     sku: appServiceSku
   }
   web: {
@@ -100,8 +108,8 @@ var appServiceSettings = {
     }
     */
   }
-  function: {
-    name: '${name}-function'
+  api: {
+    name: '${name}-api'
     /*
     git: {
       repo: appGitRepository
@@ -213,7 +221,7 @@ resource openAiCompletionsModelDeployment 'Microsoft.CognitiveServices/accounts/
 /* *************************************************************** */
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
-  name: appServiceSettings.plan.name
+  name: '${appServiceSettings.plan.name}-asp'
   location: location
   sku: {
     name: appServiceSettings.plan.sku
@@ -226,15 +234,6 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
-  }
-}
-
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
-  name: '${replace(toLower(name), '-', '')}fnstorage'
-  location: location
-  kind: 'Storage'
-  sku: {
-    name: 'Standard_LRS'
   }
 }
 
@@ -258,7 +257,7 @@ resource appServiceWebSettings 'Microsoft.Web/sites/config@2022-03-01' = {
 }
 
 resource appServiceWebInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: appServiceWeb.name
+  name: '${appServiceSettings.web.name}-appi'
   location: location
   kind: 'web'
   properties: {
@@ -285,8 +284,17 @@ resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01'
 /* API Hosting - Azure Functions */
 /* *************************************************************** */
 
+resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
+  name: '${replace(toLower(appServiceSettings.api.name), '-', '')}funcst'
+  location: location
+  kind: 'Storage'
+  sku: {
+    name: 'Standard_LRS'
+  }
+}
+
 resource appServiceFunction 'Microsoft.Web/sites@2022-03-01' = {
-  name: appServiceSettings.function.name
+  name: '${appServiceSettings.api.name}-func'
   location: location
   kind: 'functionapp'
   properties: {
@@ -321,7 +329,7 @@ resource appServiceFunctionSettings 'Microsoft.Web/sites/config@2022-03-01' = {
 }
 
 resource appServiceFunctionsInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: appServiceFunction.name
+  name: '${appServiceSettings.api.name}-appi'
   location: location
   kind: 'web'
   properties: {
@@ -351,4 +359,6 @@ resource appServiceFunctionsDeployment 'Microsoft.Web/sites/sourcecontrols@2021-
 /* Outputs */
 /* *************************************************************** */
 
-output deployedUrl string = appServiceWeb.properties.defaultHostName
+output deployedWebUrl string = appServiceWeb.properties.defaultHostName
+
+output deployedFunctionUrl string = appServiceFunction.properties.defaultHostName
