@@ -92,6 +92,9 @@ var mongovCoreSettings = {
   mongoClusterName: '${name}-mongo'
   mongoClusterLogin: mongoDbUserName
   mongoClusterPassword: mongoDbPassword
+
+  mongoDatabaseName: 'cosmic_works'
+  mongoCollectionNames: 'products,customers,sales'
 }
 
 var appServiceSettings = {
@@ -249,10 +252,21 @@ resource appServiceWebSettings 'Microsoft.Web/sites/config@2022-03-01' = {
     OPENAI__COMPLETIONSDEPLOYMENT: openAiCompletionsModelDeployment.name
     OPENAI__MAXCONVERSATIONTOKENS: openAiSettings.maxConversationTokens
     OPENAI__MAXCOMPLETIONTOKENS: openAiSettings.maxCompletionTokens
-    MONGODB__CONNECTION: 'mongodb+srv://${mongovCoreSettings.mongoClusterLogin}:${mongovCoreSettings.mongoClusterPassword}@${mongovCoreSettings.mongoClusterName}.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000'
-    MONGODB__DATABASENAME: 'retaildb'
-    MONGODB__COLLECTIONNAMES: 'product,customer,vectors,completions'
+    MONGODB__DATABASENAME: mongovCoreSettings.mongoDatabaseName
+    MONGODB__COLLECTIONNAMES: mongovCoreSettings.mongoCollectionNames
     MONGODB__MAXVECTORSEARCHRESULTS: '10'
+  }
+}
+
+resource appServiceWebConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
+  parent: appServiceWeb
+  name: 'connectionstrings'
+  kind: 'string'
+  properties: {
+    MONGODB__CONNECTION: {
+      value: 'mongodb+srv://${mongovCoreSettings.mongoClusterLogin}:${mongovCoreSettings.mongoClusterPassword}@${mongovCoreSettings.mongoClusterName}.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000'
+      type: 'Custom'
+    }
   }
 }
 
@@ -322,9 +336,20 @@ resource appServiceFunctionSettings 'Microsoft.Web/sites/config@2022-03-01' = {
     OPENAI__KEY: openAiAccount.listKeys().key1
     OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
     OPENAI__MAXTOKENS: '8191'
-    MONGODB__CONNECTION: 'mongodb+srv://${mongovCoreSettings.mongoClusterLogin}:${mongovCoreSettings.mongoClusterPassword}@${mongovCoreSettings.mongoClusterName}.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000'
-    MONGODB__DATABASENAME: 'retaildb'
-    MONGODB__COLLECTIONNAMES: 'product,customer,vectors,completions'
+    MONGODB__DATABASENAME: mongovCoreSettings.mongoDatabaseName
+    MONGODB__COLLECTIONNAMES: mongovCoreSettings.mongoCollectionNames
+  }
+}
+
+resource appServiceFunctionConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
+  parent: appServiceFunction
+  name: 'connectionstrings'
+  kind: 'string'
+  properties: {
+    MONGODB__CONNECTION: {
+      value: 'mongodb+srv://${mongovCoreSettings.mongoClusterLogin}:${mongovCoreSettings.mongoClusterPassword}@${mongovCoreSettings.mongoClusterName}.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000'
+      type: 'Custom'
+    }
   }
 }
 
