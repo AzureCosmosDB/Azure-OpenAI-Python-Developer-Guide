@@ -93,17 +93,21 @@ var appServiceSettings = {
   }
   web: {
     name: '${name}-web'
+    /*
     git: {
       repo: appGitRepository
       branch: appGetRepositoryBranch
     }
+    */
   }
   function: {
     name: '${name}-function'
+    /*
     git: {
       repo: appGitRepository
       branch: appGetRepositoryBranch
     }
+    */
   }
 }
 
@@ -226,7 +230,7 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
 }
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
-  name: '${name}fnstorage'
+  name: '${replace(toLower(name), '-', '')}fnstorage'
   location: location
   kind: 'Storage'
   sku: {
