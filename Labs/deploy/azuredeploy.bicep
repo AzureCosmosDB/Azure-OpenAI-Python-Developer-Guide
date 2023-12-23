@@ -259,15 +259,7 @@ resource appServiceWebSettings 'Microsoft.Web/sites/config@2022-03-01' = {
   kind: 'string'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
-    OPENAI__ENDPOINT: openAiAccount.properties.endpoint
-    OPENAI__KEY: openAiAccount.listKeys().key1
-    OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
-    OPENAI__COMPLETIONSDEPLOYMENT: openAiCompletionsModelDeployment.name
-    OPENAI__MAXCONVERSATIONTOKENS: openAiSettings.maxConversationTokens
-    OPENAI__MAXCOMPLETIONTOKENS: openAiSettings.maxCompletionTokens
-    MONGODB__DATABASENAME: mongovCoreSettings.mongoDatabaseName
-    MONGODB__COLLECTIONNAMES: mongovCoreSettings.mongoCollectionNames
-    MONGODB__MAXVECTORSEARCHRESULTS: '10'
+    API_ENDPOINT: 'https://${appServiceFunction.properties.defaultHostName}'
   }
 }
 
