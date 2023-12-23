@@ -104,6 +104,7 @@ var appServiceSettings = {
   }
   web: {
     name: '${name}-web'
+    pythonVersion: '3.11'
     /*
     git: {
       repo: appGitRepository
@@ -113,6 +114,7 @@ var appServiceSettings = {
   }
   api: {
     name: '${name}-api'
+    pythonVersion: '3.11'
     /*
     git: {
       repo: appGitRepository
@@ -218,9 +220,8 @@ resource openAiCompletionsModelDeployment 'Microsoft.CognitiveServices/accounts/
 
 
 
-
 /* *************************************************************** */
-/* App Hosting - Azure App Service */
+/* App Plan Hosting - Azure App Service Plan */
 /* *************************************************************** */
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
@@ -229,7 +230,16 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   sku: {
     name: appServiceSettings.plan.sku
   }
+  kind: 'linux'
+  properties: {
+    reserved: true
+  }
 }
+
+
+/* *************************************************************** */
+/* App Hosting - Azure App Service */
+/* *************************************************************** */
 
 resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
   name: appServiceSettings.web.name
@@ -237,6 +247,9 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
+    siteConfig: {
+      pythonVersion: appServiceSettings.web.pythonVersion
+    }
   }
 }
 
@@ -315,6 +328,7 @@ resource appServiceFunction 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: appServicePlan.id
     httpsOnly: true
     siteConfig: {
+      pythonVersion: appServiceSettings.api.pythonVersion
       alwaysOn: true
     }
   }
@@ -331,7 +345,7 @@ resource appServiceFunctionSettings 'Microsoft.Web/sites/config@2022-03-01' = {
     AzureWebJobsStorage: 'DefaultEndpointsProtocol=https;AccountName=${name}fnstorage;EndpointSuffix=core.windows.net;AccountKey=${storageAccount.listKeys().keys[0].value}'
     APPLICATIONINSIGHTS_CONNECTION_STRING: appServiceFunctionsInsights.properties.ConnectionString
     FUNCTIONS_EXTENSION_VERSION: '~4'
-    FUNCTIONS_WORKER_RUNTIME: 'dotnet-isolated'
+    FUNCTIONS_WORKER_RUNTIME: 'python'
     OPENAI__ENDPOINT: openAiAccount.properties.endpoint
     OPENAI__KEY: openAiAccount.listKeys().key1
     OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
