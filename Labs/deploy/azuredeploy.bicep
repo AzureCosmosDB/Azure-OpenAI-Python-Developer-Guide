@@ -330,6 +330,11 @@ resource appServiceFunction 'Microsoft.Web/sites@2022-03-01' = {
     siteConfig: {
       pythonVersion: appServiceSettings.api.pythonVersion
       alwaysOn: true
+      cors: {
+        allowedOrigins: [
+          'https://${appServiceWeb.properties.defaultHostName}'
+        ]
+      }
     }
   }
   dependsOn: [
