@@ -104,7 +104,6 @@ var appServiceSettings = {
   }
   web: {
     name: '${name}-web'
-    pythonVersion: '3.11'
     /*
     git: {
       repo: appGitRepository
@@ -114,7 +113,6 @@ var appServiceSettings = {
   }
   api: {
     name: '${name}-api'
-    pythonVersion: '3.11'
     /*
     git: {
       repo: appGitRepository
@@ -248,7 +246,7 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: appServicePlan.id
     httpsOnly: true
     siteConfig: {
-      pythonVersion: appServiceSettings.web.pythonVersion
+      linuxFxVersion: 'NODE|20-lts'
     }
   }
 }
@@ -320,7 +318,7 @@ resource appServiceFunction 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: appServicePlan.id
     httpsOnly: true
     siteConfig: {
-      pythonVersion: appServiceSettings.api.pythonVersion
+      pythonVersion: '3.11'
       alwaysOn: true
       cors: {
         allowedOrigins: [
