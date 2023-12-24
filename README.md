@@ -14,3 +14,7 @@ Azure Cosmos DB + Azure OpenAI Python developer guide
 - [09_Chatbot_API](09_Chatbot_API/README.md)
 - [10_User_Interface](10_User_Interface/README.md)
 - [11_Prompt_Engineering](11_Prompt_Engineering/README.md)
+
+# Architecture
+
+![Architecture Diagram](assets/architecture.jpg)
