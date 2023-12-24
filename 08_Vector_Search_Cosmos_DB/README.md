@@ -20,6 +20,10 @@ In this example, assume textual data is vectorized and stored within an Azure Co
 
 ![A typical vector search request in a RAG scenario depicts an incoming message getting vectorized and used as input to a vector store index search. Multiple results of the vector search are used to build a prompt fed to the LLM. The LLM returns a response to the requestor.](media/vector_search_flow.png)
 
+## Why use Azure Cosmos DB for MongoDB vCore as a vector store?
+
+It is common practice to store vectorized data in a dedicated vector store as vector search indexing is not a common capability of most databases. However, this introduces additional complexity to the solution as the data must be stored in two different locations. Azure Cosmos DB for MongoDB vCore supports vector search indexing, which means that the vectorized data can be stored in the same document as the original data. This reduces the complexity of the solution and allows for a single database to be used for both the vector store and the original data.
+
 ## Lab 3 - Use vector search on embeddings in Azure Cosmos DB for MongoDB vCore
 
 In this lab, a notebook demonstrates how to add an embedding field to a document, create a vector search index, and perform a vector search query. The notebook ends with a demonstration of utilizing vector search with an LLM in a RAG scenario.
