@@ -1,4 +1,4 @@
-# Overview of Azure Cosmos DB (high-level with links to docs for more information)
+# Overview of Azure Cosmos DB
 
 [Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/cosmos-db/introduction) is a globally distributed, multi-model database service that enables you to query and store data using NoSQL models using one of five APIs: SQL (document database), Cassandra (column-family), MongoDB (document database), Azure Table, and Gremlin (graph database). It provides turnkey global distribution, elastic scaling of throughput and storage worldwide, single-digit millisecond latencies at the 99th percentile, and guaranteed high availability with multi-homing capabilities. Azure Cosmos DB provides comprehensive service level agreements (SLAs) for throughput, latency, availability, and consistency guarantees, something not found in any other database service.
 
@@ -12,7 +12,7 @@ The [RU architecture](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/
 
 Azure Cosmos DB for MongoDB [vCore architecture](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/introduction) integrates AI-based applications with your data, with text indexing for easy querying. Simplify your development process with high-capacity vertical scaling and free 35-day backups with a point-in-time restore (PITR).
 
-The [choice between vCore and Request Units (RU)](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/choose-model) in Azure Cosmos DB for MongoDB API depends on the workload.
+The [choice between vCore and Request Units (RU)](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/choose-model) in Azure Cosmos DB for MongoDB API depends on the workload. A list of [compatibility and feature support between RU and vCore](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/compatibility) is available.
 
 vCore provides predictable performance and cost and is ideal for running high-performance, mission-critical workloads with low latency and high throughput. With vCore, the number of vCPUs and the memory the database needs is configurable and can be scaled up or down as needed.
 

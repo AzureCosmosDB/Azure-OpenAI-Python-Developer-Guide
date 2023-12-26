@@ -12,7 +12,7 @@ For Windows machines, the emulator can be installed via an installer. There is a
 
 Learn more about the pre-requisites and installation of the emulator [here](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb).
 
->**NOTE**: When using the Azure CosmosDB emulator using the API for MongoDB it must be started with the [MongoDB endpoint options enabled](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#start-the-emulator) on the command-line.
+>**NOTE**: When using the Azure CosmosDB emulator using the API for MongoDB it must be started with the [MongoDB endpoint options enabled](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#start-the-emulator) at the command-line.
 
 **The Azure Cosmos DB emulator does not support vector search. To complete the vector search and AI-related labs, you must use an Azure Cosmos DB API for the MongoDB vCore account in Azure.**
 
@@ -28,26 +28,9 @@ The splash screen or **Quickstart** section of the Cosmos DB Emulator will displ
 
 ### Retrieving the connection string from the Azure portal
 
-Retrieve the connection string from the Azure portal by navigating to your Azure Cosmos DB account and selecting the **Connection String** menu item on the left-hand side of the screen. The connection string contains tokens for the username and password that must be replaced with the username and password used when provisioning the Azure Cosmos DB API for MongoDB service. Users can be added at any time using the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/cosmosdb/mongodb/user?view=azure-cli-latest).
+Retrieve the connection string from the Azure portal by navigating to your Azure Cosmos DB account and selecting the **Connection String** menu item on the left-hand side of the screen. The connection string contains tokens for the username and password that must be replaced with the username and password used when provisioning the Azure Cosmos DB API for MongoDB service.
 
 ![The Azure CosmosDb API for MongoDB Connection strings screen displays with the copy button next to the connection string highlighted.](media/azure_connection_string.png)
-
-## Authorization
-
-Azure Cosmos DB API for MongoDB supports fine-grained role-based access control (RBAC) for authorization. There are several built-in roles available. The built-in roles are:
-    1. read
-    2. readWrite
-    3. dbAdmin
-    4. dbOwner
-
-The ability to create custom roles is also available. Custom roles can be created using the [Azure CLI](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/how-to-setup-rbac). Customized roles can include granular permissions for specific databases, collections, and operational actions. Learn more about the [Azure CLI RBAC commands to define custom roles](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/how-to-setup-rbac#azure-cli-rbac-commands).
-
-## Helpful tools
-
-Visualization and querying tools:
-    1. Studio 3T
-    2. MongoDB Compass
-    3. MongoDB Shell
 
 ## Lab 1 - Create your first Cosmos DB for the MongoDB application
 

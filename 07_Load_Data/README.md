@@ -12,8 +12,8 @@ When loading data, bulk operations are preferred over adding each document indiv
 
 4. Simplified code logic: By using bulk operations, the lab can simplify its code logic and reduce the number of database queries. This results in cleaner, more manageable code and reduces the likelihood of errors or inconsistencies.
 
-## Lab 3 - Load data into Azure Cosmos DB API for MongoDB collections
+## Lab 2 - Load data into Azure Cosmos DB API for MongoDB collections
 
 This lab will load the Cosmic Works Customer, Product, and Sales data into Azure Cosmos DB API for MongoDB collections using bulk operations.
 
-Please complete Lab 3 in the lab repository.
+Please complete Lab 2 in the lab repository.
