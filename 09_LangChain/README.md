@@ -20,4 +20,4 @@ When an incoming message is received, the retriever will vectorize the message a
 
 ## Lab 4 - Vector search and RAG using LangChain
 
-In this lab, you will learn to use LangChain to re-implement the RAG pattern introduced in Lab 3. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in Azure Cosmos DB MongoDB vCore.
+In this lab, you will learn to use LangChain to re-implement the RAG pattern introduced in Lab 3. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in Azure Cosmos DB MongoDB vCore. Lab 4 concludes with the creation of an agent with various tools for the LLM to leverage to fulfill the incoming request.
