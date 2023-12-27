@@ -74,7 +74,7 @@ var openAiSettings = {
   maxCompletionTokens: '500'
   completionsModel: {
     name: 'gpt-35-turbo'
-    version: '0301'
+    version: '0613'
     deployment: {
       name: 'completions'
     }
