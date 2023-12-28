@@ -19,6 +19,11 @@ from langchain_core.messages import SystemMessage
 
 load_dotenv("../../.env")
 DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
+AOAI_ENDPOINT = os.environ.get("AOAI_ENDPOINT")
+AOAI_KEY = os.environ.get("AOAI_KEY")
+AOAI_API_VERSION = "2023-09-01-preview"
+COMPLETIONS_DEPLOYMENT = "completions"
+EMBEDDINGS_DEPLOYMENT = "embeddings"
 db = pymongo.MongoClient(DB_CONNECTION_STRING).cosmic_works
 
 class CosmicWorksAIAgent:
@@ -30,16 +35,16 @@ class CosmicWorksAIAgent:
     def __init__(self, session_id: str):
         llm = AzureChatOpenAI(
             temperature = 0,
-            openai_api_version = "2023-09-01-preview",
+            openai_api_version = AOAI_API_VERSION,
             azure_endpoint = os.environ.get("AOAI_ENDPOINT"),
             openai_api_key = os.environ.get("AOAI_KEY"),
-            azure_deployment = "completions"
+            azure_deployment = COMPLETIONS_DEPLOYMENT
         )
         self.embedding_model = AzureOpenAIEmbeddings(
-            openai_api_version = "2023-09-01-preview",
+            openai_api_version = AOAI_API_VERSION,
             azure_endpoint = os.environ.get("AOAI_ENDPOINT"),
             openai_api_key = os.environ.get("AOAI_KEY"),
-            azure_deployment = "embeddings",
+            azure_deployment = EMBEDDINGS_DEPLOYMENT,
             chunk_size=10
         )
         system_message = SystemMessage(
@@ -53,6 +58,11 @@ class CosmicWorksAIAgent:
                 the customers that buy them, and the sales orders that are placed by customers.
 
                 If you don't know the answer to a question, respond with "I don't know."
+
+                Only answer questions related to Cosmic Works products, customers, and sales orders.
+                
+                If a question is not related to Cosmic Works products, customers, or sales orders,
+                respond with "I only answer questions about Cosmic Works"
             """
         )
         self.agent_executor = create_conversational_retrieval_agent(

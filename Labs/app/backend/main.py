@@ -8,6 +8,7 @@ from cosmic_works.cosmic_works_ai_agent import CosmicWorksAIAgent
 
 app = FastAPI()
 # Agent pool keyed by session_id to retain memories/history in-memory.
+# Note: the context is lost every time the service is restarted.
 agent_pool = {}
 
 @app.get("/")
