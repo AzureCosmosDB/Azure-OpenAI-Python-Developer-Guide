@@ -35,8 +35,9 @@ param name string = uniqueString(resourceGroup().id)
 @allowed([
   'B1'
   'S1'
+  'P0v3'
 ])
-param appServiceSku string = 'B1'
+param appServiceSku string = 'P0v3' //'B1'
 
 @description('Specifies the SKU for the Azure OpenAI resource. Defaults to **S0**')
 @allowed([
@@ -247,6 +248,7 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
     httpsOnly: true
     siteConfig: {
       linuxFxVersion: 'NODE|20-lts'
+      appCommandLine: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     }
   }
 }
