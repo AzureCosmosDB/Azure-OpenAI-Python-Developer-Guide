@@ -105,12 +105,10 @@ var appServiceSettings = {
   }
   web: {
     name: '${name}-web'
-    /*
     git: {
-      repo: appGitRepository
-      branch: appGetRepositoryBranch
+      repo: 'https://github.com/crpietschmann/cosmos-db-dev-guide-frontend-app.git'
+      branch: 'main'
     }
-    */
   }
   api: {
     name: '${name}-api'
@@ -284,7 +282,6 @@ resource appServiceWebInsights 'Microsoft.Insights/components@2020-02-02' = {
   }
 }
 
-/*
 resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01' = {
   parent: appServiceWeb
   name: 'web'
@@ -297,7 +294,7 @@ resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01'
     appServiceWebSettings
   ]
 }
-*/
+
 
 /* *************************************************************** */
 /* API Hosting - Azure Functions */
