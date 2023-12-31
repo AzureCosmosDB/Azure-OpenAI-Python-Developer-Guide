@@ -11,7 +11,7 @@ Azure Cosmos DB + Azure OpenAI Python developer guide
 - [06_Create_First_Cosmos_DB_Project](05_Create_First_Cosmos_DB_Project/README.md)
 - [07_Load_Data](08_Load_Data/README.md)
 - [08_Vector_Search_Cosmos_DB](07_Vector_Search_Cosmos_DB/README.md)
-- [09_Prompt_Engineering](09_LangChain/README.md)
+- [09_LangChain](09_LangChain/README.md)
 - [10_Chatbot_API](09_Chatbot_API/README.md)
 - [11_User_Interface](10_User_Interface/README.md)
 
