@@ -35,12 +35,15 @@ Retrieve the connection string from the Azure portal by navigating to your Azure
 ## Lab 1 - Create your first Cosmos DB for the MongoDB application
 
 Using a notebook, we'll create a Cosmos DB for the MongoDB application in this lab. You can use the Azure Cosmos DB Emulator or an Azure Cosmos DB account in Azure. The following concepts will be covered in this lab:
-    1. Create a database
-    2. Create a collection
-    3. Create a document
-    4. Read a document
-    5. Update a document
-    6. Delete a document
-    7. Query documents
+
+1. Create a database
+2. Create a collection
+3. Create a document
+4. Read a document
+5. Update a document
+6. Delete a document
+7. Query documents
+
+It is highly recommended that you use a [virtual environment](https://python.land/virtual-environments/virtualenv) for this lab
 
 Please visit the lab repository to complete this lab.
