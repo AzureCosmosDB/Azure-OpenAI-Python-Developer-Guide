@@ -112,12 +112,10 @@ var appServiceSettings = {
   }
   api: {
     name: '${name}-api'
-    /*
     git: {
-      repo: appGitRepository
-      branch: appGetRepositoryBranch
+      repo: 'https://github.com/crpietschmann/cosmos-db-dev-guide-backend-app-python.git'
+      branch: 'main'
     }
-    */
   }
 }
 
@@ -235,7 +233,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 
 
 /* *************************************************************** */
-/* App Hosting - Azure App Service */
+/* Front-end Web App Hosting - Azure App Service */
 /* *************************************************************** */
 
 resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
@@ -257,7 +255,7 @@ resource appServiceWebSettings 'Microsoft.Web/sites/config@2022-03-01' = {
   kind: 'string'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
-    API_ENDPOINT: 'https://${appServiceFunction.properties.defaultHostName}'
+    API_ENDPOINT: 'https://${appServiceApi.properties.defaultHostName}'
   }
 }
 
@@ -297,49 +295,28 @@ resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01'
 
 
 /* *************************************************************** */
-/* API Hosting - Azure Functions */
+/* Back-end API Hosting - Azure App Service */
 /* *************************************************************** */
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-09-01' = {
-  name: '${replace(toLower(appServiceSettings.api.name), '-', '')}funcst'
+resource appServiceApi 'Microsoft.Web/sites@2022-03-01' = {
+  name: appServiceSettings.api.name
   location: location
-  kind: 'Storage'
-  sku: {
-    name: 'Standard_LRS'
-  }
-}
-
-resource appServiceFunction 'Microsoft.Web/sites@2022-03-01' = {
-  name: '${appServiceSettings.api.name}-func'
-  location: location
-  kind: 'functionapp'
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
     siteConfig: {
-      pythonVersion: '3.11'
-      alwaysOn: true
-      cors: {
-        allowedOrigins: [
-          'https://${appServiceWeb.properties.defaultHostName}'
-        ]
-      }
+      linuxFxVersion: 'PYTHON|3.12'
     }
   }
-  dependsOn: [
-    storageAccount
-  ]
 }
 
-resource appServiceFunctionSettings 'Microsoft.Web/sites/config@2022-03-01' = {
-  parent: appServiceFunction
+resource appServiceApiSettings 'Microsoft.Web/sites/config@2022-03-01' = {
+  parent: appServiceApi
   name: 'appsettings'
   kind: 'string'
   properties: {
-    AzureWebJobsStorage: 'DefaultEndpointsProtocol=https;AccountName=${name}fnstorage;EndpointSuffix=core.windows.net;AccountKey=${storageAccount.listKeys().keys[0].value}'
-    APPLICATIONINSIGHTS_CONNECTION_STRING: appServiceFunctionsInsights.properties.ConnectionString
-    FUNCTIONS_EXTENSION_VERSION: '~4'
-    FUNCTIONS_WORKER_RUNTIME: 'python'
+    ENABLE_ORYX_BUILD: 'true'
+    SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
     OPENAI__ENDPOINT: openAiAccount.properties.endpoint
     OPENAI__KEY: openAiAccount.listKeys().key1
     OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
@@ -349,8 +326,8 @@ resource appServiceFunctionSettings 'Microsoft.Web/sites/config@2022-03-01' = {
   }
 }
 
-resource appServiceFunctionConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
-  parent: appServiceFunction
+resource appServiceApiConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
+  parent: appServiceApi
   name: 'connectionstrings'
   kind: 'string'
   properties: {
@@ -361,31 +338,18 @@ resource appServiceFunctionConnectionStrings 'Microsoft.Web/sites/config@2022-03
   }
 }
 
-resource appServiceFunctionsInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: '${appServiceSettings.api.name}-appi'
-  location: location
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-  }
-}
-
-/*
-resource appServiceFunctionsDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01' = {
-  parent: appServiceFunction
+resource appServiceApiDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01' = {
+  parent: appServiceApi
   name: 'web'
   properties: {
-    repoUrl: appServiceSettings.web.git.repo
-    branch: appServiceSettings.web.git.branch
+    repoUrl: appServiceSettings.api.git.repo
+    branch: appServiceSettings.api.git.branch
     isManualIntegration: true
   }
   dependsOn: [
-    appServiceFunctionSettings
+    appServiceApiSettings
   ]
 }
-*/
-
-
 
 
 /* *************************************************************** */
@@ -394,4 +358,4 @@ resource appServiceFunctionsDeployment 'Microsoft.Web/sites/sourcecontrols@2021-
 
 output deployedWebUrl string = appServiceWeb.properties.defaultHostName
 
-output deployedFunctionUrl string = appServiceFunction.properties.defaultHostName
+output deployedApiUrl string = appServiceApi.properties.defaultHostName
