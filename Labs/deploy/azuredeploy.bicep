@@ -245,6 +245,7 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
     siteConfig: {
       linuxFxVersion: 'NODE|20-lts'
       appCommandLine: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
+      alwaysOn: true
     }
   }
 }
@@ -306,6 +307,7 @@ resource appServiceApi 'Microsoft.Web/sites@2022-03-01' = {
     httpsOnly: true
     siteConfig: {
       linuxFxVersion: 'PYTHON|3.12'
+      alwaysOn: true
     }
   }
 }
@@ -317,6 +319,10 @@ resource appServiceApiSettings 'Microsoft.Web/sites/config@2022-03-01' = {
   properties: {
     ENABLE_ORYX_BUILD: 'true'
     SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
+    WEBSITE_ENABLE_DEFAULT_CODE_PROFILER: 'true'
+    APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
+    APPINSIGHTS_PROFILERFEATURE_VERSION: '1.0.0'
+    DiagnosticServices_EXTENSION_VERSION: '~3'
     OPENAI__ENDPOINT: openAiAccount.properties.endpoint
     OPENAI__KEY: openAiAccount.listKeys().key1
     OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
