@@ -308,6 +308,7 @@ resource appServiceApi 'Microsoft.Web/sites@2022-03-01' = {
     siteConfig: {
       linuxFxVersion: 'PYTHON|3.12'
       alwaysOn: true
+      httpLoggingEnabled: true
     }
   }
 }
@@ -323,6 +324,7 @@ resource appServiceApiSettings 'Microsoft.Web/sites/config@2022-03-01' = {
     APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
     APPINSIGHTS_PROFILERFEATURE_VERSION: '1.0.0'
     DiagnosticServices_EXTENSION_VERSION: '~3'
+    WEBSITE_HTTPLOGGING_RETENTION_DAYS: '7'
     OPENAI__ENDPOINT: openAiAccount.properties.endpoint
     OPENAI__KEY: openAiAccount.listKeys().key1
     OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
