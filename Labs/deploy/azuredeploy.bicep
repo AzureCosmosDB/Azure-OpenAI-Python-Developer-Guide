@@ -309,7 +309,7 @@ resource appServiceApi 'Microsoft.Web/sites@2022-03-01' = {
       linuxFxVersion: 'PYTHON|3.12'
       alwaysOn: true
       httpLoggingEnabled: true
-      appCommandLine: 'uvicorn --host "0.0.0.0" --port 443 main:app --reload'
+      appCommandLine: 'uvicorn --host "0.0.0.0" --port 443 app:app --reload'
       cors: {
         allowedOrigins: [
           '*'
