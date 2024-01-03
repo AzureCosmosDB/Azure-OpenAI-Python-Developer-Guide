@@ -325,6 +325,7 @@ resource appServiceApiSettings 'Microsoft.Web/sites/config@2022-03-01' = {
   name: 'appsettings'
   kind: 'string'
   properties: {
+    WEBSITES_PORT: '8000'
     ENABLE_ORYX_BUILD: 'true'
     SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
     WEBSITE_ENABLE_DEFAULT_CODE_PROFILER: 'true'
