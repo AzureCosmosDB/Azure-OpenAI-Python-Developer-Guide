@@ -1,6 +1,5 @@
 # Overview of AI Concepts
 
-
 ## Large Language Models (LLM)
 
 A Large Language Models (LLM) is a type of AI that can process and produce natural language text. LLMs are "general purpose" AI models trained using massive amounts of data gathered from various sources; like books, articles, webpages, and images to discover patterns and rules of language.
@@ -12,7 +11,7 @@ Understanding the capabilities of what an LLM can do is important when deciding 
 - **Understand language** - An LLM is a predictive engine that pulls patterns together based on pre-existing text to produce more text. It doesn't understand language or math.
 - **Understand facts** - An LLM doesn't have separate modes for information retrieval and creative writing; it simply predicts the next most probable token.
 - **Understand manners, emotion, or ethics** - An LLM can't exhibit anthropomorphism or understand ethics. The output of a foundational model is a combination of training data and prompts.
-
+ 
 ### Foundational Models
 
 Foundational Models are specific instances or versions of an LLM. Examples of these would be GPT-3, GPT-4, or Codex. Foundational models are trained and fine-tuned on a large corpus of text, or code in the case of a Codex model instance.
@@ -37,6 +36,11 @@ Here are a few things that separate NLPs from LLMs:
 
 A prompt is an input or instruction provided to an Artificial Intelligence (AI) model to direct its behavior and produce the desired results. The quality and specificity of the prompt are crucial in obtaining precise and relevant outputs. A well-designed prompt can ensure that the AI model generates the desired information or completes the intended task effectively. Some typical prompts include summarization, question answering, text classification, and code generation.
 
+While there's techniques and patterns used when building an Azure OpenAI solution and writing prompts, the following is a couple simple prompt examples:
+
+- `List the most popular products in the last quarter.`
+- `How many customers are located in the state of California?`
+
 #### Guidelines for creating robust prompts
 
 While it can be quick to write basic prompts, it can also be difficult to write more complex prompts to ge the AI to generate the responses necessary. When writing prompts, there are three basic guidelines to follow for creating useful prompts:
@@ -54,19 +58,18 @@ While it can be quick to write basic prompts, it can also be difficult to write 
 context, input, output indicator
 There are a several components that are used in the anatomy of constructing AI prompts:
 
-- Instructions
-- Primary content
-- System message
+- Input
+  - Instructions
+  - Primary content
+  - Supporting content
+  - System message
+- Output
 
-https://learn.microsoft.com/en-us/semantic-kernel/prompts/
+#### Input
 
-https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering
+The Input in prompt engineering is the text or query that is provided to the LLM model. The model will use this prompt as the basis for the completion, or response, that is generated.
 
-https://learn.microsoft.com/en-us/semantic-kernel/prompt-engineering/
-
-https://learn.microsoft.com/en-us/training/modules/introduction-large-language-models/3-large-language-model-core-concepts
-
-#### Instructions
+##### Instructions
 
 Instructions are likely the most commonly used prompt component. Instructions are simply that: instructions to the model on what to do. While simple in concept, they can be complex in practice.
 
@@ -78,7 +81,7 @@ The following are examples of both simple and more complex instructions:
 | Complex | Write an introduction for a weekly newsletter to my company named Contoso. It should mention the great all hands meeting we had last week and thank the team for all their hard work over the tough past few months. | Welcome to Contoso's weekly newsletter! We had a great all hands meeting last week and I want to thank the team for all their hard work over the tough past few months. We're looking forward to a bright future and I'm confident that with our team's dedication and commitment, we will achieve great things. Thank you for being a part of our team and I look forward to working with you all in the coming weeks and months. Sincerely, [Your name]. |
 | Complex | Write an introduction for a weekly newsletter, including the following: <br/> - My company is named contoso <br/> - An exuberant greeting <br/> - Thanking the team for their hard work over a couple tough months <br/> - Positive outlook for the coming quarter <br/> - Signed by the SLT | Hello Contoso team! I wanted to take a moment to thank you for all your hard work over the past few months. It's been a tough couple of months, but you've all pulled together and done an amazing job. I'm really proud of you all. Looking ahead to the next quarter, I'm feeling really positive. I think we're going to achieve some great things. Thanks again, The Senior Leadership Team. |
 
-#### Primary Content
+##### Primary Content
 
 Primary content refers to some sort of text that is being processed or transformed by the model. Primary content is typically used in conjunction with instructions. A simple example would be language translation.
 
@@ -88,12 +91,43 @@ Primary content refers to some sort of text that is being processed or transform
 
 Primary content can also be much longer. For example, the primary content could pass the introduction section of text content that could be hundreds of words long. Additionally, the primary content could be int he form of structured data as well, such as in JSON or TSV format.
 
-#### System message
+##### Supporting Content
 
-https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/system-message
+Supporting content is information that the model can utilize to influence the output in some way. It differs from primary content in that it is not the main target of task, but it is typically used along with primary content. Common examples include contextual information such as the current date, the name of the user, user preferences, and so on.
 
+The following are example prompts and possible completions to show what a prompt with and without supporting content might look like:
 
+| Supporting Content | Prompt | Completion |
+| :--- | :--- | :--- |
+| Without | Workshop list:
+Title Description <br/> Planning Workshop Kickoff Please join us to kick off our workshop! Hear from our leaders about cross group priorities and learnings for the year ahead. The invitation to this event has already been sent to everyone in […] <br/> Summarize the workshops above, grouped by topic: | Workshop list: <br/> Planning Workshop Kickoff <br/> - Planning Workshop Wrap-up <br/> - Core MeetUp <br/> - Customer <br/> Driven Perspectives <br/> - Impact and Key Focus Areas <br/> - Best practices <br/> - Accelerating app adoption […] |
+| With | Workshop list: <br/> Title Description <br/> Planning Workshop Kickoff Please join us to kick off our workshop! Hear from our leaders about cross group priorities and learnings for the year ahead. The invitation to this event has already been sent to everyone in […] <br/> My Important Topics: prompt engineering, search, GPT models <br/> Summarize the workshops above, grouped by my important topics: | 1. Prompt Engineering: <br/> - New prompt engineering tips <br/> - The art of prompt engineering <br/> 2. Search: <br/> - Intro to vector search with embedding <br/> 3. GPT Models: <br/> - Intro to GPT-4 <br/> - GPT-35-Turbo in-depth. |
 
+The above prompt examples are truncated with `[…]` for brevity. Writing similar prompts would contain more text.
+
+##### System message
+
+System message, also called a system prompt, is used by developers of a system to restrict the LLM to a specific set of constraints. This is useful when building enterprise solutions that integrate Azure OpenAI so the AI completion will be restricted to the focus of the enterprise data it's integrated with.
+
+The following is an example system message that could be used to constrain the LLM in an enterprise solution:
+
+```text
+You are a helpful, fun and friendly sales assistant for Cosmic Works, a bicycle and bicycle accessories store.
+
+Your name is Cosmo.
+
+You are designed to answer questions about the products that Cosmic Works sells, the customers that buy them, and the sales orders that are placed by customers.
+
+If you don't know the answer to a question, respond with "I don't know."
+
+Only answer questions related to Cosmic Works products, customers, and sales orders.
+
+If a question is not related to Cosmic Works products, customers, or sales orders, respond with "I only answer questions about Cosmic Works
+```
+
+#### Output
+
+The Output is the completion, or response, from the LLM returned as a result to the input prompt given. When an input prompt is given, the language model will process the information and generate an output in the form of text. The text response is the output.
 
 ## Standard Patterns
 
@@ -142,10 +176,3 @@ Example:
 | Prompt | Completion |
 | :--- | :--- |
 | Headline: Twins' Correa to use opt-out, test free agency <br/> Topic: Baseball <br/> Headline: Qatar World Cup to have zones for sobering up <br/> Topic: Soccer <br/> Headline: Yates: Fantasy football intel for Week 6 <br/> Topic: Football <br/> Headline: Coach confident injury won't derail Warriors <br/> Topic: | Basketball |
-
-https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions#provide-grounding-context
-
-
-## Vectorization and Vector Search
-
-What are you trying to solve with finding relevant data through vector?

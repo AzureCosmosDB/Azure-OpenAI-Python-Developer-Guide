@@ -4,8 +4,6 @@ Azure OpenAI is a collaboration between Microsoft Azure and OpenAI, a leading re
 
 Azure OpenAI is designed to accelerate the development of AI applications, allowing users to focus on creating innovative solutions that deliver value to their organizations and customers.
 
-https://microsoft.github.io/PartnerResources/azure/data-analytics-ai/openai
-
 Here are ways that Azure OpenAI can help developers:
 
 - **Simplified integration** - Simple and easy-to-use APIs for tasks such as text generation, summarization, sentiment analysis, language translation, and more.
@@ -16,17 +14,11 @@ Here are ways that Azure OpenAI can help developers:
 - **Responsible AI** - Azure OpenAI promotes responsible AI by adhering to ethical principles, providing explainability tools, governance features, diversity and inclusion support, and collaboration opportunities. These measures help ensure that AI models are unbiased, explainable, trustworthy, and used in a responsible and compliance manner.
 - **Community support** - With an active developer community developers can seek help via forums and other community support channels.
 
-https://azure.microsoft.com/en-us/blog/explore-the-benefits-of-azure-openai-service-with-microsoft-learn/
-
-
 ## Comparison of Azure OpenAI and OpenAI
 
 Azure OpenAI Service gives customers advanced language AI with OpenAI GPT-4, GPT-3, Codex, DALL-E, and Whisper models with the security and enterprise promise of Azure. Azure OpenAI co-develops the APIs with OpenAI, ensuring compatibility and a smooth transition from one to the other.
 
 With Azure OpenAI, customers get the security capabilities of Microsoft Azure while running the same models as OpenAI. Azure OpenAI offers private networking, regional availability, and responsible AI content filtering.
-
-https://learn.microsoft.com/en-us/azure/ai-services/openai/overview#comparing-azure-openai-and-openai 
-
 
 ## Data Privacy and Security
 
@@ -40,5 +32,3 @@ Here are a few important things to know in regards to the security and privacy o
 - are NOT used to improve any Microsoft or 3rd party products or services.
 - are NOT used for automatically improving Azure OpenAI models for your use in your resource (The models are stateless, unless you explicitly fine-tune models with your training data).
 - Your fine-tuned Azure OpenAI models are available exclusively for your use.
-
-https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy#how-does-the-azure-openai-service-process-data
