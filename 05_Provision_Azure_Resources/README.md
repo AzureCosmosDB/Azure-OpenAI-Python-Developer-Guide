@@ -9,3 +9,5 @@ Currently deploying the following:
     - Azure OpenAI resource
       - Chat GPT-3.5 `completions` model
       - text-embedding-ada-002 model `embeddings` model
+    - Azure App Service to host Front-End SPA written in React
+    - Azure App Service to host Back-end API written in Python
