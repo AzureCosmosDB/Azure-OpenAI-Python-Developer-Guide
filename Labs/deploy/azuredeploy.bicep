@@ -22,14 +22,16 @@ This Azure resource deployment template uses some of the following practices:
 param location string = 'eastus'
 
 @description('''
-Unique name for the deployed services below. Max length 15 characters, alphanumeric only:
+Unique name for the deployed services below. Max length 17 characters, alphanumeric only:
 - Azure Cosmos DB for MongoDB vCore
 - Azure OpenAI Service
 
-The name defaults to a unique string generated from the resource group identifier.
+The name defaults to a unique string generated from the resource group identifier. Prefixed with
+**dg** 'developer guide' as the id may start with a number which is an invalid name for
+many resources.
 ''')
-@maxLength(15)
-param name string = uniqueString(resourceGroup().id)
+@maxLength(17)
+param name string = 'dg${uniqueString(resourceGroup().id)}'
 
 @description('Specifies the SKU for the Azure App Service plan. Defaults to **B1**')
 @allowed([
@@ -54,15 +56,8 @@ param mongoDbUserName string
 @secure()
 param mongoDbPassword string
 
-
-
-/*
-@description('Git repository URL for the application source. This defaults to the [`solliancenet/cosmos-db-openai-python-dev-guide-labs`](https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs.git) repository.')
-param appGitRepository string = 'https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs.git'
-
-@description('Git repository branch for the application source. This defaults to the [**main** branch of the `solliancenet/cosmos-db-openai-python-dev-guide-labs`](https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs/tree/main) repository.')
-param appGetRepositoryBranch string = 'main'
-*/
+@description('Azure Container Registry SKU. Defaults to **Basic**')
+param acrSku string = 'Basic'
 
 /* *************************************************************** */
 /* Variables */
@@ -79,12 +74,20 @@ var openAiSettings = {
     deployment: {
       name: 'completions'
     }
+    sku: {
+      name: 'Standard'
+      capacity: 120
+    }
   }
   embeddingsModel: {
     name: 'text-embedding-ada-002'
     version: '2'
     deployment: {
       name: 'embeddings'
+    }
+    sku: {
+      name: 'Standard'
+      capacity: 150     
     }
   }
 }
@@ -93,9 +96,6 @@ var mongovCoreSettings = {
   mongoClusterName: '${name}-mongo'
   mongoClusterLogin: mongoDbUserName
   mongoClusterPassword: mongoDbPassword
-
-  mongoDatabaseName: 'cosmic_works'
-  mongoCollectionNames: 'products,customers,sales'
 }
 
 var appServiceSettings = {
@@ -109,17 +109,8 @@ var appServiceSettings = {
       repo: 'https://github.com/crpietschmann/cosmos-db-dev-guide-frontend-app.git'
       branch: 'main'
     }
-  }
-  api: {
-    name: '${name}-api'
-    git: {
-      repo: 'https://github.com/crpietschmann/cosmos-db-dev-guide-backend-app-python.git'
-      branch: 'main'
-    }
-  }
+  }  
 }
-
-
 
 /* *************************************************************** */
 /* Azure Cosmos DB for MongoDB vCore */
@@ -167,11 +158,11 @@ resource mongoFirewallRulesAllowAll 'Microsoft.DocumentDB/mongoClusters/firewall
 /* Azure OpenAI */
 /* *************************************************************** */
 
-resource openAiAccount 'Microsoft.CognitiveServices/accounts@2022-12-01' = {
+resource openAiAccount 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: openAiSettings.name
   location: location
   sku: {
-    name: openAiSettings.sku
+    name: openAiSettings.sku    
   }
   kind: 'OpenAI'
   properties: {
@@ -180,45 +171,64 @@ resource openAiAccount 'Microsoft.CognitiveServices/accounts@2022-12-01' = {
   }
 }
 
-resource openAiEmbeddingsModelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2022-12-01' = {
+resource openAiEmbeddingsModelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01' = {
   parent: openAiAccount
-  name: openAiSettings.embeddingsModel.deployment.name
+  name: openAiSettings.embeddingsModel.deployment.name  
+  sku: {
+    name: openAiSettings.embeddingsModel.sku.name
+    capacity: openAiSettings.embeddingsModel.sku.capacity
+  }
   properties: {
     model: {
       format: 'OpenAI'
       name: openAiSettings.embeddingsModel.name
       version: openAiSettings.embeddingsModel.version
     }
-    scaleSettings: {
-      scaleType: 'Standard'
-    }
   }
 }
 
-resource openAiCompletionsModelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2022-12-01' = {
+resource openAiCompletionsModelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01' = {
   parent: openAiAccount
   name: openAiSettings.completionsModel.deployment.name
+  sku: {
+    name: openAiSettings.completionsModel.sku.name
+    capacity: openAiSettings.completionsModel.sku.capacity
+  }
   properties: {
     model: {
       format: 'OpenAI'
       name: openAiSettings.completionsModel.name
       version: openAiSettings.completionsModel.version
-    }
-    scaleSettings: {
-      scaleType: 'Standard'
-    }
+    }    
   }
-  dependsOn: [
-    openAiEmbeddingsModelDeployment
-  ]
 }
 
+/* *************************************************************** */
+/* Logging and instrumentation */
+/* *************************************************************** */
 
+resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
+  name: '${name}-loganalytics'
+  location: location
+  properties: {
+    sku: {
+      name: 'PerGB2018'
+    }
+  }
+}
+resource appServiceWebInsights 'Microsoft.Insights/components@2020-02-02' = {
+  name: '${appServiceSettings.web.name}-appi'
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    WorkspaceResourceId: logAnalytics.id
+  }
+}
 
 /* *************************************************************** */
 /* App Plan Hosting - Azure App Service Plan */
 /* *************************************************************** */
-
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: '${appServiceSettings.plan.name}-asp'
   location: location
@@ -250,16 +260,6 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
   }
 }
 
-resource appServiceWebSettings 'Microsoft.Web/sites/config@2022-03-01' = {
-  parent: appServiceWeb
-  name: 'appsettings'
-  kind: 'string'
-  properties: {
-    APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
-    API_ENDPOINT: 'https://${appServiceApi.properties.defaultHostName}'
-  }
-}
-
 resource appServiceWebConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
   parent: appServiceWeb
   name: 'connectionstrings'
@@ -272,15 +272,6 @@ resource appServiceWebConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' 
   }
 }
 
-resource appServiceWebInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: '${appServiceSettings.web.name}-appi'
-  location: location
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-  }
-}
-
 resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01' = {
   parent: appServiceWeb
   name: 'web'
@@ -289,89 +280,99 @@ resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01'
     branch: appServiceSettings.web.git.branch
     isManualIntegration: true
   }
-  dependsOn: [
-    appServiceWebSettings
-  ]
 }
 
 
 /* *************************************************************** */
-/* Back-end API Hosting - Azure App Service */
+/* Registry for Back-end API Image - Azure Container Registry */
 /* *************************************************************** */
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
+  name: replace('${name}registry','-', '')
+  location: location
+  sku: {
+    name: acrSku
+  }
+  properties: {
+    adminUserEnabled: true
+  }
+}
 
-resource appServiceApi 'Microsoft.Web/sites@2022-03-01' = {
-  name: appServiceSettings.api.name
+/* *************************************************************** */
+/* Container environment - Azure Container App Environment  */
+/* *************************************************************** */
+resource containerAppEnvironment 'Microsoft.App/managedEnvironments@2023-05-01' = {
+  name: '${name}-containerappenv'
   location: location
   properties: {
-    serverFarmId: appServicePlan.id
-    httpsOnly: true
-    siteConfig: {
-      linuxFxVersion: 'PYTHON|3.12'
-      alwaysOn: true
-      httpLoggingEnabled: true
-      appCommandLine: 'startup.txt'
-      cors: {
-        allowedOrigins: [
-          '*'
-        ]
-        supportCredentials: false
+    appLogsConfiguration: {
+      destination: 'log-analytics'
+      logAnalyticsConfiguration: {
+        customerId: logAnalytics.properties.customerId
+        sharedKey: logAnalytics.listKeys().primarySharedKey
+      }
+    }
+    workloadProfiles: [
+      {
+        name: 'Warm'
+        minimumCount: 1
+        maximumCount: 10
+        workloadProfileType: 'E4'
+      }
+    ]
+    infrastructureResourceGroup: 'ME_${resourceGroup().name}'
+  }
+}
+
+/* *************************************************************** */
+/* Back-end API App Application - Azure Container App */
+/* deploys default hello world */
+/* *************************************************************** */
+resource backendApiContainerApp 'Microsoft.App/containerApps@2023-05-01' = {
+  name: '${name}-api'
+  location: location
+  properties: {
+    environmentId: containerAppEnvironment.id
+    configuration: {
+      ingress: {
+        external: true
+        targetPort: 80
+        allowInsecure: false
+        traffic: [
+          {
+            latestRevision: true
+            weight: 100
+          }
+        ]        
+      }
+      registries: [
+        {
+          server: containerRegistry.name
+          username: containerRegistry.properties.loginServer
+          passwordSecretRef: 'container-registry-password'
+        }
+      ]
+      secrets: [
+        {
+          name: 'container-registry-password'
+          value: containerRegistry.listCredentials().passwords[0].value
+        }
+      ]
+    }
+    template: {
+      containers: [
+        {
+          name: 'hello-world'
+          image: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
+          resources: {
+            cpu: 1
+            memory: '2Gi'
+          }         
+        }
+      ]
+      scale: {
+        minReplicas: 1
+        maxReplicas: 1
       }
     }
   }
 }
-
-resource appServiceApiSettings 'Microsoft.Web/sites/config@2022-03-01' = {
-  parent: appServiceApi
-  name: 'appsettings'
-  kind: 'string'
-  properties: {
-    WEBSITES_PORT: '8000'
-    ENABLE_ORYX_BUILD: 'true'
-    SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
-    WEBSITE_ENABLE_DEFAULT_CODE_PROFILER: 'true'
-    APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
-    APPINSIGHTS_PROFILERFEATURE_VERSION: '1.0.0'
-    DiagnosticServices_EXTENSION_VERSION: '~3'
-    WEBSITE_HTTPLOGGING_RETENTION_DAYS: '7'
-    OPENAI__ENDPOINT: openAiAccount.properties.endpoint
-    OPENAI__KEY: openAiAccount.listKeys().key1
-    OPENAI__EMBEDDINGSDEPLOYMENT: openAiEmbeddingsModelDeployment.name
-    OPENAI__MAXTOKENS: '8191'
-    MONGODB__DATABASENAME: mongovCoreSettings.mongoDatabaseName
-    MONGODB__COLLECTIONNAMES: mongovCoreSettings.mongoCollectionNames
-  }
-}
-
-resource appServiceApiConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
-  parent: appServiceApi
-  name: 'connectionstrings'
-  kind: 'string'
-  properties: {
-    MONGODB__CONNECTION: {
-      value: 'mongodb+srv://${mongovCoreSettings.mongoClusterLogin}:${mongovCoreSettings.mongoClusterPassword}@${mongovCoreSettings.mongoClusterName}.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000'
-      type: 'Custom'
-    }
-  }
-}
-
-resource appServiceApiDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01' = {
-  parent: appServiceApi
-  name: 'web'
-  properties: {
-    repoUrl: appServiceSettings.api.git.repo
-    branch: appServiceSettings.api.git.branch
-    isManualIntegration: true
-  }
-  dependsOn: [
-    appServiceApiSettings
-  ]
-}
-
-
-/* *************************************************************** */
-/* Outputs */
-/* *************************************************************** */
-
-output deployedWebUrl string = appServiceWeb.properties.defaultHostName
-
-output deployedApiUrl string = appServiceApi.properties.defaultHostName

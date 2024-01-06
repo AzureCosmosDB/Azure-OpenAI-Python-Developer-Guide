@@ -26,7 +26,7 @@ Set-AzContext -SubscriptionId <subscription-id>
 ## Create resource group
 
 ```Powershell
-New-AzResourceGroup -Name mongodb-aoai-rg -Location 'eastus'
+New-AzResourceGroup -Name mongo-devguide-rg -Location 'eastus'
 ```
 
 ## Deploy using bicep template
@@ -34,5 +34,5 @@ New-AzResourceGroup -Name mongodb-aoai-rg -Location 'eastus'
 Deploy the solution resources using the following command (this will take a few minutes to run):
 
 ```Powershell
-New-AzResourceGroupDeployment -ResourceGroupName mongodb-aoai-rg -TemplateFile .\azuredeploy.bicep -TemplateParameterFile .\azuredeploy.parameters.json -c
+New-AzResourceGroupDeployment -ResourceGroupName mongo-devguide-rg -TemplateFile .\azuredeploy.bicep -TemplateParameterFile .\azuredeploy.parameters.json -c
 ```

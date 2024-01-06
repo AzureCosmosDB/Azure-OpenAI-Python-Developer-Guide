@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "name": {
-            "value": "mongodb-aoai"
+            "value": "mongo-devguide"
         },
         "openAiSku": {
             "value": "S0"
