@@ -343,7 +343,16 @@ resource backendApiContainerApp 'Microsoft.App/containerApps@2023-05-01' = {
             latestRevision: true
             weight: 100
           }
-        ]        
+        ]   
+        corsPolicy: {
+          allowCredentials: false
+          allowedHeaders: [
+            '*'
+          ]
+          allowedOrigins: [
+            '*'
+          ]
+        }
       }
       registries: [
         {
