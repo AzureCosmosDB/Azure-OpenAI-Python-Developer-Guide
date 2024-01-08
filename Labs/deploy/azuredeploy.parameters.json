@@ -5,9 +5,6 @@
         "location": { 
             "value": "eastus"
         },
-        "name": {
-            "value": "mongo-devguide"
-        },
         "openAiSku": {
             "value": "S0"
         },        
