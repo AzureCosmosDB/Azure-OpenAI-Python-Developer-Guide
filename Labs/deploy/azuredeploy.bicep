@@ -263,15 +263,13 @@ resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
   }
 }
 
-resource appServiceWebConnectionStrings 'Microsoft.Web/sites/config@2022-03-01' = {
+resource appServiceWebSettings 'Microsoft.Web/sites/config@2022-03-01' = {
   parent: appServiceWeb
-  name: 'connectionstrings'
+  name: 'appsettings'
   kind: 'string'
   properties: {
-    MONGODB__CONNECTION: {
-      value: 'mongodb+srv://${mongovCoreSettings.mongoClusterLogin}:${mongovCoreSettings.mongoClusterPassword}@${mongovCoreSettings.mongoClusterName}.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000'
-      type: 'Custom'
-    }
+    APPINSIGHTS_INSTRUMENTATIONKEY: appServiceWebInsights.properties.InstrumentationKey
+    API_ENDPOINT: 'https://${backendApiContainerApp.properties.configuration.ingress.fqdn}'
   }
 }
 
