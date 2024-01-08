@@ -190,6 +190,9 @@ resource openAiEmbeddingsModelDeployment 'Microsoft.CognitiveServices/accounts/d
 resource openAiCompletionsModelDeployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01' = {
   parent: openAiAccount
   name: openAiSettings.completionsModel.deployment.name
+  dependsOn: [
+    openAiEmbeddingsModelDeployment
+  ]
   sku: {
     name: openAiSettings.completionsModel.sku.name
     capacity: openAiSettings.completionsModel.sku.capacity
