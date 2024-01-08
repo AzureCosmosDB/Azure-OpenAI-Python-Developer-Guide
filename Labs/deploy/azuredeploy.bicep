@@ -87,7 +87,7 @@ var openAiSettings = {
     }
     sku: {
       name: 'Standard'
-      capacity: 150     
+      capacity: 120     
     }
   }
 }
