@@ -60,33 +60,8 @@ The [fine-tuning guide](https://learn.microsoft.com/azure/ai-services/openai/how
 
 ## Explore and use models from code
 
-
-### OpenAI Client Library
-
-When integrating Azure OpenAI service in a solution written in Python, the OpenAI Python client library is used. This library is maintained by OpenAI, and is compatible with the Azure OpenAI service.
-
-Install the latest `openai` client library:
-```bash
-pip install openai
-```
-
-When using the OpenAI client library, the `key` and `endpoint` for the Azure OpenAI service will be needed. This will enable the application to make API calls against the Azure OpenAI service.
-
-The Azure OpenAI service `key` and `endpoint` can be located on **Azure OpenAI** blade in the Azure Portal on the **Keys and Endpoint** pane.
+The `key` and `endpoint` necessary to make API calls to Azure OpenAI can be located on **Azure OpenAI** blade in the Azure Portal on the **Keys and Endpoint** pane.
 
 ![Azure OpenAI Keys and Endpoint pane in the Azure Portal](media/2024-01-09-13-53-51.png)
 
-It is helpful to set these as environment variables, then reference those environment variables from code. Here's an example of this using the recommended environment variable names:
-
-```bash
-export AZURE_OPENAI_KEY="REPLACE_WITH_YOUR_KEY_VALUE_HERE"
-export AZURE_OPENAI_ENDPOINT="REPLACE_WITH_YOUR_ENDPOINT_HERE"
-```
-
-### Completions
-
-### Chat completions
-
-- Completions - https://learn.microsoft.com/en-us/azure/ai-services/openai/quickstart?tabs=command-line%2Cpython&pivots=programming-language-python
-
-- Chat completions - https://learn.microsoft.com/en-us/azure/ai-services/openai/chatgpt-quickstart?tabs=command-line%2Cpython&pivots=programming-language-python
+Please visit the lab repository to complete this lab.
