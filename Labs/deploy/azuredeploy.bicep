@@ -106,7 +106,7 @@ var appServiceSettings = {
   web: {
     name: '${name}-web'
     git: {
-      repo: 'https://github.com/crpietschmann/cosmos-db-dev-guide-frontend-app.git'
+      repo: 'https://github.com/solliancenet/cosmos-db-dev-guide-frontend-app.git'
       branch: 'main'
     }
   }  
