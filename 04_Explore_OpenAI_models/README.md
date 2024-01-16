@@ -58,7 +58,7 @@ better results on a wider number of tasks without needing to provide detailed ex
 
 The [fine-tuning guide](https://learn.microsoft.com/azure/ai-services/openai/how-to/fine-tuning) can be referenced for more information.
 
-## Explore and use models from code
+## Explore and use Azure OpenAI models from code
 
 The `key` and `endpoint` necessary to make API calls to Azure OpenAI can be located on **Azure OpenAI** blade in the Azure Portal on the **Keys and Endpoint** pane.
 
