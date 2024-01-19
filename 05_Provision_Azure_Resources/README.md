@@ -1,5 +1,7 @@
 # Provision Azure resources (Azure Cosmos DB workspace, Azure OpenAI, etc.)
 
+Azure Bicep Template: https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs/tree/main/deploy
+
 TBD once all other modules are complete.
 
 Bicep deployment is available in the `deploy` folder of the lab repository.
