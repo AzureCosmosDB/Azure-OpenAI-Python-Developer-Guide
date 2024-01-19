@@ -13,7 +13,7 @@ The backend api is a Python FastAPI application that will expose endpoints for t
 Create a folder to house the backend api code. Open a terminal and navigate to the folder. Clone the backend repository.
 
 ```bash
-git clone <backend repo url>
+git clone https://github.com/solliancenet/cosmos-db-dev-guide-backend-app-python.git
 ```
 
 ## Run the backend api locally
