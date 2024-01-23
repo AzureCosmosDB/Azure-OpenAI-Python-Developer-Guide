@@ -6,7 +6,7 @@ Bicep deployment is available in the [`deploy` folder of the lab repository](htt
 Currently deploying the following:
 
   - Resource Group (this is done manually in the Azure Portal)
-  - Azure Cosmos DB API for MongoDB vCore account
+  - Azure vCore-based Azure Cosmos DB for MongoDB account
   - Azure OpenAI resource
     - Chat GPT-3.5 `completions` model
     - text-embedding-ada-002 model `embeddings` model

@@ -14,7 +14,7 @@ Learn more about the pre-requisites and installation of the emulator [here](http
 
 >**NOTE**: When using the Azure CosmosDB emulator using the API for MongoDB it must be started with the [MongoDB endpoint options enabled](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#start-the-emulator) at the command-line.
 
-**The Azure Cosmos DB emulator does not support vector search. To complete the vector search and AI-related labs, you must use an Azure Cosmos DB API for the MongoDB vCore account in Azure.**
+**The Azure Cosmos DB emulator does not support vector search. To complete the vector search and AI-related labs, you must use an vCore-based Azure Cosmos DB for MongoDB account in Azure.**
 
 ## Authentication
 

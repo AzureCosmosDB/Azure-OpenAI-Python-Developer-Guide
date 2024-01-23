@@ -10,7 +10,7 @@ LangChain agents can leverage tools and toolkits. A tool can be an integration i
 
 ## LangChain RAG pattern
 
-Earlier in this guide, the RAG (Retrieval Augmented Generation) pattern was introduced. In LangChain, the RAG pattern is implemented as part of a chain that combines a retriever and a Large Language Model (generator). The retriever is responsible for finding the most relevant documents for a given query, in this case, doing a vector search on Azure Cosmos DB MongoDB vCore, and the LLM (generator) is responsible for reasoning over the incoming prompt and context.
+Earlier in this guide, the RAG (Retrieval Augmented Generation) pattern was introduced. In LangChain, the RAG pattern is implemented as part of a chain that combines a retriever and a Large Language Model (generator). The retriever is responsible for finding the most relevant documents for a given query, in this case, doing a vector search on vCore-based Azure Cosmos DB for MongoDB, and the LLM (generator) is responsible for reasoning over the incoming prompt and context.
 
 ![LangChain RAG diagram shows the flow of an incoming message through a retriever, augmenting the prompt, parsing the output and returning the final message.](media/langchain_rag.png)
 
@@ -20,4 +20,4 @@ When an incoming message is received, the retriever will vectorize the message a
 
 ## Lab 4 - Vector search and RAG using LangChain
 
-In this lab, you will learn to use LangChain to re-implement the RAG pattern introduced in Lab 3. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in Azure Cosmos DB MongoDB vCore. Lab 4 concludes with the creation of an agent with various tools for the LLM to leverage to fulfill the incoming request.
+In this lab, you will learn to use LangChain to re-implement the RAG pattern introduced in Lab 3. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in vCore-based Azure Cosmos DB for MongoDB. Lab 4 concludes with the creation of an agent with various tools for the LLM to leverage to fulfill the incoming request.
