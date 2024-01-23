@@ -52,6 +52,7 @@ Here's a list of the services within the [Azure AI platform](https://learn.micro
 | Face | Detect and identify people and emotions in images |
 | Immersive Reader | Help users read and comprehend text |
 | Language | Build apps with industry-leading natural language understanding capabilities |
+| Machine Learning | ML professionals, data scientists, and engineers can use Azure Machine Learning in their day-to-day workflows to train and deploy models, such as those built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn |
 | Speech | Speech to text, text to speech, translation and speaker recognition |
 | Translator | Translate more than 100 languages and dialects |
 | Video Indexer | Extract actionable insights from your videos |
@@ -68,14 +69,46 @@ For example:
 
 Azure offers a wide range of tools that are designed for different types of users, many of which can be used with Azure AI services. Designer-driven tools are the easiest to use, and are quick to set up and automate, but might have limitations when it comes to customization. The REST APIs and client libraries provide users with more control and flexibility, but require more effort, time, and expertise to build a solution. When using REST APIs and client libraries, there is an expectation that the developer is comfortable working with modern programming languages like C#, Java, Python, JavaScript, or another popular programming language.
 
-## Azure AI Studio
+### Azure Machine Learning
+
+[Azure Machine Learning](https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2) is a cloud service for accelerating and managing the machine learning (ML) project lifecycle. ML professionals, data scientists, and engineers can use it in their day-to-day workflows to train and deploy models and manage machine learning operations (MLOps).
+
+Azure Machine Learning can be used to create a model or use a model built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn. Additionally, MLOps tools help you monitor, retrain, and redeploy models.
+
+ML projects often require a team with a varied skill set to build and maintain. Azure Machine Learning has tools that help enable you to:
+
+- Collaborate with your team via shared notebooks, compute resources, serverless compute, data, and environments
+
+- Develop models for fairness and explainability, tracking and auditability to fulfill lineage and audit compliance requirements
+
+- Deploy ML models quickly and easily at scale, and manage and govern them efficiently with MLOps
+
+- Run machine learning workloads anywhere with built-in governance, security, and compliance
+
+Enterprises working in the Microsoft Azure cloud can use familiar security and role-based access control for infrastructure. You can set up a project to deny access to protected data and select operations.
+
+#### Azure Machine Learning vs Azure Open AI
+
+Many of the Azure AI services are suited to a very specific AI / ML need. The Azure Machine Learning and Azure OpenAI services offer more flexible usage based on the solution requirements.
+
+Here are a couple differentiators to help determine which of these to services to use when comparing the two:
+
+- Azure Machine Learning service is appropriate for solutions where a custom model needs to be trained specifically on your own data.
+
+- Azure OpenAI service is appropriate for solutions that require pre-trained models that provide natural language processing or vision services, such as the GPT-4 or DALL-E models from OpenAI.
+
+If the solution requires other more task specific AI features, then one of the other Azure AI services should be considered.
+
+### Azure AI Studio
 
 Azure AI Studio is a web portal that brings together multiple Azure AI-related services into a single, unified development environment.
 
 Specifically, Azure AI Studio combines:
 
 - The model catalog and prompt flow development capabilities of Azure Machine Learning service.
+
 - The generative AI model deployment, testing, and custom data integration capabilities of Azure OpenAI service.
+
 - Integration with Azure AI Services for speech, vision, language, document intelligence, and content safety.
 
 Azure AI Studio enables teams to collaborate efficiently and effectively on AI projects, such as developing custom copilot applications that use large language models (LLMs).
