@@ -35,11 +35,20 @@ Here are a few important things to know in regards to the security and privacy o
 
 ## Azure AI Platform
 
-Azure AI services help developers and organizations rapidly create intelligent, cutting-edge, market-ready, and responsible applications with out-of-the-box and pre-built and customizable APIs and models.
+Developers can use the power of AI, cloud-scale data, and cloud-native app development to create highly differentiated digital experiences and establish leadership among competitors. Build or modernize intelligent applications that take advantage of industry-leading AI technology and leverage real-time data and analytics to deliver adaptive, responsive, and personalized experiences.
 
-While this guide focuses on integrating Azure OpenAI, the Azure AI Platform consists of many additional AI services. Each AI service is built to fit a specific AI and/or Machine Learning (ML) need.
+The Azure platform of managed AI, containers, and database services, along with offerings developed by or in partnership with key software vendors, enables developers to build, deploy, and scale applications with speed, flexibility, and enterprise-grade security. This platform has been used by market leaders like The NBA, H&R Block, Real Madrid Football Club, Bosch, and Nuance to develop their own intelligent apps.
 
-Here's a list of the services within the [Azure AI platform](https://learn.microsoft.com/azure/ai-services/what-are-ai-services):
+Developers can use Azure AI Services, along with other Azure services, to build and modernize intelligent apps on Azure. Examples of this could be:
+
+- Build new with Azure Kubernetes Service or Azure Container Apps, Azure Cosmos DB, and Azure AI Services
+- Modernize with Azure Kubernetes Service, Azure SQL or Azure Database for PostgresSQL, and Azure AI Services
+
+### Azure AI Services
+
+While this guide focuses on building intelligent apps using Azure OpenAI combined with vCore-based Azure Cosmos DB for MongoDB, the Azure AI Platform consists of many additional AI services. Each AI service is built to fit a specific AI and/or Machine Learning (ML) need.
+
+Here's a list of the AI services within the [Azure AI platform](https://learn.microsoft.com/azure/ai-services/what-are-ai-services):
 
 | Service | Description |
 | --- | --- |

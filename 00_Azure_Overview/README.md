@@ -109,6 +109,8 @@ Install-Module -Name Az.CosmosDB
 
 [Infrastructure as Code (IaC)](https://learn.microsoft.com/devops/deliver/what-is-infrastructure-as-code) provides a way to describe or declare what infrastructure looks like using descriptive code. The infrastructure code is the desired state. The environment will be built when the code runs and completes. One of the main benefits of IaC is that it is human readable. Once the environment code is proven and tested, it can be versioned and saved into source code control. Developers can review the environment changes over time.
 
+There are a few options of IaC tooling to choose from when provisioning and managing Azure resources. These include Azure-native tools from Microsoft, like ARM templates and Azure Bicep, as well as third-party tools popular within the industry like HashiCorp Terraform.
+
 ##### ARM templates
 
 [ARM templates](https://learn.microsoft.com/azure/azure-resource-manager/templates/) can deploy Azure resources in a *declarative* manner. Azure Resource Manager can potentially create the resources in an ARM template in parallel. ARM templates can be used to create multiple identical environments, such as development, staging, and production environments.
@@ -131,14 +133,18 @@ Additionally, the [Bicep playground](https://aka.ms/bicepdemo) tool can perform 
 
 ##### Terraform
 
-[Hashicorp Terraform](https://www.terraform.io/) is an open-source tool for provisioning and managing cloud infrastructure. [Terraform](https://learn.microsoft.com/azure/developer/terraform/overview) is adept at deploying infrastructure across multiple cloud providers. It enables developers to use consistent tooling to manage each infrastructure definition.
+[Hashicorp Terraform](https://www.terraform.io/) is an open-source tool for provisioning and managing cloud infrastructure resources. [Terraform](https://learn.microsoft.com/azure/developer/terraform/overview) simplifies the deployment of Azure services, including Azure Kubernetes Service, Azure Cosmos DB, and Azure AI, through infrastructure-as-code to automate provisioning and management of Azure services. Terraform is also adept at deploying infrastructure across multiple cloud providers. It enables developers to use consistent tooling to manage each infrastructure definition.
 
 ![Sample Terraform code that deploys Azure Cosmos DB for MongoDB](media/terraform_code.png)
 
 #### Other tips
 
-Azure administrators should consult with cloud architects and financial and security personnel to develop an effective organizational hierarchy of resources. Here are some best practices to follow for Azure deployments.
+Azure administrators should consult with cloud architects and financial and security personnel to develop an effective organizational hierarchy of resources.
+
+Here are some best practices to follow for Azure deployments.
 
 - **Utilize Management Groups** Create at least three levels of management groups.
-- **Adopt a naming convention:** Names in Azure should include business details, such as the organization department, and operational details for IT personnel, like the workload.
+
+- **Adopt a naming convention:** Azure resource names should include business details, such as the organization department, and operational details for IT personnel, like the workload. Defining an [Azure resource naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming) will help the organization standardize on a common naming convention that will help better identify resources once created.
+
 - **Adopt other Azure governance tools:** Azure provides mechanisms such as [resource tags](https://learn.microsoft.com/azure/azure-resource-manager/management/tag-resources?tabs=json) and [resource locks](https://learn.microsoft.com/azure/azure-resource-manager/management/lock-resources?tabs=json) to facilitate compliance, cost management, and security.
