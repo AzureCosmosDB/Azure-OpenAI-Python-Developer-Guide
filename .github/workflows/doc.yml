@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: create file list
         id: files_list
         run: |
@@ -39,7 +39,7 @@ jobs:
 
       - name: run pandoc
         run: |
-          pandoc -s ${{ steps.files_list.outputs.files }} -f markdown -o=./output/cosmos-db-openai-python-dev-guide.docx
+          pandoc -s ${{ steps.files_list.outputs.files }} -f markdown -o=output/cosmos-db-openai-python-dev-guide.docx
 
       - uses: actions/upload-artifact@v3
         with:
