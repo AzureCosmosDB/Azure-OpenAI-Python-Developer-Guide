@@ -16,7 +16,7 @@ To facilitate developers' adoption of Azure, Microsoft offers a [free subscripti
 
 The [Azure Fundamentals Microsoft Learn Module](https://learn.microsoft.com/learn/modules/intro-to-azure-fundamentals/) demonstrates the different classifications of Azure Services. Moreover, Azure supports a variety of common tools, such as Visual Studio, PowerShell, and the Azure CLI, to manage Azure environments.
 
-  ![IaaS and PaaS Azure service classification and categories](./media/azure-services.png "Categories of Azure services")
+  ![IaaS and PaaS Azure service classification and categories](media/azure-services.png "Categories of Azure services")
 
 ### The Azure resource management hierarchy
 
@@ -29,7 +29,7 @@ Azure provides a flexible resource hierarchy to simplify cost management and sec
 - **Resources**: An Azure resource is an instance of a service. An Azure resource belongs to one resource group located in one subscription.
   - Most Azure resources are provisioned in a particular region.
 
-  ![This image shows Azure resource scopes.](./media/scope-levels.png "Azure resource scopes")
+  ![This image shows Azure resource scopes.](media/scope-levels.png "Azure resource scopes")
 
 ### Create landing zone
 
@@ -37,7 +37,7 @@ An [Azure landing zone](https://learn.microsoft.com/azure/cloud-adoption-framewo
 
 To help organizations quickly move to Azure, Microsoft provides the Azure landing zone accelerator, which generates a landing zone ARM template according to an organization's core needs, governance requirements, and automation setup. The landing zone accelerator is available in the Azure portal.
 
-![This image demonstrates the Azure landing zone accelerator in the Azure portal, and how organizations can optimize Azure for their needs and innovate.](./media/landing-zone-accelerator.png "Azure landing zone accelerator screenshot")
+![This image demonstrates the Azure landing zone accelerator in the Azure portal, and how organizations can optimize Azure for their needs and innovate.](media/landing-zone-accelerator.png "Azure landing zone accelerator screenshot")
 
 ### Automating and managing Azure services
 
