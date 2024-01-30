@@ -2,7 +2,8 @@
 #MARKDOWNFILES="$(printf '"./%s" ' */*.md)"
 #pandoc -f markdown -o "output/cosmos-db-openai-python-dev-guide.docx" -s $MARKDOWNFILES
 
-pandoc -f markdown -o "cosmos-db-openai-python-dev-guide.docx" -s \
+pandoc -f markdown --toc \
+    -o "cosmos-db-openai-python-dev-guide.docx" -s \
     "./00_Introduction/README.md" \
     "./01_Azure_Overview/README.md" \
     "./02_Overview_Cosmos_DB/README.md" \
