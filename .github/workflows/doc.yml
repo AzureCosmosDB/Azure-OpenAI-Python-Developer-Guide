@@ -12,13 +12,9 @@ jobs:
         run: |
           # this will also include all README.md files in order of folder name
           echo "files=$(printf '"%s" ' */*.md)" > $GITHUB_OUTPUT
-      - name: copy images for pandoc
-        run: |
-          find . -type f \( -iname "*.jpg" -o -iname "*/media/*.*" \) -exec cp '{}' /media \;
-          find . -type f \( -iname "*.jpg" -o -iname "*/images/*.*" \) -exec cp '{}' /images \;
       - name: list files
         run: |
-          ls -a
+          ls -aR
       - uses: docker://pandoc/latex:2.9
         with:
           args: -s ${{ steps.files_list.outputs.files }} -f markdown -o=output/cosmos-db-openai-python-dev-guide.docx
