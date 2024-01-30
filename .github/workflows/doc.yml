@@ -3,33 +3,13 @@ name: Generate Word Doc
 on: push
 
 jobs:
-  # convert_via_pandoc:
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: create file list
-  #       id: files_list
-  #       run: |
-  #         # this will also include all README.md files in order of folder name
-  #         echo "files=$(printf '"%s" ' */*.md)" > $GITHUB_OUTPUT
-  #     - name: list files
-  #       run: |
-  #         ls -aR
-  #     - uses: docker://pandoc/latex:2.9
-  #       with:
-  #         args: -s ${{ steps.files_list.outputs.files }} -f markdown -o=./output/cosmos-db-openai-python-dev-guide.docx
-  #     - uses: actions/upload-artifact@v3
-  #       with:
-  #         name: output
-  #         path: output
-
   convert_via_pandoc:
     runs-on: ubuntu-20.04
     container: 
       image: pandoc/core:2.9
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: create file list
         id: files_list
@@ -39,7 +19,7 @@ jobs:
 
       - name: run pandoc
         run: |
-          pandoc -s ${{ steps.files_list.outputs.files }} -f markdown -o=output/cosmos-db-openai-python-dev-guide.docx
+          pandoc -s ${{ steps.files_list.outputs.files }} -f markdown -o "output/cosmos-db-openai-python-dev-guide.docx"
 
       - uses: actions/upload-artifact@v3
         with:
