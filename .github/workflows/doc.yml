@@ -6,12 +6,15 @@ jobs:
   convert_via_pandoc:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: create file list
         id: files_list
         run: |
           # this will also include all README.md files in order of folder name
           echo "files=$(printf '"%s" ' */*.md)" > $GITHUB_OUTPUT
+      - script: |
+          find . -type f \( -iname "*.jpg" -o -iname "*/media/*.jpg" \) -exec cp '{}' /media \;
+          find . -type f \( -iname "*.jpg" -o -iname "*/images/*.jpg" \) -exec cp '{}' /images \;
       - uses: docker://pandoc/latex:2.9
         with:
           args: --output=output/cosmos-db-openai-python-dev-guide.docx ${{ steps.files_list.outputs.files }}
