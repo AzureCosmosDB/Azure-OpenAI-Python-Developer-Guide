@@ -15,8 +15,6 @@ jobs:
       - name: list files
         run: |
           ls -aR
-
-          touch ./output/cosmos-db-openai-python-dev-guide.docx
       - uses: docker://pandoc/latex:2.9
         with:
           args: -s ${{ steps.files_list.outputs.files }} -f markdown -o=./output/cosmos-db-openai-python-dev-guide.docx
