@@ -21,7 +21,7 @@ jobs:
           ls -a
       - uses: docker://pandoc/latex:2.9
         with:
-          args: --output=output/cosmos-db-openai-python-dev-guide.docx ${{ steps.files_list.outputs.files }}
+          args: -s ${{ steps.files_list.outputs.files }} -f markdown -o=output/cosmos-db-openai-python-dev-guide.docx
       - uses: actions/upload-artifact@v3
         with:
           name: output
