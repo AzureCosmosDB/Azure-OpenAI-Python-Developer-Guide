@@ -1,4 +1,4 @@
-# Lab 5 - Backend API
+# Backend API
 
 In the previous lab, a LangChain agent was created armed with tools to do vector lookups and concrete document id lookups via function calling. In this lab, the agent functionality needs to be extracted into a backend api for the frontend application that will allow users to interact with the agent.
 
@@ -231,4 +231,4 @@ The last step is to deploy the backend api container image to Azure Container Ap
 
 18. Repeat steps 8-10 from the [Run the backend api locally section](#run-the-backend-api-locally) to test the backend api running in a container on Azure Container Apps.
 
-Congratulations! You have successfully deployed the backend api to Azure Container Apps where it is ready to service the frontend application.
+Congratulations on the successful deployment of the backend api to Azure Container Apps where it is ready to service the frontend application.
