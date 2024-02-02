@@ -7,6 +7,29 @@
 - Azure CLI installed
 - Azure PowerShell installed
 
+## Clone labs repo
+
+Open a terminal window, create a new folder and clone the labs repository using Git into the new folder:
+
+```powershell
+mkdir labs
+cd labs
+
+git clone https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs.git
+```
+
+Navigate to the `/deploy` folder within the repo folder:
+
+```powershell
+cd deploy
+```
+
+Open the `azuredeploy.parameters.json` file, then edit the `mongoDbPassword` to a password you wish to use for the MongoDB Admin User:
+
+![editing the azuredeploy.parameters.json file with mongoDBPassword parameter highlighted](images/editor-azuredeploy-parameters-json-password.png)
+
+When the Azure Bicep template is deployed, this parameters file will be used to configure the Mongo DB Password and other parameters when provisioning the Azure resources.
+
 ## Login to Azure
 
 Open a terminal window and log in to Azure using the following command:
