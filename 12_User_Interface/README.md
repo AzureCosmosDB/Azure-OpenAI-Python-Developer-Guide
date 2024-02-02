@@ -1,14 +1,14 @@
 # Connect the chat user interface with the chatbot API
 
-In the previous lab, you configured and deployed the Backend API code that integrates vCore-based Azure Cosmos DB for MongoDB with Azure OpenAI. When the Azure resource template for this lab was run to deploy the necessary Azure resources, a front-end web application written as a SPA (single page application) in React was deployed.
+In the previous lab, the backend API code was configured and deployed. The backend API integrates vCore-based Azure Cosmos DB for MongoDB with Azure OpenAI. When the Azure resource template for this lab was run to deploy the necessary Azure resources, a front-end web application written as a SPA (single page application) in React was deployed.
 
-You can find the URL to access this front-end application within the Azure Portal on the **Web App** resource with the name that ends with **-web**.
+The URL to access this front-end application within the Azure Portal on the **Web App** resource with the name that ends with **-web**.
 
 The following screenshot shows where to find the front-end application URL:
 
 ![Web App resource for front-end application with Default domain highlighted](images/2024-01-17-12-41-48.png)
 
-Navigating to this URL in the browser will allow you to access the front-end application. Through this front-end applications User Interface, you will be able to ask the Azure OpenAI model questions about the CosmicWorks company data, then it will generate responses accordingly.
+Navigating to this URL in the browser accesses the front-end application. Through this front-end application User Interface, questions can be submitted to the Azure OpenAI model about the CosmicWorks company data, then it will generate responses accordingly.
 
 ![Front-end Web Application User Interface](images/2024-01-17-12-42-59.png)
 
@@ -16,9 +16,9 @@ While the code for the SPA web application is outside the scope of this dev guid
 
 ![Web App resource showing the application settings with the API_ENDPOINT setting highlighted](images/2024-01-17-12-45-30.png)
 
-## Ask questions about your data and observe the responses
+## Ask questions about data and observe the responses
 
-To ask the AI questions about the CosmicWorks company data, you can type your questions in to the front-end applications chat user interface. The web application includes tiles with a couple example questions to get you started. To use these, simply click on the question tile and it will generate an answer.
+To ask the AI questions about the CosmicWorks company data, type the questions in to the front-end application chat user interface. The web application includes tiles with a couple example questions to get started. To use these, simply click on the question tile and it will generate an answer.
 
 ![Front-end Web Application User Interface](images/2024-01-17-12-42-59.png)
 
@@ -51,22 +51,22 @@ A Token in Azure OpenAI is a basic unit of input and output that the service pro
 
 For example, the word `hamburger` gets broken up into the tokens `ham`, `bur` and `ger`, while a short and common word like `pear` is a single token. Many tokens start with a whitespace, for example ` hello` and ` bye`.
 
-The total number of tokens processed in a given request depends on the length of your input, output and request parameters. The quantity of tokens being processed will also affect your response latency and throughput for the models.
+The total number of tokens processed in a given request depends on the length of the input, output and request parameters. The quantity of tokens being processed will also affect the response latency and throughput for the models.
 
-> **Note**: The [pricing of the Azure OpenAI](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/) service is primarily based on token usage.
+> **Note**: The [pricing of the Azure OpenAI](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/) service is primarily based on token usage.
 
 ### Exceeding Token Quota Limits
 
 Azure OpenAI has **tokens per minute** quota limits on the service. This quota limit, is based on the OpenAI model being used and the Azure region it's hosted in.
 
-> **Note**: The [Azure OpenAI Quotas and limits documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits) contains further information on the specific quotas per OpenAI model and Azure region.
+> **Note**: The [Azure OpenAI Quotas and limits documentation](https://learn.microsoft.com/azure/ai-services/openai/quotas-limits) contains further information on the specific quotas per OpenAI model and Azure region.
 
 If an applications usage of an Azure OpenAI model exceeds the token quota limits, then the service will respond with a **Rate Limit Error** (Error code 429).
 
 When this error is encountered, there are a couple options available for handling it:
 
 - **Wait a minute** - With the tokens quota limit being a rate limits of the maximum number of tokens allowed per minute, the application will be able to send more prompts to the model again after the quota resets each minute.
-- **Request a quota increase** - It may be possible to get Microsoft to increase your token quota to a higher limit, but it's not guaranteed you will be able to get an increase. This request can be made at [https://aka.ms/oai/quotaincrease](https://aka.ms/oai/quotaincrease)
+- **Request a quota increase** - It may be possible to get Microsoft to increase the token quota to a higher limit, but it's not guaranteed to be approved. This request can be made at [https://aka.ms/oai/quotaincrease](https://aka.ms/oai/quotaincrease)
 
 ### Tips to Minimize Token Rate Limit Errors
 

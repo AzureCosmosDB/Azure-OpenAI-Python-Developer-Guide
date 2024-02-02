@@ -22,16 +22,16 @@ With Azure OpenAI, customers get the security capabilities of Microsoft Azure wh
 
 ## Azure OpenAI Data Privacy and Security
 
-Azure OpenAI stores and processes data to provide the service and to monitor for uses that violate the applicable product terms. Azure OpenAI is fully controlled by Microsoft. Microsoft hosts the OpenAI models in Microsoft Azure for your usage of Azure OpenAI, and does not interact with any services operated by OpenAI.
+Azure OpenAI stores and processes data to provide the service and to monitor for uses that violate the applicable product terms. Azure OpenAI is fully controlled by Microsoft. Microsoft hosts the OpenAI models in Microsoft Azure for the usage of Azure OpenAI, and does not interact with any services operated by OpenAI.
 
-Here are a few important things to know in regards to the security and privacy of your prompts (inputs) and completions (outputs), your embeddings, and your training data when using Azure OpenAI:
+Here are a few important things to know in regards to the security and privacy of prompts (inputs) and completions (outputs), embeddings, and training data when using Azure OpenAI:
 
 - are NOT available to other customers.
 - are NOT available to OpenAI.
 - are NOT used to improve OpenAI models.
 - are NOT used to improve any Microsoft or 3rd party products or services.
-- are NOT used for automatically improving Azure OpenAI models for your use in your resource (The models are stateless, unless you explicitly fine-tune models with your training data).
-- Your fine-tuned Azure OpenAI models are available exclusively for your use.
+- are NOT used for automatically improving Azure OpenAI models for use in the deployed resource (The models are stateless, unless explicitly fine-tuning models with explicitly provided training data).
+- Fine-tuned Azure OpenAI models are available exclusively for the account in which it was created.
 
 ## Azure AI Platform
 
@@ -52,11 +52,11 @@ Here's a list of the AI services within the [Azure AI platform](https://learn.mi
 
 | Service | Description |
 | --- | --- |
-| Azure AI Search | Bring AI-powered cloud search to your mobile and web apps |
+| Azure AI Search | Bring AI-powered cloud search to mobile and web apps |
 | Azure OpenAI | Perform a wide variety of natural language tasks |
 | Bot Service | Create bots and connect them across channels |
 | Content Safety | An AI service that detects unwanted contents |
-| Custom Vision | Customize image recognition to fit your business |
+| Custom Vision | Customize image recognition to fit the business |
 | Document Intelligence | Turn documents into usable data at a fraction of the time and cost |
 | Face | Detect and identify people and emotions in images |
 | Immersive Reader | Help users read and comprehend text |
@@ -64,17 +64,17 @@ Here's a list of the AI services within the [Azure AI platform](https://learn.mi
 | Machine Learning | ML professionals, data scientists, and engineers can use Azure Machine Learning in their day-to-day workflows to train and deploy models, such as those built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn |
 | Speech | Speech to text, text to speech, translation and speaker recognition |
 | Translator | Translate more than 100 languages and dialects |
-| Video Indexer | Extract actionable insights from your videos |
+| Video Indexer | Extract actionable insights from videos |
 | Vision | Analyze content in images and videos |
 
 > **Note:** Follow this link for additional tips to help in determining the which Azure AI service is most appropriate for a specific project requirement: <https://azure.microsoft.com/products/category/ai>
 
-The tools that you will use to customize and configure models are different from those that you'll use to call the Azure AI services. Out of the box, most Azure AI services allow you to send data and receive insights without any customization.
+The tools that used to customize and configure models are different from those used to call the Azure AI services. Out of the box, most Azure AI services allow for sending data and receive insights without any customization.
 
 For example:
 
-- You can send an image to the Azure AI Vision service to detect words and phrases or count the number of people in the frame
-- You can send an audio file to the Speech service and get transcriptions and translate the speech to text at the same time
+- Sending an image to the Azure AI Vision service to detect words and phrases or count the number of people in the frame
+- Sending an audio file to the Speech service and get transcriptions and translate the speech to text at the same time
 
 Azure offers a wide range of tools that are designed for different types of users, many of which can be used with Azure AI services. Designer-driven tools are the easiest to use, and are quick to set up and automate, but might have limitations when it comes to customization. The REST APIs and client libraries provide users with more control and flexibility, but require more effort, time, and expertise to build a solution. When using REST APIs and client libraries, there is an expectation that the developer is comfortable working with modern programming languages like C#, Java, Python, JavaScript, or another popular programming language.
 
@@ -82,19 +82,19 @@ Azure offers a wide range of tools that are designed for different types of user
 
 [Azure Machine Learning](https://learn.microsoft.com/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2) is a cloud service for accelerating and managing the machine learning (ML) project lifecycle. ML professionals, data scientists, and engineers can use it in their day-to-day workflows to train and deploy models and manage machine learning operations (MLOps).
 
-Azure Machine Learning can be used to create a model or use a model built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn. Additionally, MLOps tools help you monitor, retrain, and redeploy models.
+Azure Machine Learning can be used to create a model or use a model built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn. Additionally, MLOps tools help monitor, retrain, and redeploy models.
 
-ML projects often require a team with a varied skill set to build and maintain. Azure Machine Learning has tools that help enable you to:
+ML projects often require a team with a varied skill set to build and maintain. Azure Machine Learning has tools that help enable:
 
-- Collaborate with your team via shared notebooks, compute resources, serverless compute, data, and environments
+- Collaboration within a team via shared notebooks, compute resources, serverless compute, data, and environments
 
-- Develop models for fairness and explainability, tracking and auditability to fulfill lineage and audit compliance requirements
+- Developing models for fairness and explainability, tracking and auditability to fulfill lineage and audit compliance requirements
 
-- Deploy ML models quickly and easily at scale, and manage and govern them efficiently with MLOps
+- Deploying ML models quickly and easily at scale, and manage and govern them efficiently with MLOps
 
-- Run machine learning workloads anywhere with built-in governance, security, and compliance
+- Running machine learning workloads anywhere with built-in governance, security, and compliance
 
-Enterprises working in the Microsoft Azure cloud can use familiar security and role-based access control for infrastructure. You can set up a project to deny access to protected data and select operations.
+Enterprises working in the Microsoft Azure cloud can use familiar security and role-based access control for infrastructure. A project can be set up to deny access to protected data and select operations.
 
 #### Azure Machine Learning vs Azure Open AI
 
@@ -102,7 +102,7 @@ Many of the Azure AI services are suited to a very specific AI / ML need. The Az
 
 Here are a couple differentiators to help determine which of these to services to use when comparing the two:
 
-- Azure Machine Learning service is appropriate for solutions where a custom model needs to be trained specifically on your own data.
+- Azure Machine Learning service is appropriate for solutions where a custom model needs to be trained specifically on private data.
 
 - Azure OpenAI service is appropriate for solutions that require pre-trained models that provide natural language processing or vision services, such as the GPT-4 or DALL-E models from OpenAI.
 
@@ -124,7 +124,7 @@ Azure AI Studio enables teams to collaborate efficiently and effectively on AI p
 
 ![Azure AI Studio screenshot](images/2024-01-23-17-52-46.png)
 
-Tasks you can accomplish with Azure AI Studio include:
+Tasks accomplished using Azure AI Studio include:
 
 - Deploying models from the model catalog to real-time inferencing endpoints for client applications to consume.
 - Deploying and testing generative AI models in an Azure OpenAI service.

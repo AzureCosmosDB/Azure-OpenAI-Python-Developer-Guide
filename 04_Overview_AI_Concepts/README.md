@@ -28,7 +28,7 @@ Here are a few things that separate NLPs from LLMs:
 | --- | --- |
 | One model per capability is needed. | A single model is used for many natural language use cases. |
 | Provides a set of labeled data to train the ML model. | Uses many terabytes of unlabeled data in the foundation model. |
-| Describes in natural language what you want the model to do. | Highly optimized for specific use cases. |
+| Describes in natural language the desired model responses. | Highly optimized for specific use cases. |
 
 ## Prompting and Prompt Engineering
 
@@ -45,13 +45,13 @@ While there's techniques and patterns used when building an Azure OpenAI solutio
 
 While it can be quick to write basic prompts, it can also be difficult to write more complex prompts to ge the AI to generate the responses necessary. When writing prompts, there are three basic guidelines to follow for creating useful prompts:
 
-- **Show and tell** - Make it clear what you want either through instructions, examples, or a combination of the two. If you want the model to rank a list of items in alphabetical order or to classify a paragraph by sentiment, include these details in your prompt to show the model.
-- **Provide quality data** - If you're trying to build a classifier or get the model to follow a pattern, make sure there are enough examples. Be sure to proofread your examples. The model is smart enough to resolve basic spelling mistakes and give you a meaningful response. Conversely, the model might assume the mistakes are intentional, which can affect the response.
-- **Check your settings** - Probability settings, such as `Temperature` and `Top P`, control how deterministic the model is in generating a response. If you're asking for a response where there's only one right answer, you should specify lower values for these settings. If you're looking for a response that's not obvious, you might want to use higher values. The most common mistake users make with these settings is assuming they control "cleverness" or "creativity" in the model response.
+- **Show and tell** - Make it clear what response is desired either through instructions, examples, or a combination of the two. When ranking a list of items in alphabetical order or to classifying a paragraph by sentiment, include these details in the prompt to provided to the model.
+- **Provide quality data** - When building a classifier or get the model to follow a pattern, make sure there are enough examples. Be sure to proofread the examples. The model is smart enough to resolve basic spelling mistakes and still provide a meaningful response. Conversely, the model might assume the mistakes are intentional, which can affect the response.
+- **Check the settings** - Probability settings, such as `Temperature` and `Top P`, control how deterministic the model is in generating a response. When asking for a response where there's only one right answer, a lower value should be specified for these settings. When looking for a response that are not obvious and needs additional creativity, use higher values. The most common mistake users make with these settings is assuming they control "cleverness" or "creativity" in the model response.
 
 ### What is prompt engineering
 
-[Prompt engineering](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/prompt-engineering) is the iterative process of designing, evaluating, and optimizing prompts to produce consistently accurate responses from language models for a particular problem domain. It involves designing and refining the prompts given to an AI model to achieve the desired outputs. Prompt engineers experiment with various prompts, test their effectiveness, and refine them to improve performance. Performance is measured using predefined metrics such as accuracy, relevance, and user satisfaction to assess the impact of prompt engineering.
+[Prompt engineering](https://learn.microsoft.com/azure/ai-services/openai/concepts/prompt-engineering) is the iterative process of designing, evaluating, and optimizing prompts to produce consistently accurate responses from language models for a particular problem domain. It involves designing and refining the prompts given to an AI model to achieve the desired outputs. Prompt engineers experiment with various prompts, test their effectiveness, and refine them to improve performance. Performance is measured using predefined metrics such as accuracy, relevance, and user satisfaction to assess the impact of prompt engineering.
 
 ### General anatomy of a prompt
 
@@ -133,11 +133,11 @@ The Output is the completion, or response, from the LLM returned as a result to 
 
 ### Retrieval Augmentation Generation (RAG)
 
-[Retrieval Augmentation Generation (RAG)](https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview) is an architecture that augments the capabilities of a Large Language Model (LLM) like ChatGPT by adding an information retrieval system that provides grounding data. Adding an information retrieval system gives you control over grounding data used by an LLM when it formulates a response. For an enterprise solution, RAG architecture means that you can constrain generative AI to your enterprise content sourced from vectorized documents, images, audio, and video.
+[Retrieval Augmentation Generation (RAG)](https://learn.microsoft.com/azure/search/retrieval-augmented-generation-overview) is an architecture that augments the capabilities of a Large Language Model (LLM) like ChatGPT by adding an information retrieval system that provides grounding data. Adding an information retrieval system provides control over grounding data used by an LLM when it formulates a response.
 
 GPT language models can be fine-tuned to achieve several common tasks such as sentiment analysis and named entity recognition. These tasks generally don't require additional background knowledge.
 
-The RAG pattern facilitates bringing private proprietary knowledge to the model so that it can perform Question Answering over this content. Remember that Large Language Models are indexed only on public information. For an enterprise solution, RAG architecture means you can constrain the generative AI to your enterprise content sourced from vectorized documents, images, audio, and video.
+The RAG pattern facilitates bringing private proprietary knowledge to the model so that it can perform Question Answering over this content. Remember that Large Language Models are indexed only on public information. For an enterprise solution, RAG architecture means that the generative AI is constrained to enterprise content sourced from vectorized documents, images, audio, and video.
 
 Because the RAG technique accesses external knowledge sources to complete tasks, it enables more factual consistency, improves the reliability of the generated responses, and helps to mitigate the problem of "_hallucination_".
 
@@ -145,7 +145,7 @@ In some cases, the RAG process involves a technique called vectorization on the 
 
 ### Chain of Thought (CoT)
 
-Instead of splitting a task into smaller steps, with [Chain of Thought (CoT)](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions#chain-of-thought-prompting) the model response is instructed to proceed step-by-step and present all the steps involved. Doing so reduces the possibility of inaccuracy of outcomes and makes assessing the model response easier.
+Instead of splitting a task into smaller steps, with [Chain of Thought (CoT)](https://learn.microsoft.com/azure/ai-services/openai/concepts/advanced-prompt-engineering?pivots=programming-language-chat-completions#chain-of-thought-prompting) the model response is instructed to proceed step-by-step and present all the steps involved. Doing so reduces the possibility of inaccuracy of outcomes and makes assessing the model response easier.
 
 | System message | Prompt | Response |
 | :--- | :--- | :--- |

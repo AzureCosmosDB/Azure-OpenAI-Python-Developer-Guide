@@ -16,7 +16,7 @@ Azure OpenAI is powered by a diverse set of models with different capabilities.
 
 GPT-4 can solve difficult problems with greater accuracy than any of OpenAI's previous models. Like GPT-3.5 Turbo, GPT-4 is optimized for chat and works well for traditional completions tasks.
 
-The GPT-35-Turbo and GPT-4 models are language models that are optimized for conversational interfaces. The models behave differently than the older GPT-3 models. Previous models were text-in and text-out, meaning they accepted a prompt string and returned a completion to append to the prompt. However, the GPT-35-Turbo and GPT-4 models are conversation-in and message-out. The models expect input formatted in a specific chat-like transcript format, and return a completion that represents a model-written message in the chat. While this format was designed specifically for multi-turn conversations, you'll find it can also work well for non-chat scenarios too.
+The GPT-35-Turbo and GPT-4 models are language models that are optimized for conversational interfaces. The models behave differently than the older GPT-3 models. Previous models were text-in and text-out, meaning they accepted a prompt string and returned a completion to append to the prompt. However, the GPT-35-Turbo and GPT-4 models are conversation-in and message-out. The models expect input formatted in a specific chat-like transcript format, and return a completion that represents a model-written message in the chat. While this format was designed specifically for multi-turn conversations, it can also work well for non-chat scenarios too.
 
 ### Embeddings
 
@@ -52,9 +52,7 @@ Once the business goals of the solution are known, there are a few key considera
 
 ## Do I use an out-of-the-box model or a fine-tuned model?
 
-A base model is a model that hasn't been customized or fine-tuned for a specific use case. Fine-tuned models are customized versions of base models where a model's
-weights are trained on a unique set of prompts. Fine-tuned models let you achieve
-better results on a wider number of tasks without needing to provide detailed examples for in-context learning as part of your completion prompt.
+A base model is a model that hasn't been customized or fine-tuned for a specific use case. Fine-tuned models are customized versions of base models where a model's weights are trained on a unique set of prompts. Fine-tuned models achieve better results on a wider number of tasks without needing to provide detailed examples for in-context learning as part of the completion prompt.
 
 The [fine-tuning guide](https://learn.microsoft.com/azure/ai-services/openai/how-to/fine-tuning) can be referenced for more information.
 
@@ -64,4 +62,10 @@ The `key` and `endpoint` necessary to make API calls to Azure OpenAI can be loca
 
 ![Azure OpenAI Keys and Endpoint pane in the Azure Portal](media/2024-01-09-13-53-51.png)
 
-Please visit the lab repository to complete this lab.
+## Lab: Explore and use Azure OpenAI models from code
+
+This labs demonstrates using an Azure OpenAI model to obtain a completion response using Python.
+
+>**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
+
+Visit the lab repository to complete [this lab](https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs/blob/main/lab_0_explore_and_use_models.ipynb).

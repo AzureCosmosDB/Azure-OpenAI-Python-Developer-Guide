@@ -99,7 +99,7 @@ Launch the Cloud Shell in a browser at [https://shell.azure.com](https://shell.a
 
 #### PowerShell Module
 
-The Azure portal and Windows PowerShell can be used for managing Azure Cosmos DB for Mongo DB API. To get started with Azure PowerShell, install the [Azure PowerShell cmdlets](https://learn.microsoft.com/en-us/powershell/module/az.cosmosdb/) for Cosmos DB with the following PowerShell command in an administrator-level PowerShell window:
+The Azure portal and Windows PowerShell can be used for managing Azure Cosmos DB for Mongo DB API. To get started with Azure PowerShell, install the [Azure PowerShell cmdlets](https://learn.microsoft.com/powershell/module/az.cosmosdb/) for Cosmos DB with the following PowerShell command in an administrator-level PowerShell window:
 
 ```PowerShell
 Install-Module -Name Az.CosmosDB
