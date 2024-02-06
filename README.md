@@ -1,7 +1,5 @@
-# cosmos-db-openai-python-dev-guide
-Azure Cosmos DB + Azure OpenAI Python developer guide
+# Azure Cosmos DB + Azure OpenAI Python developer guide
 
+## Architecture Diagram
 
-# Architecture
-
-![Architecture Diagram](assets/architecture.jpg)
+![Architecture Diagram](06_Provision_Azure_Resources/media/architecture.jpg)
