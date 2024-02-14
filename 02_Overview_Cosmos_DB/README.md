@@ -1,6 +1,6 @@
 # Overview of Azure Cosmos DB
 
-[Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/introduction) is a globally distributed, multi-model database service that enables querying and storing data using NoSQL models using one of five APIs: SQL (document database), Cassandra (column-family), MongoDB (document database), Azure Table, and Gremlin (graph database). It provides turnkey global distribution, elastic scaling of throughput and storage worldwide, single-digit millisecond latencies at the 99th percentile, and guaranteed high availability with multi-homing capabilities. Azure Cosmos DB provides comprehensive service level agreements (SLAs) for throughput, latency, availability, and consistency guarantees, something not found in any other database service.
+[Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/introduction) is a globally distributed, multi-model database service that enables querying and storing data using NoSQL models using one of five APIs: SQL (document database), Cassandra (column-family), MongoDB (document database), Azure Table, and graph database. It provides turnkey global distribution, elastic scaling of throughput and storage worldwide, single-digit millisecond latencies at the 99th percentile, and guaranteed high availability with multi-homing capabilities. Azure Cosmos DB provides comprehensive service level agreements (SLAs) for throughput, latency, availability, and consistency guarantees, something not found in any other database service.
 
 ## Azure Cosmos DB and AI
 
