@@ -1,0 +1,11 @@
+pymongo==4.6.1
+python-dotenv==1.0.0
+requests==2.31.0
+pydantic==2.5.2
+openai==1.6.0
+tenacity==8.2.3
+langchain==0.0.352
+tiktoken==0.5.2
+fastapi==0.108.0
+uvicorn==0.25.0
+gunicorn==21.2.0

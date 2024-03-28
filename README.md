@@ -1,14 +1,21 @@
-# Project
+# Azure Cosmos DB + Azure OpenAI Python Developer Guide
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+1. [Introduction](/00_Introduction/README.md)
+1. [Azure Overview](/01_Azure_Overview/README.md)
+1. [Overview of Azure Cosmos DB](/02_Overview_Cosmos_DB/README.md)
+1. [Overview of Azure OpenAI](/03_Overview_Azure_OpenAI/README.md)
+1. [Overview of AI Concepts](/04_Overview_AI_Concepts/README.md)
+1. [Explore the Azure OpenAI models and endpoints (console app)](/05_Explore_OpenAI_models/README.md)
+1. [Provision Azure resources](/06_Provision_Azure_Resources/README.md)
+1. [Create your first Cosmos DB project](/07_Create_First_Cosmos_DB_Project/README.md)
+1. [Load data into Azure Cosmos DB API for MongoDB](/08_Load_Data/README.md)
+1. [Use vector search on embeddings in vCore-based Azure Cosmos DB for MongoDB](/09_Vector_Search_Cosmos_DB/README.md)
+1. [LangChain](/10_LangChain/README.md)
+1. [Backend API](/11_Backend_API/README.md)
+1. [Connect the chat user interface with the chatbot API](/12_User_Interface/README.md)
+1. [Conclusion](/13_Conclusion/README.md)
 
-As the maintainer of this project, please make a few updates:
-
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+![Azure Cosmos DB + Azure OpenAI Python Developer Guide Architecture Diagram](/06_Provision_Azure_Resources/media/architecture.jpg)
 
 ## Contributing
 
