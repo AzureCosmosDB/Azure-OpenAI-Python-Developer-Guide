@@ -1,4 +1,4 @@
-# Welcome to the Azure Cosmos DB OpenAI Python Dev Guide
+# Welcome to the Azure Cosmos DB + Azure OpenAI Python Developer Guide
 
 ## Pre-requisites
 
