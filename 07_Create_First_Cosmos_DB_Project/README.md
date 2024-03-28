@@ -38,7 +38,7 @@ Using a notebook, we'll create a Cosmos DB for the MongoDB application in this l
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
-Please visit the lab repository to complete [this lab](https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs/blob/main/lab_1_first_application.ipynb).
+Please visit the lab repository to complete [this lab](https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/Labs/lab_1_first_application.ipynb).
 
 The following concepts are covered in detail in this lab:
 

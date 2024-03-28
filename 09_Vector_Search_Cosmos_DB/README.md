@@ -42,7 +42,7 @@ This lab also requires the data provided in the previous lab titled [Load data i
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
-Please visit the lab repository to complete [this lab](https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs/blob/main/lab_3_mongodb_vector_search.ipynb).
+Please visit the lab repository to complete [this lab](https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/Labs/lab_3_mongodb_vector_search.ipynb).
 
 Some highlights from the lab include:
 

@@ -7,20 +7,15 @@
 - Azure CLI installed
 - Azure PowerShell installed
 
-## Clone labs repo
+## Clone the repository
 
-Open a terminal window, create a new folder and clone the labs repository using Git into the new folder:
+Create a folder to house the repository. Open a terminal and navigate to the folder. Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
 
-```powershell
-mkdir labs
-cd labs
+```bash
+git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
 
-git clone https://github.com/solliancenet/cosmos-db-openai-python-dev-guide-labs.git
-```
-
-Navigate to the `/deploy` folder within the repo folder:
-
-```powershell
+cd Azure-OpenAI-Python-Developer-Guide
+cd Labs
 cd deploy
 ```
 
