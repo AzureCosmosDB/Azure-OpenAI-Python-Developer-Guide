@@ -89,7 +89,7 @@ Primary content refers to some sort of text that is being processed or transform
 | :--- | :--- |
 | Can you please tell me how to get to the museum? <br/> Translate to French: | `Pouvez-vous s'il vous plaît me dire comment aller au musée?` |
 
-Primary content can also be much longer. For example, the primary content could pass the introduction section of text content that could be hundreds of words long. Additionally, the primary content could be int he form of structured data as well, such as in JSON or TSV format.
+Primary content can also be much longer. For example, the primary content could pass the introduction section of text content that could be hundreds of words long. Additionally, the primary content could be in the form of structured data as well, such as in JSON or TSV format.
 
 ##### Supporting Content
 
