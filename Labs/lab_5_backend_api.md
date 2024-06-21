@@ -114,6 +114,15 @@ Notice the steps of installing the pip dependencies, and running the **uvicorn**
 
     ![The VSCode terminal window displays the docker build command and the FINISHED message.](media/local_backend_docker_build.png "Local backend api Docker build")
 
+    If you are using Docker on MacOS, it is recommended to add `--platform linux/amd64` to the docker build command.
+    The command will be as follows:
+
+    ```bash
+    docker build --pull --rm -f "DOCKERFILE" --platform linux/amd64 -t devguidebackendapi:latest "."
+    ```
+    
+    This is because by default, MacOS generates a Docker image for linux/arm64. However, linux/arm64 encounters errors when being up/provisioned in Azure Container App.
+
 5. Lastly, run the container in Docker Desktop using the following command.
 
     ```bash
