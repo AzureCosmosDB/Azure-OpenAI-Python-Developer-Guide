@@ -23,7 +23,7 @@ param location string = 'eastus'
 
 @description('''
 Unique name for the deployed services below. Max length 17 characters, alphanumeric only:
-- Azure Cosmos DB for MongoDB vCore
+- Azure Cosmos DB for NoSQL vCore
 - Azure OpenAI Service
 
 The name defaults to a unique string generated from the resource group identifier. Prefixed with
@@ -113,7 +113,7 @@ var appServiceSettings = {
 }
 
 /* *************************************************************** */
-/* Azure Cosmos DB for MongoDB vCore */
+/* Azure Cosmos DB for NoSQL vCore */
 /* *************************************************************** */
 
 resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2023-03-01-preview' = {

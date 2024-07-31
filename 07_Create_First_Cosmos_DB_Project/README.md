@@ -4,7 +4,7 @@ This section will cover how to create your first Cosmos DB project. We'll use a 
 
 ## Emulator support
 
-Azure Cosmos DB has an emulator that can be used to develop code locally. The emulator supports the API for NoSQL and the API for MongoDB. The use of the emulator does not require an Azure subscription, nor does it incur any costs, so it is ideal for local development and testing. The Azure Cosmos DB emulator can also be utilized with unit tests in a [GitHub Actions CI workflow](https://learn.microsoft.com/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#use-the-emulator-in-a-github-actions-ci-workflow).
+Azure Cosmos DB has an emulator that can be used to develop code locally. The emulator supports the API for NoSQL and the API for NoSQL. The use of the emulator does not require an Azure subscription, nor does it incur any costs, so it is ideal for local development and testing. The Azure Cosmos DB emulator can also be utilized with unit tests in a [GitHub Actions CI workflow](https://learn.microsoft.com/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#use-the-emulator-in-a-github-actions-ci-workflow).
 
 There is not 100% feature parity between the emulator and the cloud service. Visit the [Azure Cosmos DB emulator](https://learn.microsoft.com/azure/cosmos-db/emulator) documentation for more details.
 
@@ -14,11 +14,11 @@ Learn more about the pre-requisites and installation of the emulator [here](http
 
 >**NOTE**: When using the Azure CosmosDB emulator using the API for MongoDB it must be started with the [MongoDB endpoint options enabled](https://learn.microsoft.com/azure/cosmos-db/how-to-develop-emulator?tabs=windows%2Cpython&pivots=api-mongodb#start-the-emulator) at the command-line.
 
-**The Azure Cosmos DB emulator does not support vector search. To complete the vector search and AI-related labs, a vCore-based Azure Cosmos DB for MongoDB account in Azure is required.**
+**The Azure Cosmos DB emulator does not support vector search. To complete the vector search and AI-related labs, a vCore-based Azure Cosmos DB for NoSQL account in Azure is required.**
 
 ## Authentication
 
-Authentication to Azure Cosmos DB API for Mongo DB uses a connection string. The connection string is a URL that contains the authentication information for the Azure Cosmos DB account or local emulator. The username and password used when provisioning the Azure Cosmos DB API for MongoDB service are used in the connection string when authenticating to Azure.
+Authentication to Azure Cosmos DB API for Mongo DB uses a connection string. The connection string is a URL that contains the authentication information for the Azure Cosmos DB account or local emulator. The username and password used when provisioning the Azure Cosmos DB API for NoSQL service are used in the connection string when authenticating to Azure.
 
 ### Retrieving the connection string from the Cosmos DB Emulator
 
@@ -28,13 +28,13 @@ The splash screen or **Quickstart** section of the Cosmos DB Emulator will displ
 
 ### Retrieving the connection string from the Azure portal
 
-Retrieve the connection string from the Azure portal by navigating to the Azure Cosmos DB account and selecting the **Connection String** menu item on the left-hand side of the screen. The connection string contains tokens for the username and password that must be replaced with the username and password used when provisioning the Azure Cosmos DB API for MongoDB service.
+Retrieve the connection string from the Azure portal by navigating to the Azure Cosmos DB account and selecting the **Connection String** menu item on the left-hand side of the screen. The connection string contains tokens for the username and password that must be replaced with the username and password used when provisioning the Azure Cosmos DB API for NoSQL service.
 
-![The Azure CosmosDb API for MongoDB Connection strings screen displays with the copy button next to the connection string highlighted.](media/azure_connection_string.png)
+![The Azure CosmosDb API for NoSQL Connection strings screen displays with the copy button next to the connection string highlighted.](media/azure_connection_string.png)
 
-## Lab - Create your first Cosmos DB for the MongoDB application
+## Lab - Create your first Cosmos DB for the NoSQL application
 
-Using a notebook, we'll create a Cosmos DB for the MongoDB application in this lab using the **pymongo** library and the Python language. Both the Azure Cosmos DB Emulator and Azure Cosmos DB account in Azure are supported for completion of this lab.
+Using a notebook, we'll create a Cosmos DB for the NoSQL application in this lab using the **pymongo** library and the Python language. Both the Azure Cosmos DB Emulator and Azure Cosmos DB account in Azure are supported for completion of this lab.
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 

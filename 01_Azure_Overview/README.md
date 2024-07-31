@@ -129,13 +129,13 @@ az bicep decompile --file template.json
 
 Additionally, the [Bicep playground](https://aka.ms/bicepdemo) tool can perform similar decompilation of ARM templates.
 
-![Sample Bicep code that deploys Azure Cosmos DB for MongoDB](media/bicep_code.png)
+![Sample Bicep code that deploys Azure Cosmos DB for NoSQL](media/bicep_code.png)
 
 ##### Terraform
 
 [Hashicorp Terraform](https://www.terraform.io/) is an open-source tool for provisioning and managing cloud infrastructure resources. [Terraform](https://learn.microsoft.com/azure/developer/terraform/overview) simplifies the deployment of Azure services, including Azure Kubernetes Service, Azure Cosmos DB, and Azure AI, through infrastructure-as-code to automate provisioning and management of Azure services. Terraform is also adept at deploying infrastructure across multiple cloud providers. It enables developers to use consistent tooling to manage each infrastructure definition.
 
-![Sample Terraform code that deploys Azure Cosmos DB for MongoDB](media/terraform_code.png)
+![Sample Terraform code that deploys Azure Cosmos DB for NoSQL](media/terraform_code.png)
 
 #### Other tips
 

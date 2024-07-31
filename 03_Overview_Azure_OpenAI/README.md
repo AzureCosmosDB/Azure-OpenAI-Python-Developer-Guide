@@ -46,7 +46,7 @@ Developers can use Azure AI Services, along with other Azure services, to build 
 
 ### Azure AI Services
 
-While this guide focuses on building intelligent apps using Azure OpenAI combined with vCore-based Azure Cosmos DB for MongoDB, the Azure AI Platform consists of many additional AI services. Each AI service is built to fit a specific AI and/or Machine Learning (ML) need.
+While this guide focuses on building intelligent apps using Azure OpenAI combined with vCore-based Azure Cosmos DB for NoSQL, the Azure AI Platform consists of many additional AI services. Each AI service is built to fit a specific AI and/or Machine Learning (ML) need.
 
 Here's a list of the AI services within the [Azure AI platform](https://learn.microsoft.com/azure/ai-services/what-are-ai-services):
 

@@ -1,6 +1,6 @@
 # Conclusion
 
-This guide was designed to provide an insightful journey for Python/MongoDB developers to get started with vCore-based Azure Cosmos DB for MongoDB as it applies to creating exciting AI-enabled applications using existing skills. We hope you found this guide helpful and informative.
+This guide was designed to provide an insightful journey for Python/MongoDB developers to get started with vCore-based Azure Cosmos DB for NoSQL as it applies to creating exciting AI-enabled applications using existing skills. We hope you found this guide helpful and informative.
 
 ## Clean up
 
