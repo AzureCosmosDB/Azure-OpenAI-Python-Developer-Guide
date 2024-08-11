@@ -8,7 +8,7 @@ The surge of AI-powered applications has led to the need to integrate data from 
 
 ## Azure Cosmos DB for NoSQL
 
-The focus for this developer guide is [Azure Cosmos DB for NoSQL](https://learn.microsoft.com/azure/cosmos-db/nosql/).
+The focus for this developer guide is [Azure Cosmos DB for NoSQL](https://learn.microsoft.com/azure/cosmos-db/nosql/) and [Vector Search](https://learn.microsoft.com/azure/cosmos-db/nosql/vector-search).
 
 ### Azure Cosmos DB for NoSQL Architectures
 
