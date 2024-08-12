@@ -1,4 +1,4 @@
-# Azure Cosmos DB NoSQL + DiskANN + Azure OpenAI Python Developer Guide
+# Azure Cosmos DB for NoSQL + DiskANN + Azure OpenAI Python Developer Guide
 
 1. [Introduction](/00_Introduction/README.md)
 1. [Azure Overview](/01_Azure_Overview/README.md)

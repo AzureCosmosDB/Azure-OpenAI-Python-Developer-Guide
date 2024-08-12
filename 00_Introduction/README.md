@@ -1,4 +1,4 @@
-# Welcome to the Azure Cosmos DB + Azure OpenAI Python Developer Guide
+# Welcome to the Azure Cosmos DB for NoSQL + DiskANN + Azure OpenAI Python Developer Guide
 
 ## Pre-requisites
 
