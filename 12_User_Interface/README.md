@@ -1,6 +1,6 @@
 # Connect the chat user interface with the chatbot API
 
-In the previous lab, the backend API code was configured and deployed. The backend API integrates vCore-based Azure Cosmos DB for NoSQL with Azure OpenAI. When the Azure resource template for this lab was run to deploy the necessary Azure resources, a front-end web application written as a SPA (single page application) in React was deployed.
+In the previous lab, the backend API code was configured and deployed. The backend API integrates Azure Cosmos DB for NoSQL with Azure OpenAI. When the Azure resource template for this lab was run to deploy the necessary Azure resources, a front-end web application written as a SPA (single page application) in React was deployed.
 
 The URL to access this front-end application within the Azure Portal on the **Web App** resource with the name that ends with **-web**.
 
@@ -37,7 +37,7 @@ Go ahead, ask the service a few questions about CosmicWorks and observe the resp
 
 ## What do I do if the responses are incorrect?
 
-It's important to remember the model is pre-trained with data, given a system message to guide it, in addition to the company data it has access to via vCore-based Azure Cosmos DB for NoSQL. There are times when the Azure OpenAI model may generate an incorrect response to the prompt given that is either incomplete or even a hallucination (aka includes information that is not correct or accurate).
+It's important to remember the model is pre-trained with data, given a system message to guide it, in addition to the company data it has access to via Azure Cosmos DB for NoSQL. There are times when the Azure OpenAI model may generate an incorrect response to the prompt given that is either incomplete or even a hallucination (aka includes information that is not correct or accurate).
 
 There are a few options of how this can be handled when the response is incorrect:
 
