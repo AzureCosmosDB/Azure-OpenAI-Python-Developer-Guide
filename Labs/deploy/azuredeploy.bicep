@@ -11,7 +11,7 @@ This Azure resource deployment template uses some of the following practices:
 /* Parameters */
 /* *************************************************************** */
 
-@description('Location where all resources will be deployed. This value defaults to the **East US** region.')
+@description('Location where all resources will be deployed. This value defaults to the **East US 2** region.')
 @allowed([  
   'eastus2'  
   'francecentral'
@@ -23,7 +23,7 @@ param location string = 'eastus2'
 
 @description('''
 Unique name for the deployed services below. Max length 17 characters, alphanumeric only:
-- Azure Cosmos DB for NoSQL vCore
+- Azure Cosmos DB for NoSQL
 - Azure OpenAI Service
 
 The name defaults to a unique string generated from the resource group identifier. Prefixed with
