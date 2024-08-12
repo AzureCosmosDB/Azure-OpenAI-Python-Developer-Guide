@@ -12,9 +12,9 @@
 Create a folder to house the repository. Open a terminal and navigate to the folder. Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
 
 ```bash
-git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
+git clone https://github.com/solliancenet/Cosmos-DB-NoSQL-OpenAI-Python-Dev-Guide.git
 
-cd Azure-OpenAI-Python-Developer-Guide
+cd Cosmos-DB-NoSQL-OpenAI-Python-Dev-Guide
 cd Labs
 cd deploy
 ```
@@ -54,3 +54,8 @@ Deploy the solution resources using the following command (this will take a few 
 ```Powershell
 New-AzResourceGroupDeployment -ResourceGroupName mongo-devguide-rg -TemplateFile .\azuredeploy.bicep -TemplateParameterFile .\azuredeploy.parameters.json -c
 ```
+
+> **Enable Vector Search Feature**: This Azure Bicep template will automatically [enable the "Vector Search" feature within Azure Cosmos DB for NoSQL](https://learn.microsoft.com/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature). If it's not enabled, this Azure PowerShell command can be run to enable it on an Azure Cosmos DB for NoSQL Account:
+> ````powershell
+> Update-AzCosmosDBAccount -ResourceGroupName <resource-group-name> -Name <account-name> -Capabilities @{name="EnableNoSQLVectorSearch"}
+> ````

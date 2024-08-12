@@ -13,13 +13,13 @@ This Azure resource deployment template uses some of the following practices:
 
 @description('Location where all resources will be deployed. This value defaults to the **East US** region.')
 @allowed([  
-  'eastus'  
+  'eastus2'  
   'francecentral'
-  'southcentralus'
+  'centralus'
   'uksouth'
-  'westeurope'
+  'northeurope'
 ])
-param location string = 'eastus'
+param location string = 'eastus2'
 
 @description('''
 Unique name for the deployed services below. Max length 17 characters, alphanumeric only:
@@ -46,15 +46,6 @@ param appServiceSku string = 'P0v3' //'B1'
   'S0'
 ])
 param openAiSku string = 'S0'
-
-@description('MongoDB vCore user Name. No dashes.')
-param mongoDbUserName string
-
-@description('MongoDB vCore password. 8-256 characters, 3 of the following: lower case, upper case, numeric, symbol.')
-@minLength(8)
-@maxLength(256)
-@secure()
-param mongoDbPassword string
 
 @description('Azure Container Registry SKU. Defaults to **Basic**')
 param acrSku string = 'Basic'
@@ -92,12 +83,6 @@ var openAiSettings = {
   }
 }
 
-var mongovCoreSettings = {
-  mongoClusterName: '${name}-mongo'
-  mongoClusterLogin: mongoDbUserName
-  mongoClusterPassword: mongoDbPassword
-}
-
 var appServiceSettings = {
   plan: {
     name: '${name}-web'
@@ -113,46 +98,38 @@ var appServiceSettings = {
 }
 
 /* *************************************************************** */
-/* Azure Cosmos DB for NoSQL vCore */
+/* Azure Cosmos DB for NoSQL */
 /* *************************************************************** */
 
-resource mongoCluster 'Microsoft.DocumentDB/mongoClusters@2023-03-01-preview' = {
-  name: mongovCoreSettings.mongoClusterName
+resource cosmosAccount 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
+  name: '${name}-cosmos'
   location: location
+  kind: 'GlobalDocumentDB'
   properties: {
-    administratorLogin: mongovCoreSettings.mongoClusterLogin
-    administratorLoginPassword: mongovCoreSettings.mongoClusterPassword
-    serverVersion: '5.0'
-    nodeGroupSpecs: [
+    databaseAccountOfferType: 'Standard'
+    enableMultipleWriteLocations: false
+    enableAutomaticFailover: true
+    locations: [
       {
-        kind: 'Shard'
-        sku: 'M30'
-        diskSizeGB: 128
-        enableHa: false
-        nodeCount: 1
+        locationName: location
+        failoverPriority: 0
+        isZoneRedundant: false
       }
     ]
+    capabilities: [
+      {
+        name: 'EnableServerless'
+      }
+      {
+        /* https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature */
+        name: 'EnableNoSQLVectorSearch'
+      }
+    ]
+    capacity: {
+      totalThroughputLimit: 4000
+    }
   }
 }
-
-resource mongoFirewallRulesAllowAzure 'Microsoft.DocumentDB/mongoClusters/firewallRules@2023-03-01-preview' = {
-  parent: mongoCluster
-  name: 'allowAzure'
-  properties: {
-    startIpAddress: '0.0.0.0'
-    endIpAddress: '0.0.0.0'
-  }
-}
-
-resource mongoFirewallRulesAllowAll 'Microsoft.DocumentDB/mongoClusters/firewallRules@2023-03-01-preview' = {
-  parent: mongoCluster
-  name: 'allowAll'
-  properties: {
-    startIpAddress: '0.0.0.0'
-    endIpAddress: '255.255.255.255'
-  }
-}
-
 
 /* *************************************************************** */
 /* Azure OpenAI */
