@@ -1,4 +1,4 @@
-# Use vector search on embeddings in vCore-based Azure Cosmos DB for NoSQL
+# Use vector search on embeddings in Azure Cosmos DB for NoSQL
 
 >**NOTE**: vCore-based Azure Cosmos DB for NoSQL supports vector search on embeddings. This functionality is not supported on RUs-based accounts.
 
