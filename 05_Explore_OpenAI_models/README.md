@@ -2,21 +2,26 @@
 
 ## Azure OpenAI Models
 
-Azure OpenAI is powered by a diverse set of models with different capabilities.
+[Azure OpenAI is powered by a diverse set of models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models) with different capabilities.
 
 | Model | Description |
 | -- | --- |
+| GPT-4o & GPT-4o mini & GPT-4 Turbo | The latest most capable Azure OpenAI models with multimodal versions, which can accept both text and images as input. |
 | GPT-4 | A set of models that improve on GPT-3.5 and can understand and generate natural language and code. |
 | GPT-3.5 | A set of models that improve on GPT-3 and can understand and generate natural language and code. |
 | Embeddings | A set of models that can convert text into numerical vector form to facilitate text similarity. |
 | DALL-E | A series of models that can generate original images from natural language. |
 | Whisper | A series of models that can transcribe and translate speech to text. |
 
-### GPT-4 and GPT-3.5 Models
+Model availability varies by region. You can look at the [Azure OpenAI "Regional quota limits" documentation for a table that shows model availability](https://learn.microsoft.com/azure/ai-services/openai/quotas-limits#regional-quota-limits).
+
+### GPT-4o, GPT-4 & GPT-3.5 Models
+
+GPT-4o and GPT-4 Turbo integrate text and images in a single model, enabling it to handle multiple data types simultaneously. This multimodal approach enhances accuracy and responsiveness in human-computer interactions. GPT-4o matches GPT-4 Turbo in English text and coding tasks while offering superior performance in non-English languages and vision tasks, setting new benchmarks for AI capabilities.
 
 GPT-4 can solve difficult problems with greater accuracy than any of OpenAI's previous models. Like GPT-3.5 Turbo, GPT-4 is optimized for chat and works well for traditional completions tasks.
 
-The GPT-35-Turbo and GPT-4 models are language models that are optimized for conversational interfaces. The models behave differently than the older GPT-3 models. Previous models were text-in and text-out, meaning they accepted a prompt string and returned a completion to append to the prompt. However, the GPT-35-Turbo and GPT-4 models are conversation-in and message-out. The models expect input formatted in a specific chat-like transcript format, and return a completion that represents a model-written message in the chat. While this format was designed specifically for multi-turn conversations, it can also work well for non-chat scenarios too.
+The GPT-4o, GPT-4 and GPT-35-Turbo models are language models that are optimized for conversational interfaces. The models behave differently than the older GPT-3 models. Previous models were text-in and text-out, meaning they accepted a prompt string and returned a completion to append to the prompt. However, the GPT-35-Turbo and GPT-4 models are conversation-in and message-out. The models expect input formatted in a specific chat-like transcript format, and return a completion that represents a model-written message in the chat. While this format was designed specifically for multi-turn conversations, it can also work well for non-chat scenarios too.
 
 ### Embeddings
 
