@@ -44,7 +44,7 @@ Set-AzContext -SubscriptionId <subscription-id>
 ## Create resource group
 
 ```Powershell
-New-AzResourceGroup -Name mongo-devguide-rg -Location 'eastus'
+New-AzResourceGroup -Name cosmos-devguide-rg -Location 'eastus2'
 ```
 
 ## Deploy using bicep template
@@ -52,7 +52,7 @@ New-AzResourceGroup -Name mongo-devguide-rg -Location 'eastus'
 Deploy the solution resources using the following command (this will take a few minutes to run):
 
 ```Powershell
-New-AzResourceGroupDeployment -ResourceGroupName mongo-devguide-rg -TemplateFile .\azuredeploy.bicep -TemplateParameterFile .\azuredeploy.parameters.json -c
+New-AzResourceGroupDeployment -ResourceGroupName cosmos-devguide-rg -TemplateFile .\azuredeploy.bicep -TemplateParameterFile .\azuredeploy.parameters.json -c
 ```
 
 > **Enable Vector Search Feature**: This Azure Bicep template will automatically [enable the "Vector Search" feature within Azure Cosmos DB for NoSQL](https://learn.microsoft.com/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature). If it's not enabled, this Azure PowerShell command can be run to enable it on an Azure Cosmos DB for NoSQL Account:

@@ -7,13 +7,6 @@
         },
         "openAiSku": {
             "value": "S0"
-        },        
-        "mongoDbUserName": {
-            "value": "cosmicworksadmin"
-        },
-        
-        "mongoDbPassword": {
-            "value": "<REDACTED>"
-        }        
+        }   
     }
 }
