@@ -10,7 +10,7 @@ LangChain agents can leverage tools and toolkits. A tool can be an integration i
 
 ## LangChain RAG pattern
 
-Earlier in this guide, the RAG (Retrieval Augmented Generation) pattern was introduced. In LangChain, the RAG pattern is implemented as part of a chain that combines a retriever and a Large Language Model (generator). The retriever is responsible for finding the most relevant documents for a given query, in this case, doing a vector search on vCore-based Azure Cosmos DB for NoSQL, and the LLM (generator) is responsible for reasoning over the incoming prompt and context.
+Earlier in this guide, the RAG (Retrieval Augmented Generation) pattern was introduced. In LangChain, the RAG pattern is implemented as part of a chain that combines a retriever and a Large Language Model (generator). The retriever is responsible for finding the most relevant documents for a given query, in this case, doing a vector search on Azure Cosmos DB for NoSQL, and the LLM (generator) is responsible for reasoning over the incoming prompt and context.
 
 ![LangChain RAG diagram shows the flow of an incoming message through a retriever, augmenting the prompt, parsing the output and returning the final message.](media/langchain_rag.png)
 
@@ -20,9 +20,9 @@ When an incoming message is received, the retriever will vectorize the message a
 
 ## Lab - Vector search and RAG using LangChain
 
-In this lab uses LangChain to re-implement the RAG pattern introduced in the previous lab. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in vCore-based Azure Cosmos DB for NoSQL. The lab concludes with the creation of an agent with various tools for the LLM to leverage to fulfill the incoming request.
+In this lab uses LangChain to re-implement the RAG pattern introduced in the previous lab. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in Azure Cosmos DB for NoSQL. The lab concludes with the creation of an agent with various tools for the LLM to leverage to fulfill the incoming request.
 
-This lab also requires the data provided in the previous lab titled [Load data into Azure Cosmos DB API for NoSQL collections](../08_Load_Data/README.md#lab---load-data-into-azure-cosmos-db-api-for-mongodb-collections) as well as the populated vector index created in the lab titled [Vector Search using vCore-based Azure Cosmos DB for NoSQL](../09_Vector_Search_Cosmos_DB/README.md#lab---use-vector-search-on-embeddings-in-vcore-based-azure-cosmos-db-for-mongodb). Run all cells in both notebooks to prepare the data for use in this lab.
+This lab also requires the data provided in the previous lab titled [Load data into Azure Cosmos DB API for NoSQL collections](../08_Load_Data/README.md#lab---load-data-into-azure-cosmos-db-api-for-mongodb-collections) as well as the populated vector index created in the lab titled [Vector Search using Azure Cosmos DB for NoSQL](../09_Vector_Search_Cosmos_DB/README.md#lab---use-vector-search-on-embeddings-in-vcore-based-azure-cosmos-db-for-mongodb). Run all cells in both notebooks to prepare the data for use in this lab.
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
