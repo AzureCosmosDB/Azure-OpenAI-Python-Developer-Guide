@@ -22,7 +22,7 @@ When an incoming message is received, the retriever will vectorize the message a
 
 In this lab uses LangChain to re-implement the RAG pattern introduced in the previous lab. Take note of the readability of the code and how easy it is to compose a reusable RAG chain using LangChain that queries the products vector index in Azure Cosmos DB for NoSQL. The lab concludes with the creation of an agent with various tools for the LLM to leverage to fulfill the incoming request.
 
-This lab also requires the data provided in the previous lab titled [Load data into Azure Cosmos DB API for NoSQL collections](../08_Load_Data/README.md#lab---load-data-into-azure-cosmos-db-api-for-mongodb-collections) as well as the populated vector index created in the lab titled [Vector Search using Azure Cosmos DB for NoSQL](../09_Vector_Search_Cosmos_DB/README.md#lab---use-vector-search-on-embeddings-in-vcore-based-azure-cosmos-db-for-mongodb). Run all cells in both notebooks to prepare the data for use in this lab.
+This lab also requires the data provided in the previous lab titled [Load data into Azure Cosmos DB API for NoSQL containers](../08_Load_Data/README.md#lab---load-data-into-azure-cosmos-db-api-for-mongodb-collections) as well as the populated vector index created in the lab titled [Vector Search using Azure Cosmos DB for NoSQL](../09_Vector_Search_Cosmos_DB/README.md#lab---use-vector-search-on-embeddings-in-vcore-based-azure-cosmos-db-for-mongodb). Run all cells in both notebooks to prepare the data for use in this lab.
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 

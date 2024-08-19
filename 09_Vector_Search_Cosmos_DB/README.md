@@ -8,7 +8,7 @@ Embedding is a way of serializing the semantic meaning of data into a vector rep
 
 Embeddings are created by sending data to an embedding model, where it is transformed into a vector, which then can be stored as a vector field within its source document in Azure Cosmos DB for NoSQL. Azure Cosmos DB for NoSQL supports the creation of vector search indexes on top of these vector fields. A vector search index is a collection of vectors in [latent space](https://idl.cs.washington.edu/papers/latent-space-cartography/) that enables a semantic similarity search across all data (vectors) contained within.
 
-![A typical embedding pipeline that demonstrates how source data is transformed into vectors using an embedding model then stored in a document in an Azure Cosmos DB vCore database and exposed via a vector search index.](media/embedding_pipeline.png)
+![A typical embedding pipeline that demonstrates how source data is transformed into vectors using an embedding model then stored in a document in an Azure Cosmos DB container and exposed via a vector search index.](media/embedding_pipeline.png)
 
 ## Why vector search?
 
@@ -38,7 +38,7 @@ On the **Settings** screen, select the **Resource** tab, then copy and record th
 
 >**NOTE**: This lab can only be completed using a deployed Azure Cosmos DB for NoSQL account due to the use of vector search. The Azure Cosmos DB Emulator does not support vector search.
 
-This lab also requires the data provided in the previous lab titled [Load data into Azure Cosmos DB API for NoSQL collections](../08_Load_Data/README.md#lab---load-data-into-azure-cosmos-db-api-for-mongodb-collections). Run all cells in this notebook to prepare the data for use in this lab.
+This lab also requires the data provided in the previous lab titled [Load data into Azure Cosmos DB API for NoSQL containers](../08_Load_Data/README.md#lab---load-data-into-azure-cosmos-db-api-for-mongodb-collections). Run all cells in this notebook to prepare the data for use in this lab.
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 

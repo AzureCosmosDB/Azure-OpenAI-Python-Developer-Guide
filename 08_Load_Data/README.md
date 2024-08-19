@@ -12,15 +12,15 @@ When loading data, bulk operations are preferred over adding each document indiv
 
 4. Simplified code logic: By using bulk operations, the lab can simplify its code logic and reduce the number of database queries. This results in cleaner, more manageable code and reduces the likelihood of errors or inconsistencies.
 
-## Lab - Load data into Azure Cosmos DB for NoSQL collections
+## Lab - Load data into Azure Cosmos DB for NoSQL containers
 
-This lab will load the Cosmic Works Customer, Product, and Sales data into Azure Cosmos DB for NoSQL collections using bulk operations. Both the Azure Cosmos DB Emulator and Azure Cosmos DB account in Azure are supported for completion of this lab.
+This lab will load the Cosmic Works Customer, Product, and Sales data into Azure Cosmos DB for NoSQL containers using bulk operations. Both the Azure Cosmos DB Emulator and Azure Cosmos DB account in Azure are supported for completion of this lab.
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
 Please visit the lab repository to complete [this lab](https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/Labs/lab_2_load_data.ipynb).
 
-This lab demonstrates the use of bulk operations to load product, customer, and sales data into Azure Cosmos DB for NoSQL collections. As an example, the following code snippet inserts product data using the `bulk_write` method allowing for upsert functionality using the `UpdateOne` method:
+This lab demonstrates the use of bulk operations to load product, customer, and sales data into Azure Cosmos DB for NoSQL containers. As an example, the following code snippet inserts product data using the `bulk_write` method allowing for upsert functionality using the `UpdateOne` method:
 
 ```python
 # Add product data to database using bulkwrite and updateOne with upsert

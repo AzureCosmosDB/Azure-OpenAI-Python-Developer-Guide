@@ -52,9 +52,9 @@ client = pymongo.MongoClient(CONNECTION_STRING)
 
 ### Creating a database
 
-When using the pymongo client, the creation of a database is automatic when referenced. No specific api calls to create a database are required, if a database already exists, a reference to the database is returned.
+When using the `pymongo` client, the creation of a database is automatic when referenced. No specific api calls to create a database are required, if a database already exists, a reference to the database is returned.
 
->**Note:**: That the creation of databases and collections are lazy, meaning they will not be created until a document is inserted into a collection.
+>**Note:**: That the creation of databases and containers are lazy, meaning they will not be created until a document is inserted into a collection.
 
 ```python
 db = client.cosmic_works
