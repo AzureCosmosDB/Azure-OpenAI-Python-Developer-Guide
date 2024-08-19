@@ -14,7 +14,7 @@ The focus for this developer guide is [Azure Cosmos DB for NoSQL](https://learn.
 
 The [RU architecture](https://learn.microsoft.com/azure/cosmos-db/request-units) for Azure Cosmos DB for NoSQL offers instantaneous scalability with zero warmup period, automatic and transparent sharding, and 99.999% availability. It supports active-active databases across multiple regions, cost-efficient, granular, unlimited scalability, real-time analytics, and serverless deployments paying only per operation.
 
-[vCore-based Azure Cosmos DB for NoSQL architecture](https://learn.microsoft.com/azure/cosmos-db/convert-vcore-to-request-unit) integrates AI-based applications with private organizational data, with text indexing for easy querying. Simplify the development process with high-capacity vertical scaling and free 35-day backups with a point-in-time restore (PITR).
+[Azure Cosmos DB for NoSQL architecture](https://learn.microsoft.com/azure/cosmos-db/convert-vcore-to-request-unit) integrates AI-based applications with private organizational data, with text indexing for easy querying. Simplify the development process with high-capacity vertical scaling and free 35-day backups with a point-in-time restore (PITR).
 
 The [choice between vCore and Request Units (RU)](hhttps://learn.microsoft.com/azure/cosmos-db/convert-vcore-to-request-unit) in Azure Cosmos DB for NoSQL API depends on the workload. A list of [compatibility and feature support between RU and vCore](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/compatibility) is available.
 
