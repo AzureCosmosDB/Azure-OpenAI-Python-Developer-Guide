@@ -1,6 +1,6 @@
 # Load data into Azure Cosmos DB API for NoSQL
 
-The previous lab demonstrated how to add data to a collection individually. This lab will demonstrate how to load data using bulk operations into multiple collections. This data will be used in subsequent labs to explain further the capabilities of Azure Cosmos DB API about AI.
+The previous lab demonstrated how to add data to a container individually. This lab will demonstrate how to load data using bulk operations into multiple containers. This data will be used in subsequent labs to explain further the capabilities of Azure Cosmos DB API about AI.
 
 When loading data, bulk operations are preferred over adding each document individually. Bulk operations involve performing multiple database operations as a batch rather than executing them simultaneously. This approach is more efficient and provides several benefits:
 

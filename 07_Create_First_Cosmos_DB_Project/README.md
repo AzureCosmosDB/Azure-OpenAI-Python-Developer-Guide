@@ -54,15 +54,15 @@ client = pymongo.MongoClient(CONNECTION_STRING)
 
 When using the `pymongo` client, the creation of a database is automatic when referenced. No specific api calls to create a database are required, if a database already exists, a reference to the database is returned.
 
->**Note:**: That the creation of databases and containers are lazy, meaning they will not be created until a document is inserted into a collection.
+>**Note:**: That the creation of databases and containers are lazy, meaning they will not be created until a document is inserted into a container.
 
 ```python
 db = client.cosmic_works
 ```
 
-### Creating a collection
+### Creating a container
 
-Similar behavior to the creation of a database is experienced when creating a collection. If the collection does not exist, it will be created once a document is inserted into the collection.
+Similar behavior to the creation of a database is experienced when creating a container. If the container does not exist, it will be created once a document is inserted into the container.
 
 ```python
 collection = db.products
@@ -70,7 +70,7 @@ collection = db.products
 
 ### Creating a document
 
-The `insert_one` method is used to insert a document into a collection. The document is a dictionary object.
+The `insert_one` method is used to insert a document into a container. The document is a dictionary object.
 
 ```python
 # Insert the JSON into the database, and retrieve the inserted/generated ID
@@ -79,7 +79,7 @@ product_id = collection.insert_one(product_json).inserted_id
 
 ### Reading a document
 
-The `find_one` method is used to retrieve a single document from a collection. The method returns a dictionary object.
+The `find_one` method is used to retrieve a single document from a container. The method returns a dictionary object.
 
 ```python
 retrieved_document = collection.find_one({"_id": product_id})
@@ -87,7 +87,7 @@ retrieved_document = collection.find_one({"_id": product_id})
 
 ### Updating a document
 
-The `find_one_and_update` method is used to update a single document in a collection. The method returns a dictionary object.
+The `find_one_and_update` method is used to update a single document in a container. The method returns a dictionary object.
 
 ```python
 update_result = collection.find_one_and_update(
@@ -99,7 +99,7 @@ update_result = collection.find_one_and_update(
 
 ### Deleting a document
 
-The `delete_one` method is used to delete a single document from a collection.
+The `delete_one` method is used to delete a single document from a container.
 
 ```python
 delete_result = collection.delete_one({"_id": product_id})
@@ -107,7 +107,7 @@ delete_result = collection.delete_one({"_id": product_id})
 
 ### Querying documents
 
-The `find` method is used to query documents from a collection. The method returns a cursor object.
+The `find` method is used to query documents from a container. The method returns a cursor object.
 
 ```python
 # Print all documents that have a category name of "Components, Saddles"

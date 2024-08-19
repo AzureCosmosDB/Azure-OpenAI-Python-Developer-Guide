@@ -30,7 +30,7 @@ class SalesOrderList(BaseModel):
     """
     The SalesOrderList class represents a list of sales orders.
 
-    This class is used when deserializing a collection/array
+    This class is used when deserializing a container/array
     of sales orders.
     """
     items: List[SalesOrder]

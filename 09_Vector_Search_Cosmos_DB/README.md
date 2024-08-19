@@ -6,7 +6,7 @@
 
 Embedding is a way of serializing the semantic meaning of data into a vector representation. Because the generated vector embedding represents the semantic meaning, it means that when it is searched, it can find similar data based on the semantic meaning of the data rather than exact text. Data can come from many sources, including text, images, audio, and video. Because the data is represented as a vector, vector search can, therefore, find similar data across all different types of data.
 
-Embeddings are created by sending data to an embedding model, where it is transformed into a vector, which then can be stored as a vector field within its source document in Azure Cosmos DB for NoSQL. Azure Cosmos DB for NoSQL supports the creation of vector search indexes on top of these vector fields. A vector search index is a collection of vectors in [latent space](https://idl.cs.washington.edu/papers/latent-space-cartography/) that enables a semantic similarity search across all data (vectors) contained within.
+Embeddings are created by sending data to an embedding model, where it is transformed into a vector, which then can be stored as a vector field within its source document in Azure Cosmos DB for NoSQL. Azure Cosmos DB for NoSQL supports the creation of vector search indexes on top of these vector fields. A vector search index is a container of vectors in [latent space](https://idl.cs.washington.edu/papers/latent-space-cartography/) that enables a semantic similarity search across all data (vectors) contained within.
 
 ![A typical embedding pipeline that demonstrates how source data is transformed into vectors using an embedding model then stored in a document in an Azure Cosmos DB container and exposed via a vector search index.](media/embedding_pipeline.png)
 
@@ -74,12 +74,12 @@ def generate_embeddings(text: str):
 
 ### Adding an embedding field to a document
 
-The lab creates an embedding field named `contentVector` in each collection and populates the value with the vectorized text of the JSON representation of the document.
+The lab creates an embedding field named `contentVector` in each container and populates the value with the vectorized text of the JSON representation of the document.
 
 ```python
 def add_collection_content_vector_field(collection_name: str):
     '''
-    Add a new field to the collection to hold the vectorized content of each document.
+    Add a new field to the container to hold the vectorized content of each document.
     '''
     collection = db[collection_name]
     bulk_operations = []
@@ -131,7 +131,7 @@ db.command({
 ```python
 def vector_search(collection_name, query, num_results=3):
     """
-    Perform a vector search on the specified collection by vectorizing
+    Perform a vector search on the specified container by vectorizing
     the query and searching the vector index for the most similar documents.
 
     returns a list of the top num_results most similar documents

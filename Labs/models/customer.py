@@ -39,7 +39,7 @@ class Customer(BaseModel):
 class CustomerList(BaseModel):
     """
     The CustomerList class represents a list of customers.
-    This class is used when deserializing a collection/array
+    This class is used when deserializing a container/array
     of customers.
     """
     items: List[Customer]

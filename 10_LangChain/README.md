@@ -67,7 +67,7 @@ rag_chain = (
 
 ### Creating tools for LangChain agents to use
 
-Tools are selected by the Large Language model at runtime. In this case, depending on the incoming user request the LLM will decide which collection in the database to query. The following code shows how to create a tool for the LLM to use to query the products collection in the database.
+Tools are selected by the Large Language model at runtime. In this case, depending on the incoming user request the LLM will decide which container in the database to query. The following code shows how to create a tool for the LLM to use to query the products collection in the database.
 
 ```python
 # create a chain on the retriever to format the documents as JSON
