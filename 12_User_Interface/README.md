@@ -6,15 +6,15 @@ The URL to access this front-end application within the Azure Portal on the **We
 
 The following screenshot shows where to find the front-end application URL:
 
-![Web App resource for front-end application with Default domain highlighted](images/2024-01-17-12-41-48.png)
+![Web App resource for front-end application with Default domain highlighted](images/2024-09-03-12-13-34.png)
 
 Navigating to this URL in the browser accesses the front-end application. Through this front-end application User Interface, questions can be submitted to the Azure OpenAI model about the CosmicWorks company data, then it will generate responses accordingly.
 
 ![Front-end Web Application User Interface](images/2024-01-17-12-42-59.png)
 
-While the code for the SPA web application is outside the scope of this dev guide. It's worth noting that the Web App is configured with the URL for the Backend API using the **Application setting** named `API_ENDPOINT`. When the application was deployed as part of the Azure template deployment, it was automatically configured with this URL to connect the front-end SPA web application to the Backend API.
+While the code for the SPA web application is outside the scope of this dev guide. It's worth noting that the Web App is configured with the URL for the Backend API using **App settings** with the variable named `API_ENDPOINT` under the **Settings** -> **Environment variables** pane. When the application was deployed as part of the Azure template deployment, it was automatically configured with this URL to connect the front-end SPA web application to the Backend API.
 
-![Web App resource showing the application settings with the API_ENDPOINT setting highlighted](images/2024-01-17-12-45-30.png)
+![Web App resource showing the application settings with the API_ENDPOINT setting highlighted](images/2024-09-03-12-15-57.png)
 
 ## Ask questions about data and observe the responses
 
