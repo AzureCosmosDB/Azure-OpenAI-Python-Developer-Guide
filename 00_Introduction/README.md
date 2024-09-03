@@ -3,7 +3,7 @@
 ## Pre-requisites
 
 - [Azure account and subscription](https://azure.microsoft.com/free/) with Owner permissions
-- [Python 3.11 or higher](https://www.python.org/?downloads)
+- [Python 3.11 or higher](https://www.python.org/downloads/)
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Python extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 - [Jupyter Notebook extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
