@@ -73,4 +73,4 @@ This labs demonstrates using an Azure OpenAI model to obtain a completion respon
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
-Visit the lab repository to complete [this lab](https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/Labs/lab_0_explore_and_use_models.ipynb).
+Visit the lab repository to complete [this lab](https://github.com/solliancenet/cosmos-db-nosql-openai-python-dev-guide/blob/main/Labs/lab_0_explore_and_use_models.ipynb).

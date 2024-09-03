@@ -18,7 +18,7 @@ This lab will load the Cosmic Works Customer, Product, and Sales data into Azure
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
-Please visit the lab repository to complete [this lab](https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/Labs/lab_2_load_data.ipynb).
+Please visit the lab repository to complete [this lab](https://github.com/solliancenet/cosmos-db-nosql-openai-python-dev-guide/blob/main/Labs/lab_2_load_data.ipynb).
 
 This lab demonstrates the use of bulk operations to load product, customer, and sales data into Azure Cosmos DB for NoSQL containers. As an example, the following code snippet inserts product data using the `bulk_write` method allowing for upsert functionality using the `UpdateOne` method:
 

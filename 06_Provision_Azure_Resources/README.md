@@ -25,4 +25,4 @@ This lab will walk you through deploying the Azure resources necessary for the s
 
 > **Note**: You will need an Azure Subscription and have the necessary permissions to provision the Azure resources.
 
-Please visit the lab repository to complete [this lab](https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/Labs/deploy/deploy.md).
+Please visit the lab repository to complete [this lab](https://github.com/solliancenet/cosmos-db-nosql-openai-python-dev-guide/blob/main/Labs/deploy/deploy.md).

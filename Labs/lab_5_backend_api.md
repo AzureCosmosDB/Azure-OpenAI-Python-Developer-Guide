@@ -13,7 +13,7 @@ The backend api is a Python FastAPI application that will expose endpoints for t
 Create a folder to house the repository. Open a terminal and navigate to the folder. Clone the repository, then navigate to the `Backend` folder within the repository.
 
 ```bash
-git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
+git clone https://github.com/solliancenet/cosmos-db-nosql-openai-python-dev-guide.git
 
 cd Azure-OpenAI-Python-Developer-Guide
 cd Backend

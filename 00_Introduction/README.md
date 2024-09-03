@@ -19,5 +19,3 @@ The future of software involves combining AI and data services, also known as in
 ## Introduction
 
 This guide will walks through the creating intelligent solutions that combines Azure Cosmos DB for NoSQL with vector search capabilities powered by DiskANN and document retrieval with Azure OpenAI services to build a chat bot experience. The guide includes labs that build and deploy a sample chat app using these technologies, with a focus on Azure Cosmos DB for NoSQL, vector search powered by DiskANN, and Azure OpenAI using the Python programming language. For those new to using Azure OpenAI and Vector Search technologies, the guide includes explanations of the core concepts and techniques used when implementing these technologies.
-
-> **Note:** This developer guide is targeted towards Python developers. If you are a Node.js developer, then you may be interested in the Node.js version here: [https://github.com/AzureCosmosDB/Azure-OpenAI-Node.js-Developer-Guide](https://github.com/AzureCosmosDB/Azure-OpenAI-Node.js-Developer-Guide)
