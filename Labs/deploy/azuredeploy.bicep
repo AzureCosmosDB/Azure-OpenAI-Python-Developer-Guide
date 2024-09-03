@@ -5,8 +5,6 @@ This Azure resource deployment template uses some of the following practices:
 - [Abbrevation examples for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 */
 
-
-
 /* *************************************************************** */
 /* Parameters */
 /* *************************************************************** */
@@ -97,6 +95,12 @@ var appServiceSettings = {
   }  
 }
 
+// Define a variable for the tag values
+var tags = {
+  name: 'AzureCosmosDB-DevGuide'
+  repo: 'https://github.com/solliancenet/cosmos-db-nosql-openai-python-dev-guide'
+}
+
 /* *************************************************************** */
 /* Azure Cosmos DB for NoSQL */
 /* *************************************************************** */
@@ -105,6 +109,7 @@ resource cosmosAccount 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
   name: '${name}-cosmos'
   location: location
   kind: 'GlobalDocumentDB'
+  tags: tags
   properties: {
     databaseAccountOfferType: 'Standard'
     enableMultipleWriteLocations: false
@@ -141,6 +146,7 @@ resource openAiAccount 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   sku: {
     name: openAiSettings.sku    
   }
+  tags: tags
   kind: 'OpenAI'
   properties: {
     customSubDomainName: openAiSettings.name
@@ -190,6 +196,7 @@ resource openAiCompletionsModelDeployment 'Microsoft.CognitiveServices/accounts/
 resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
   name: '${name}-loganalytics'
   location: location
+  tags: tags
   properties: {
     sku: {
       name: 'PerGB2018'
@@ -199,6 +206,7 @@ resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2021-06-01' = {
 resource appServiceWebInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: '${appServiceSettings.web.name}-appi'
   location: location
+  tags: tags
   kind: 'web'
   properties: {
     Application_Type: 'web'
@@ -212,6 +220,7 @@ resource appServiceWebInsights 'Microsoft.Insights/components@2020-02-02' = {
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   name: '${appServiceSettings.plan.name}-asp'
   location: location
+  tags: tags
   sku: {
     name: appServiceSettings.plan.sku
   }
@@ -229,6 +238,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 resource appServiceWeb 'Microsoft.Web/sites@2022-03-01' = {
   name: appServiceSettings.web.name
   location: location
+  tags: tags
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
@@ -267,6 +277,7 @@ resource appServiceWebDeployment 'Microsoft.Web/sites/sourcecontrols@2021-03-01'
 resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: replace('${name}registry','-', '')
   location: location
+  tags: tags
   sku: {
     name: acrSku
   }
@@ -281,6 +292,7 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-01-01-pr
 resource containerAppEnvironment 'Microsoft.App/managedEnvironments@2023-05-01' = {
   name: '${name}-containerappenv'
   location: location
+  tags: tags
   properties: {
     appLogsConfiguration: {
       destination: 'log-analytics'
@@ -308,6 +320,7 @@ resource containerAppEnvironment 'Microsoft.App/managedEnvironments@2023-05-01' 
 resource backendApiContainerApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: '${name}-api'
   location: location
+  tags: tags
   properties: {
     environmentId: containerAppEnvironment.id
     configuration: {
