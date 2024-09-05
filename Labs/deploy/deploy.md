@@ -19,11 +19,7 @@ cd Labs
 cd deploy
 ```
 
-Open the `azuredeploy.parameters.json` file, then edit the `mongoDbPassword` to a password you wish to use for the MongoDB Admin User:
-
-![editing the azuredeploy.parameters.json file with mongoDBPassword parameter highlighted](images/editor-azuredeploy-parameters-json-password.png)
-
-When the Azure Bicep template is deployed, this parameters file will be used to configure the Mongo DB Password and other parameters when provisioning the Azure resources.
+Open the `azuredeploy.parameters.json` file, and inspect the values, modify as deemed appropriate.
 
 ## Login to Azure
 
@@ -59,3 +55,7 @@ New-AzResourceGroupDeployment -ResourceGroupName cosmos-devguide-rg -TemplateFil
 > ````powershell
 > Update-AzCosmosDBAccount -ResourceGroupName <resource-group-name> -Name <account-name> -Capabilities @{name="EnableNoSQLVectorSearch"}
 > ````
+
+## Enroll with the DiskANN early preview
+
+To enroll in the DiskANN early preview, fill the following form [Azure Cosmos DB for NoSQL DiskANN Early Preview](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR7M9usLEDhFDufzz-8echE9UREtCOVhQWkZLVlhTRlNBM0lLUkdRTEwxUy4u&route=shorturl) and a member of the Cosmos DB team will reach out to you.
