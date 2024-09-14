@@ -10,7 +10,7 @@ class Product(BaseModel):
     The Product class represents a product in the
     Cosmic Works dataset.
     """
-    id: str = Field(default=None, alias="_id")
+    id: str = Field(default=None, alias="id")
     category_id: str = Field(alias="categoryId")
     category_name: str = Field(alias="categoryName")
     sku: str

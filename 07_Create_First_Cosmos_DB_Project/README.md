@@ -45,7 +45,8 @@ The following concepts are covered in detail in this lab:
 The `azure-cosmos` library is used to create a Cosmos DB API for NoSQL database client. The client enables both DDL (data definition language) and DML (data manipulation language) operations.
 
 ```python
-client = cosmos_client.CosmosClient(HOST, {'masterKey': MASTER_KEY} )
+# Initialize the Cosmos DB client
+client = CosmosClient.from_connection_string(CONNECTION_STRING)
 ```
 
 ### Creating a database
@@ -53,29 +54,57 @@ client = cosmos_client.CosmosClient(HOST, {'masterKey': MASTER_KEY} )
 The `create_database` method is used to create a database. If the database already exists, an exception is thrown, therefore verify the database already exists before creating it.
 
 ```python
-client.create_database(id=id)
+db: DatabaseProxy = client.create_database(database_name)
 ```
 
 ### Creating a container
 
-In progress
+The `create_container_if_not_exists` method is used to create a container. If the container already exists, the method will retrieve the existing container.
 
-### Creating a document
+```python
+container: ContainerProxy = db.create_container_if_not_exists(
+           id="product",
+           partition_key={"paths": ["/categoryId"], "kind": "Hash"}                                    
+       )
+```
 
-In progress
+### Creating or Updating a document (Upsert)
 
-### Reading a document
+One method of creating a document is using the `create_item` method. This method takes a single document and inserts it into the database, if the item already exists in the container, and exception is thrown. Alternatively, the `upsert_item` method can also be used to insert a document into the database and in this case, if the document already exists, it will be updated.
 
-In progress
+```python
+# Create a document
+container.upsert_item(product_dict)
+```
 
-### Updating a document
+### Reading documents
 
-In progress
+The `read_item` method can be used to retrieve a single document if both the `id` value and `partition_key` value are known. Otherwise, the `query_items` method can be used to retrieve a list of documents using a [SQL-like query](https://learn.microsoft.com/azure/cosmos-db/nosql/tutorial-query).
+
+```python
+items = container.query_items(query="SELECT * FROM prod", enable_cross_partition_query=True)
+```
 
 ### Deleting a document
 
-In progress
+The `delete_item` method is used to delete a document from the container.
 
-### Querying documents
+```python
+container.delete_item(item=product.id, partition_key=product.category_id)
+```
 
-In progress
+## Cosmos DB indexing
+
+Azure Cosmos DB automatically indexes all properties for all items in a container. However, the creation of additional indexes can improve performance and add functionality such as spatial querying and vector search.
+
+The following indexes are supported by Azure Cosmos DB:
+
+The **Range Index** supports efficient execution of queries involving numerical and string data types. It is optimized for inequality comparisons (<, <=, >, >=) and sorting operations. Range indexes are particularly useful for time-series data, financial applications, and any scenario that requires filtering or sorting over a numeric range or alphabetically ordered strings.
+
+The **Spatial Index** excels with geospatial data types such as points, lines, and polygons. Spatial queries include operations such as finding intersections, conducting proximity searches, and handling bounding-box queries. Spatial indexes are crucial for applications that require geographic information system (GIS) capabilities, location-based services, and asset tracking.
+
+The **Composite Index** combines multiple properties into a single entry, optimizing complex queries that use multiple properties for filtering and sorting. They significantly improve the performance of multidimensional queries by reducing the number of request units (RUs) consumed during these operations.
+
+The **Vector Index** is specialized for high-dimensional vector data. Use cases include similarity searches, recommendation systems, and any other application requiring efficient handling of high-dimensional vectors. This index type optimizes the storage and retrieval of vectors typically utilized in AI application patterns such as RAG (Retrieval Augmented Generation).
+
+Learn more about indexing in the [Azure documentation](https://learn.microsoft.com/azure/cosmos-db/index-overview)
