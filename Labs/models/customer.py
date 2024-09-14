@@ -15,7 +15,7 @@ class Customer(BaseModel):
     The alias feelds are used to map the dataset
     field names to the pythonic property names.
     """
-    id: str = Field(alias="_id")
+    id: str = Field(alias="id")
     customer_id: str = Field(alias="customerId")
     title: Optional[str]
     first_name: str = Field(alias="firstName")
@@ -26,7 +26,7 @@ class Customer(BaseModel):
     addresses: List[Address]
     password: Password
     sales_order_count: int = Field(alias="salesOrderCount")
-
+    
     class Config:
         """
         The Config inner class is used to configure the 
@@ -35,6 +35,9 @@ class Customer(BaseModel):
         data by both the field name and the field alias.
         """
         populate_by_name = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 class CustomerList(BaseModel):
     """

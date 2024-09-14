@@ -18,6 +18,7 @@ class Product(BaseModel):
     description: str
     price: float
     tags: Optional[List[Tag]] = []
+    content_vector: Optional[List[float]] = Field(default=[], alias="contentVector")
 
     class Config:
         """

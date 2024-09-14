@@ -11,7 +11,7 @@ class SalesOrder(BaseModel):
     The SalesOrder class represents a sales order in the
     Cosmic Works dataset.
     """
-    id: str = Field(alias="_id")
+    id: str = Field(alias="id")
     customer_id: str = Field(alias="customerId")
     order_date: datetime = Field(alias="orderDate")
     ship_date: datetime = Field(alias="shipDate")
@@ -25,6 +25,9 @@ class SalesOrder(BaseModel):
         data by both the field name and the field alias.
         """
         populate_by_name = True
+        json_encoders = {
+            datetime: lambda v: v.isoformat()
+        }
 
 class SalesOrderList(BaseModel):
     """
