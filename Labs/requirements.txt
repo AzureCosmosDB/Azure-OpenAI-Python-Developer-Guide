@@ -5,6 +5,7 @@ pydantic==2.9.1
 openai==1.45.0
 tenacity==8.5.0
 langchain==0.3.0
+langchain-openai==0.2.0
 tiktoken==0.7.0
 fastapi==0.114.2
 uvicorn==0.30.6
