@@ -1,6 +1,6 @@
 # Use vector search on embeddings in Azure Cosmos DB for NoSQL
 
-## Cosmos DB indexing
+## Azure Cosmos DB indexing
 
 Azure Cosmos DB automatically indexes all properties for all items in a container. However, the creation of additional indexes can improve performance and add functionality such as spatial querying and vector search.
 
@@ -58,7 +58,7 @@ The **diskANN index** leverages advanced vector indexing algorithms developed by
 
 ## Enabling vector search in Azure Cosmos DB for NoSQL
 
-The Cosmos DB account that has been deployed with this guide is already enabled with the capability for vector search. For reference, the following Azure CLI command can be used to enable vector search on an existing Cosmos DB account:
+The Azure Cosmos DB account that has been deployed with this guide is already enabled with the capability for vector search. For reference, the following Azure CLI command can be used to enable vector search on an existing Azure Cosmos DB account:
 
 ```bash
 az cosmosdb update --resource-group <resource-group-name> --name <account-name> --capabilities EnableNoSQLVectorSearch

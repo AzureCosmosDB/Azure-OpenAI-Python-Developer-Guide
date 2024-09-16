@@ -55,7 +55,3 @@ New-AzResourceGroupDeployment -ResourceGroupName cosmos-devguide-rg -TemplateFil
 > ````powershell
 > Update-AzCosmosDBAccount -ResourceGroupName <resource-group-name> -Name <account-name> -Capabilities @{name="EnableNoSQLVectorSearch"}
 > ````
-
-## Enroll with the DiskANN early preview
-
-To enroll in the DiskANN early preview, fill the following form [Azure Cosmos DB for NoSQL DiskANN Early Preview](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR7M9usLEDhFDufzz-8echE9UREtCOVhQWkZLVlhTRlNBM0lLUkdRTEwxUy4u&route=shorturl) and a member of the Cosmos DB team will reach out to you.

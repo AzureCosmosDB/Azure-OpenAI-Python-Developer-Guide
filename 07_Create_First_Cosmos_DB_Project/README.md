@@ -1,6 +1,6 @@
-# Create your first Cosmos DB project
+# Create your first Azure Cosmos DB project
 
-This section will cover how to create your first Cosmos DB project. We'll use a notebook to demonstrate the basic CRUD operations. We'll also cover using the Azure Cosmos DB Emulator to test code locally.
+This section will cover how to create your first Azure Cosmos DB project. We'll use a notebook to demonstrate the basic CRUD operations. We'll also cover using the Azure Cosmos DB Emulator to test code locally.
 
 ## Emulator support
 
@@ -18,9 +18,9 @@ Learn more about the pre-requisites and installation of the emulator [here](http
 
 Authentication to Azure Cosmos DB for NoSQL uses a connection string. The connection string is a URL that contains the authentication information for the Azure Cosmos DB account or local emulator.
 
-### Retrieving the connection string from the Cosmos DB Emulator
+### Retrieving the connection string from the Azure Cosmos DB Emulator
 
-The splash screen or **Quickstart** section of the Cosmos DB Emulator will display the connection string. Access this screen through the following URL: `https://localhost:8081/_explorer/index.html`.
+The splash screen or **Quickstart** section of the Azure Cosmos DB Emulator will display the connection string. Access this screen through the following URL: `https://localhost:8081/_explorer/index.html`.
 
 ![The Azure Cosmos DB emulator screen displays with the local host url, the Quickstart tab, and the connection string highlighted.](media/emulator_connection_string.png)
 
@@ -30,9 +30,9 @@ Retrieve the connection string from the Azure portal by navigating to the Azure 
 
 ![The Azure Cosmos DB for NoSQL Connection strings screen displays with the copy button next to the connection string highlighted.](media/azure_connection_string.png)
 
-## Lab - Create your first Cosmos DB for the NoSQL application
+## Lab - Create your first Azure Cosmos DB for the NoSQL application
 
-Using a notebook, we'll create a Cosmos DB for the NoSQL application in this lab using the **azure-cosmos** library and the Python language. Both the Azure Cosmos DB Emulator and Azure Cosmos DB account in Azure are supported for completion of this lab.
+Using a notebook, we'll create an Azure Cosmos DB for the NoSQL application in this lab using the **azure-cosmos** library and the Python language. Both the Azure Cosmos DB Emulator and Azure Cosmos DB account in Azure are supported for completion of this lab.
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
@@ -42,10 +42,10 @@ The following concepts are covered in detail in this lab:
 
 ### Creating a database client
 
-The `azure-cosmos` library is used to create a Cosmos DB for NoSQL database client. The client enables both DDL (data definition language) and DML (data manipulation language) operations.
+The `azure-cosmos` library is used to create an Azure Cosmos DB for NoSQL database client. The client enables both DDL (data definition language) and DML (data manipulation language) operations.
 
 ```python
-# Initialize the Cosmos DB client
+# Initialize the Azure Cosmos DB client
 client = CosmosClient.from_connection_string(CONNECTION_STRING)
 ```
 
