@@ -200,8 +200,6 @@ The last step is to deploy the backend api container image to Azure Container Ap
     az containerapp up --name <container app name> --image <login server>/devguidebackendapi:v1 --resource-group <resource group name> --environment <container app environment name> --ingress external
     ```
 
-    ![The console output of the container app up command displays with the endpoint highlighted.](media/container_deploy.png)
-
 9. In the Azure Portal, locate and open the **Container App** resource ending in `-api`.
 
 10. From the left menu, expand the **Application** section and select **Revisions and replicas**. Notice screen, there is a failed container revision (may need to select **Refresh** from the top toolbar menu). This is because the `hello-world` container is running at the same binding address as the backend api container.
