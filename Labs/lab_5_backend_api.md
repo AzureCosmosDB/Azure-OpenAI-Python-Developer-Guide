@@ -134,7 +134,7 @@ The backend api container image needs to be pushed to an Azure Container Registr
 
 1. In the Azure portal, open the provisioned resource group and locate and open the **Container Registry** resource.
 
-2. Select **Access keys** from the left-hand menu. Record the **Login server** value and the **Username** and **Password** values for later use.
+2. Expand the **Settings** section in the left-hand menu and select **Access keys** from the left-hand menu. Record the **Login server** value and the **Username** and **Password** values for later use.
 
     ![The Azure portal displays the Container Registry resource with the Access keys menu item selected. The login server, username and password values are highlighted.](media/acr_access_keys.png "Container Registry Access keys")
 
@@ -204,15 +204,15 @@ The last step is to deploy the backend api container image to Azure Container Ap
 
 9. In the Azure Portal, locate and open the **Container App** resource ending in `-api`.
 
-10. Notice on the **Overview** screen, there is a failed container revision. This is because the `hello-world` container is running at the same binding address as the backend api container.
+10. From the left menu, expand the **Application** section and select **Revisions and replicas**. Notice screen, there is a failed container revision (may need to select **Refresh** from the top toolbar menu). This is because the `hello-world` container is running at the same binding address as the backend api container.
 
     ![The Azure portal displays the Container App resource with a failed container revision listed.](media/container_app_failed_revision.png "Container App Failed Revision")
 
-11. View the error from the logs, or optionally select **Log stream** from the left menu, then select the api container log stream.
+11. View the error from the logs, or optionally expand the **Monitoring** section of the left menu and select **Log stream**. Be sure to select the `-api` container.
 
     ![The Azure portal displays the Container App resource with the Log stream menu item selected and the output of the api container with the error highlighted.](media/container_app_log_stream.png "Container App Log Stream")
 
-12. To rectify this, the `hello-world` container needs to be deleted. Select **Containers** from the left menu, then choose the **Edit and Deploy** button from the toolbar.
+12. To rectify this, the `hello-world` container needs to be deleted. Expand the **Application** section of the left menu and select **Containers**. Choose the **Edit and Deploy** button from the toolbar.
 
     ![The Azure portal displays the Container App resource with the Containers menu item selected. The Edit and Deploy button is highlighted.](media/container_app_edit_and_deploy.png "Container App Edit and Deploy")
 
