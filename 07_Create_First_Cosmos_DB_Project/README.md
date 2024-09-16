@@ -92,19 +92,3 @@ The `delete_item` method is used to delete a document from the container.
 ```python
 container.delete_item(item=product.id, partition_key=product.category_id)
 ```
-
-## Cosmos DB indexing
-
-Azure Cosmos DB automatically indexes all properties for all items in a container. However, the creation of additional indexes can improve performance and add functionality such as spatial querying and vector search.
-
-The following indexes are supported by Azure Cosmos DB:
-
-The **Range Index** supports efficient execution of queries involving numerical and string data types. It is optimized for inequality comparisons (<, <=, >, >=) and sorting operations. Range indexes are particularly useful for time-series data, financial applications, and any scenario that requires filtering or sorting over a numeric range or alphabetically ordered strings.
-
-The **Spatial Index** excels with geospatial data types such as points, lines, and polygons. Spatial queries include operations such as finding intersections, conducting proximity searches, and handling bounding-box queries. Spatial indexes are crucial for applications that require geographic information system (GIS) capabilities, location-based services, and asset tracking.
-
-The **Composite Index** combines multiple properties into a single entry, optimizing complex queries that use multiple properties for filtering and sorting. They significantly improve the performance of multidimensional queries by reducing the number of request units (RUs) consumed during these operations.
-
-The **Vector Index** is specialized for high-dimensional vector data. Use cases include similarity searches, recommendation systems, and any other application requiring efficient handling of high-dimensional vectors. This index type optimizes the storage and retrieval of vectors typically utilized in AI application patterns such as RAG (Retrieval Augmented Generation).
-
-Learn more about indexing in the [Azure documentation](https://learn.microsoft.com/azure/cosmos-db/index-overview)
