@@ -1,30 +1,40 @@
 """
-The CosmicWorksAIAgent class encapsulates a LangChain 
-agent that can be used to answer questions about Cosmic Works
-products, customers, and sales.
+Class: CosmicWorksAIAgent
+Description: 
+    The CosmicWorksAIAgent class creates Cosmo, an AI agent
+    that can be used to answer questions about Cosmic Works
+    products, customers, and sales.
 """
 import os
 import json
-from typing import List
-import pymongo
+from pydantic import BaseModel
+from typing import Type, TypeVar, List
 from dotenv import load_dotenv
-from langchain.chat_models import AzureChatOpenAI
-from langchain.embeddings import AzureOpenAIEmbeddings
-from langchain.vectorstores.azure_cosmos_db import AzureCosmosDBVectorSearch
-from langchain.schema.document import Document
-from langchain.agents import Tool
-from langchain.agents.agent_toolkits import create_conversational_retrieval_agent
-from langchain.tools import StructuredTool
-from langchain_core.messages import SystemMessage
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+from azure.cosmos import CosmosClient, ContainerProxy
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.tools import StructuredTool
+from langchain.agents.agent_toolkits import create_retriever_tool
+from langchain.agents import AgentExecutor, create_openai_functions_agent
+from models import Product, SalesOrder
+from retrievers import AzureCosmosDBNoSQLRetriever
 
-load_dotenv(".env")
-DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
+T = TypeVar('T', bound=BaseModel)
+
+# Load settings for the notebook
+load_dotenv()
+CONNECTION_STRING = os.environ.get("COSMOS_DB_CONNECTION_STRING")
+EMBEDDINGS_DEPLOYMENT_NAME = "embeddings"
+COMPLETIONS_DEPLOYMENT_NAME = "completions"
 AOAI_ENDPOINT = os.environ.get("AOAI_ENDPOINT")
 AOAI_KEY = os.environ.get("AOAI_KEY")
-AOAI_API_VERSION = "2023-09-01-preview"
-COMPLETIONS_DEPLOYMENT = "completions"
-EMBEDDINGS_DEPLOYMENT = "embeddings"
-db = pymongo.MongoClient(DB_CONNECTION_STRING).cosmic_works
+AOAI_API_VERSION = "2024-06-01"
+
+# Initialize the Cosmos DB client, database and product (with vector) container
+client = CosmosClient.from_connection_string(CONNECTION_STRING)
+db = client.get_database_client("cosmic_works")
+product_v_container = db.get_container_client("product_v")
+sales_order_container = db.get_container_client("salesOrder")
 
 class CosmicWorksAIAgent:
     """
@@ -33,156 +43,117 @@ class CosmicWorksAIAgent:
     products, customers, and sales.
     """
     def __init__(self, session_id: str):
+        self.session_id = session_id
         llm = AzureChatOpenAI(
             temperature = 0,
             openai_api_version = AOAI_API_VERSION,
             azure_endpoint = AOAI_ENDPOINT,
             openai_api_key = AOAI_KEY,
-            azure_deployment = COMPLETIONS_DEPLOYMENT
+            azure_deployment = COMPLETIONS_DEPLOYMENT_NAME
         )
-        self.embedding_model = AzureOpenAIEmbeddings(
+        embedding_model = AzureOpenAIEmbeddings(
             openai_api_version = AOAI_API_VERSION,
             azure_endpoint = AOAI_ENDPOINT,
             openai_api_key = AOAI_KEY,
-            azure_deployment = EMBEDDINGS_DEPLOYMENT,
-            chunk_size=10
+            azure_deployment = EMBEDDINGS_DEPLOYMENT_NAME,
+            chunk_size=800
         )
-        system_message = SystemMessage(
-            content = """
-                You are a helpful, fun and friendly sales assistant for Cosmic Works, 
-                a bicycle and bicycle accessories store.
-
+        agent_instructions = """           
+                You are a helpful, fun and friendly sales assistant for Cosmic Works, a bicycle and bicycle accessories store.
                 Your name is Cosmo.
-
-                You are designed to answer questions about the products that Cosmic Works sells, 
-                the customers that buy them, and the sales orders that are placed by customers.
-
-                If you don't know the answer to a question, respond with "I don't know."
-
+                You are designed to answer questions about the products that Cosmic Works sells, the customers that buy them, and the sales orders that are placed by customers.
+                If you don't know the answer to a question, respond with "I don't know."      
                 Only answer questions related to Cosmic Works products, customers, and sales orders.
-                
                 If a question is not related to Cosmic Works products, customers, or sales orders,
                 respond with "I only answer questions about Cosmic Works"
             """
+        prompt = ChatPromptTemplate.from_messages(
+            [
+                ("system", agent_instructions),
+                MessagesPlaceholder("chat_history", optional=True),
+                ("human", "{input}"),
+                MessagesPlaceholder("agent_scratchpad"),
+            ]
         )
-        self.agent_executor = create_conversational_retrieval_agent(
-                llm,
-                self.__create_agent_tools(),
-                system_message = system_message,
-                memory_key=session_id,
-                verbose=True
+        products_retriever = AzureCosmosDBNoSQLRetriever(
+            embedding_model = embedding_model,
+            container = product_v_container,
+            model = Product,
+            vector_field_name = "contentVector",
+            num_results = 5   
         )
-
+        tools = [create_retriever_tool(
+                    retriever = products_retriever,
+                    name = "vector_search_products",
+                    description = "Searches Cosmic Works product information for similar products based on the question. Returns the product information in JSON format."
+                ),
+                StructuredTool.from_function(get_product_by_id),
+                StructuredTool.from_function(get_product_by_sku),
+                StructuredTool.from_function(get_sales_by_id)]
+        agent = create_openai_functions_agent(llm, tools, prompt)
+        self.agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, return_intermediate_steps=True)
+    
     def run(self, prompt: str) -> str:
         """
         Run the AI agent.
         """
-        result = self.agent_executor({"input": prompt})
+        result = self.agent_executor.invoke({"input": prompt})
         return result["output"]
 
-    def __create_cosmic_works_vector_store_retriever(
-            self,
-            collection_name: str,
-            top_k: int = 3
-        ):
-        """
-        Returns a vector store retriever for the given collection.
-        """
-        vector_store =  AzureCosmosDBVectorSearch.from_connection_string(
-            connection_string = DB_CONNECTION_STRING,
-            namespace = f"cosmic_works.{collection_name}",
-            embedding = self.embedding_model,
-            index_name = "VectorSearchIndex",
-            embedding_key = "contentVector",
-            text_key = "_id"
-        )
-        return vector_store.as_retriever(search_kwargs={"k": top_k})
 
-    def __create_agent_tools(self) -> List[Tool]:
-        """
-        Returns a list of agent tools.
-        """
-        products_retriever = self.__create_cosmic_works_vector_store_retriever("products")
-        customers_retriever = self.__create_cosmic_works_vector_store_retriever("customers")
-        sales_retriever = self.__create_cosmic_works_vector_store_retriever("sales")
-
-        # create a chain on the retriever to format the documents as JSON
-        products_retriever_chain = products_retriever | format_docs
-        customers_retriever_chain = customers_retriever | format_docs
-        sales_retriever_chain = sales_retriever | format_docs
-
-        tools = [
-            Tool(
-                name = "vector_search_products",
-                func = products_retriever_chain.invoke,
-                description = """
-                    Searches Cosmic Works product information for similar products based 
-                    on the question. Returns the product information in JSON format.
-                    """
-            ),
-            Tool(
-                name = "vector_search_customers",
-                func = customers_retriever_chain.invoke,
-                description = """
-                    Searches Cosmic Works customer information and retrieves similar 
-                    customers based on the question. Returns the customer information 
-                    in JSON format.
-                    """
-            ),
-            Tool(
-                name = "vector_search_sales",
-                func = sales_retriever_chain.invoke,
-                description = """
-                    Searches Cosmic Works customer sales information and retrieves sales order 
-                    details based on the question. Returns the sales order information in JSON format.
-                    """
-            ),
-            StructuredTool.from_function(get_product_by_id),
-            StructuredTool.from_function(get_product_by_sku),
-            StructuredTool.from_function(get_sales_by_id)
-        ]
-        return tools
-
-def format_docs(docs:List[Document]) -> str:
+# Tools helper methods
+def delete_attribute_by_alias(instance: BaseModel, alias:str):
     """
-    Prepares the product list for the system prompt.
+    Removes an attribute from a Pydantic model instance by its alias.
     """
-    str_docs = []
-    for doc in docs:
-        # Build the product document without the contentVector
-        doc_dict = {"_id": doc.page_content}
-        doc_dict.update(doc.metadata)
-        if "contentVector" in doc_dict:
-            del doc_dict["contentVector"]
-        str_docs.append(json.dumps(doc_dict, default=str))
-    # Return a single string containing each product JSON representation
-    # separated by two newlines
-    return "\n\n".join(str_docs)
+    for model_field in instance.model_fields:
+        field = instance.model_fields[model_field]            
+        if field.alias == alias:
+            delattr(instance, model_field)
+            return
+
+def get_single_item_by_field_name(
+        container:ContainerProxy,
+        field_name:str,
+        field_value:str,
+        model:Type[T]) -> T:
+    """
+    Retrieves a single item from the Azure Cosmos DB NoSQL database by a specific field and value.
+    """
+    query = f"SELECT TOP 1 * FROM itm WHERE itm.{field_name} = @value"
+    parameters = [
+        {
+            "name": "@value", 
+            "value": field_value
+        }
+    ]    
+    item = list(container.query_items(
+        query=query,
+        parameters=parameters,
+        enable_cross_partition_query=True
+    ))[0]
+    item_casted = model(**item)    
+    return item_casted
 
 def get_product_by_id(product_id: str) -> str:
     """
     Retrieves a product by its ID.    
     """
-    doc = db.products.find_one({"_id": product_id})
-    if "contentVector" in doc:
-        del doc["contentVector"]
-    return json.dumps(doc)
+    item = get_single_item_by_field_name(product_v_container, "id", product_id, Product)
+    delete_attribute_by_alias(item, "contentVector")
+    return json.dumps(item, indent=4, default=str)    
 
 def get_product_by_sku(sku: str) -> str:
     """
     Retrieves a product by its sku.
     """
-    doc = db.products.find_one({"sku": sku})
-    if "contentVector" in doc:
-        del doc["contentVector"]
-    return json.dumps(doc, default=str)
-
+    item = get_single_item_by_field_name(product_v_container, "sku", sku, Product)
+    delete_attribute_by_alias(item, "contentVector")
+    return json.dumps(item, indent=4, default=str)
+    
 def get_sales_by_id(sales_id: str) -> str:
     """
     Retrieves a sales order by its ID.
     """
-    doc = db.sales.find_one({"_id": sales_id})
-    if "contentVector" in doc:
-        del doc["contentVector"]
-    return json.dumps(doc, default=str)
-  
+    item = get_single_item_by_field_name(sales_order_container, "id", sales_id, SalesOrder)
+    return json.dumps(item, indent=4, default=str)
