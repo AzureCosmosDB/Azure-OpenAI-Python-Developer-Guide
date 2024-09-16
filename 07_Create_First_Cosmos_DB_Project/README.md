@@ -51,7 +51,7 @@ client = CosmosClient.from_connection_string(CONNECTION_STRING)
 
 ### Creating a database
 
-The `create_database` method is used to create a database. If the database already exists, an exception is thrown, therefore verify the database already exists before creating it.
+The `create_database_if_not_exists` method is used to create a database. If the database already exists, the method will retrieve the existing database.
 
 ```python
 db: DatabaseProxy = client.create_database(database_name)
