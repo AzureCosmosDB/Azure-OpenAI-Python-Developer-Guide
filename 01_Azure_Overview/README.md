@@ -16,8 +16,6 @@ To facilitate developers' adoption of Azure, Microsoft offers a [free subscripti
 
 The [Azure Fundamentals Microsoft Learn Module](https://learn.microsoft.com/learn/modules/intro-to-azure-fundamentals/) demonstrates the different classifications of Azure Services. Moreover, Azure supports a variety of common tools, such as Visual Studio, PowerShell, and the Azure CLI, to manage Azure environments.
 
-  ![IaaS and PaaS Azure service classification and categories](media/azure-services.png "Categories of Azure services")
-
 ### The Azure resource management hierarchy
 
 Azure provides a flexible resource hierarchy to simplify cost management and security. This hierarchy consists of four levels:
