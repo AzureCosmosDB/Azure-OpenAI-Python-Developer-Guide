@@ -52,19 +52,19 @@ Here's a list of the AI services within the [Azure AI platform](https://learn.mi
 
 | Service | Description |
 | --- | --- |
-| Azure AI Search | Bring AI-powered cloud search to mobile and web apps |
-| Azure OpenAI | Perform a wide variety of natural language tasks |
-| Bot Service | Create bots and connect them across channels |
-| Content Safety | An AI service that detects unwanted contents |
-| Custom Vision | Customize image recognition to fit the business |
-| Document Intelligence | Turn documents into usable data at a fraction of the time and cost |
-| Face | Detect and identify people and emotions in images |
-| Immersive Reader | Help users read and comprehend text |
+| Azure AI Search | Bring AI-powered cloud search to mobile and web apps. |
+| Azure OpenAI | Perform a wide variety of natural language tasks. |
+| Bot Service | Create bots and connect them across channels. |
+| Content Safety | An AI service that detects unwanted contents. |
+| Custom Vision | Customize image recognition to fit the business. |
+| Document Intelligence | Turn documents into intelligent data-driven solutions. |
+| Face | Detect and identify people and emotions in images. |
+| Immersive Reader | Help users read and comprehend text. |
 | Language | Build apps with industry-leading natural language understanding capabilities |
-| Speech | Speech to text, text to speech, translation and speaker recognition |
-| Translator | Translate more than 100 languages and dialects |
-| Video Indexer | Extract actionable insights from videos |
-| Vision | Analyze content in images and videos |
+| Speech | Speech to text, text to speech, translation and speaker recognition. |
+| Translator | Use AI-powered translation technology to translate more than 100 in-use, at-risk, and endangered languages and dialects. |
+| Video Indexer | Extract actionable insights from videos. |
+| Vision | Analyze content in images and videos. |
 
 > **Note:** Follow this link for additional tips to help in determining the which Azure AI service is most appropriate for a specific project requirement: <https://azure.microsoft.com/products/category/ai>
 
@@ -103,7 +103,7 @@ Here are a couple differentiators to help determine which of these to services t
 
 - Azure Machine Learning service is appropriate for solutions where a custom model needs to be trained specifically on private data.
 
-- Azure OpenAI service is appropriate for solutions that require pre-trained models that provide natural language processing or vision services, such as the GPT-4 or DALL-E models from OpenAI.
+- Azure OpenAI service is appropriate for solutions that require pre-trained models that provide natural language processing or vision services, such as the GPT-3.5, GPT-4o or DALL-E models from OpenAI.
 
 If the solution requires other more task specific AI features, then one of the other Azure AI services should be considered.
 
