@@ -1,4 +1,4 @@
-# Overview of Azure OpenAI
+# Overview of Azure OpenAI and AI Services
 
 Azure OpenAI is a collaboration between Microsoft Azure and OpenAI, a leading research organization in artificial intelligence. It is a cloud-based platform that enables developers and data scientists to build and deploy AI models quickly and easily. With Azure OpenAI, users can access a wide range of AI tools and technologies to create intelligent applications, including natural language processing, computer vision, and deep learning.
 
@@ -61,7 +61,6 @@ Here's a list of the AI services within the [Azure AI platform](https://learn.mi
 | Face | Detect and identify people and emotions in images |
 | Immersive Reader | Help users read and comprehend text |
 | Language | Build apps with industry-leading natural language understanding capabilities |
-| Machine Learning | ML professionals, data scientists, and engineers can use Azure Machine Learning in their day-to-day workflows to train and deploy models, such as those built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn |
 | Speech | Speech to text, text to speech, translation and speaker recognition |
 | Translator | Translate more than 100 languages and dialects |
 | Video Indexer | Extract actionable insights from videos |
@@ -96,7 +95,7 @@ ML projects often require a team with a varied skill set to build and maintain. 
 
 Enterprises working in the Microsoft Azure cloud can use familiar security and role-based access control for infrastructure. A project can be set up to deny access to protected data and select operations.
 
-#### Azure Machine Learning vs Azure Open AI
+#### Azure Machine Learning vs Azure OpenAI
 
 Many of the Azure AI services are suited to a very specific AI / ML need. The Azure Machine Learning and Azure OpenAI services offer more flexible usage based on the solution requirements.
 
