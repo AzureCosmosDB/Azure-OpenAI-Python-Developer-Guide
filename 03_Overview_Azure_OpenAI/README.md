@@ -122,7 +122,7 @@ Specifically, Azure AI Studio combines:
 
 Azure AI Studio enables teams to collaborate efficiently and effectively on AI projects, such as developing custom copilot applications that use large language models (LLMs).
 
-![Azure AI Studio screenshot](images/2024-01-23-17-52-46.png)
+![Azure AI Studio screenshot](images/2024-08-11_19-15-33.jpg)
 
 Tasks accomplished using Azure AI Studio include:
 
