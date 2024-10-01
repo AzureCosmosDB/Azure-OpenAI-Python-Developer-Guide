@@ -7,11 +7,12 @@ Description:
 """
 import os
 import json
-from pydantic import BaseModel
+from datetime import datetime
+from pydantic import BaseModel, Field
 from typing import Type, TypeVar, List
 from dotenv import load_dotenv
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
-from azure.cosmos import CosmosClient, ContainerProxy
+from azure.cosmos import CosmosClient, ContainerProxy, PartitionKey
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import StructuredTool
 from langchain.agents.agent_toolkits import create_retriever_tool
@@ -36,6 +37,16 @@ db = client.get_database_client("cosmic_works")
 product_v_container = db.get_container_client("product_v")
 sales_order_container = db.get_container_client("salesOrder")
 
+# Initialize the chat session container, create if not exists
+db.create_container_if_not_exists(id="chat_session", partition_key=PartitionKey(path="/id"))
+chat_session_container = db.get_container_client("chat_session")
+
+
+class ChatSession(BaseModel):
+    id: str # The session ID
+    title: str # The title of the chat session
+    history: List[dict] = Field(default_factory=list) # The chat history
+
 class CosmicWorksAIAgent:
     """
     The CosmicWorksAIAgent class creates Cosmo, an AI agent
@@ -44,6 +55,9 @@ class CosmicWorksAIAgent:
     """
     def __init__(self, session_id: str):
         self.session_id = session_id
+
+        self.chat_session = self.load_or_create_chat_session(session_id)
+
         llm = AzureChatOpenAI(
             temperature = 0,
             openai_api_version = AOAI_API_VERSION,
@@ -97,10 +111,46 @@ class CosmicWorksAIAgent:
         """
         Run the AI agent.
         """
-        result = self.agent_executor.invoke({"input": prompt})
-        return result["output"]
 
+        # Add the existing chat history to the prompt
+        chat_history = [{"role": msg["role"], "content": msg["content"]} for msg in self.chat_session.history]
+        full_prompt = {
+            "input": prompt,
+            "chat_history": chat_history
+        }
 
+        # Run the AI agent with the chat history context
+        result = self.agent_executor.invoke(full_prompt)
+        response = result["output"]
+
+        # Update chat history with new interaction
+        self.chat_session.history.append({"role": "user", "content": prompt})
+        self.chat_session.history.append({"role": "assistant", "content": response})
+
+        # Save updated chat history to Cosmos DB
+        chat_session_container.upsert_item(self.chat_session.dict())
+
+        return response
+
+    def load_or_create_chat_session(self, session_id: str) -> ChatSession:
+        """
+        Load an existing session from the Cosmos DB container, or create a new one if not found.
+        """
+        try:
+            # Try to read the session from Cosmos DB
+            session_item = chat_session_container.read_item(item=session_id, partition_key=session_id)
+            return ChatSession(**session_item)
+        except Exception:
+            # If the session is not found, create a new one
+            new_session = ChatSession(
+                id=session_id,
+                session_id=session_id,
+                title=f"{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}",
+                chat_history=[]
+            )
+            chat_session_container.upsert_item(new_session.model_dump())
+            return new_session
+        
 # Tools helper methods
 def delete_attribute_by_alias(instance: BaseModel, alias:str):
     """
