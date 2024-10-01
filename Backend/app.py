@@ -1,7 +1,7 @@
 """
 API entrypoint for backend API.
 """
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 import uuid
@@ -53,3 +53,43 @@ def run_cosmic_works_ai_agent(request: AIRequest):
 
     # Run the agent with the provided prompt.
     return { "message": agent_pool[session_id].run(prompt), "session_id": session_id }
+
+
+# ========================
+import os
+from dotenv import load_dotenv
+from azure.cosmos import CosmosClient
+from pydantic import BaseModel
+from typing import List
+
+load_dotenv()
+
+# Your existing Cosmos DB client and container setup
+CONNECTION_STRING = os.environ.get("COSMOS_DB_CONNECTION_STRING")
+client = CosmosClient.from_connection_string(CONNECTION_STRING)
+db = client.get_database_client("cosmic_works")
+chat_session_container = db.get_container_client("chat_session")
+
+# Define the model for a Chat Session response
+class ChatSessionResponse(BaseModel):
+    session_id: str
+    title: str
+
+@app.get("/sessions") #, response_model=List[ChatSessionResponse])
+def list_sessions():
+    """
+    Endpoint to list all chat sessions.
+    """
+    try:
+        # Query to get all sessions in the chat_session_container
+        query = "SELECT c.session_id, c.title FROM c"
+        sessions = list(chat_session_container.query_items(
+            query=query,
+            enable_cross_partition_query=True
+        ))
+        
+        # Convert the sessions into a list of ChatSessionResponse objects
+        session_responses = [ChatSessionResponse(session_id=session['session_id'], title=session['title']) for session in sessions]
+        return session_responses
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to retrieve sessions: {str(e)}")

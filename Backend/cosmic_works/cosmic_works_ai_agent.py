@@ -123,12 +123,12 @@ class CosmicWorksAIAgent:
         result = self.agent_executor.invoke(full_prompt)
         response = result["output"]
 
-        # Update chat history with new interaction
+        # Update session chat history with new interaction
         self.chat_session.history.append({"role": "user", "content": prompt})
         self.chat_session.history.append({"role": "assistant", "content": response})
 
-        # Save updated chat history to Cosmos DB
-        chat_session_container.upsert_item(self.chat_session.dict())
+        # Save updated session chat history to Cosmos DB
+        chat_session_container.upsert_item(self.chat_session.model_dump())
 
         return response
 
