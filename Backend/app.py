@@ -75,21 +75,45 @@ class ChatSessionResponse(BaseModel):
     session_id: str
     title: str
 
-@app.get("/sessions") #, response_model=List[ChatSessionResponse])
+@app.get("/session/list") #, response_model=List[ChatSessionResponse])
 def list_sessions():
     """
     Endpoint to list all chat sessions.
     """
     try:
         # Query to get all sessions in the chat_session_container
-        query = "SELECT c.session_id, c.title FROM c"
+        query = "SELECT c.id, c.title FROM c"
         sessions = list(chat_session_container.query_items(
             query=query,
             enable_cross_partition_query=True
         ))
         
         # Convert the sessions into a list of ChatSessionResponse objects
-        session_responses = [ChatSessionResponse(session_id=session['session_id'], title=session['title']) for session in sessions]
+        session_responses = [ChatSessionResponse(session_id=session['id'], title=session['title']) for session in sessions]
         return session_responses
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to retrieve sessions: {str(e)}")
+
+# GET /session/load/{session_id}
+@app.get("/session/load/{session_id}")
+def load_session(session_id: str):
+    """
+    Endpoint to load a chat session by session_id.
+    """
+    try:
+        # Query to get the chat session with the provided session_id
+        query = f"SELECT * FROM c WHERE c.id = '{session_id}'"
+        session = list(chat_session_container.query_items(
+            query=query,
+            enable_cross_partition_query=True
+        ))
+        
+        # If the session exists, return it
+        if session:
+            return session[0]
+        else:
+            raise HTTPException(status_code=404, detail="Session not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to retrieve session: {str(e)}")
+    
+    
