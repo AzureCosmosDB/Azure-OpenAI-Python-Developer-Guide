@@ -56,6 +56,8 @@ def run_cosmic_works_ai_agent(request: AIRequest):
 
 
 # ========================
+# Chat Session State / History Support is below:
+# ========================
 import os
 from dotenv import load_dotenv
 from azure.cosmos import CosmosClient
