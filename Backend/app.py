@@ -64,7 +64,8 @@ def run_cosmic_works_ai_agent(request: AIRequest):
 # ========================
 
 # Create an instance of the CosmosDBChatSessionStateProvider class
-cosmos_provider = CosmosDBChatSessionStateProvider()
+# This will be used to load or create Chat Sessions
+chat_session_state_provider = CosmosDBChatSessionStateProvider()
 
 @app.get("/session/list", response_model=List[ChatSessionResponse])
 def list_sessions():
@@ -72,7 +73,7 @@ def list_sessions():
     Endpoint to list all chat sessions.
     """
     try:
-        return cosmos_provider.list_sessions()
+        return chat_session_state_provider.list_sessions()
     except RuntimeError as e:
         # Return an internal server error if a runtime error occurs
         raise HTTPException(status_code=500, detail=str(e))
@@ -84,7 +85,7 @@ def load_session(session_id: str):
     Endpoint to load a chat session by session_id.
     """
     try:
-        return cosmos_provider.load_session(session_id)
+        return chat_session_state_provider.load_session(session_id)
     except ValueError as e:
         # Return a 404 error if the session is not found
         raise HTTPException(status_code=404, detail=str(e))
