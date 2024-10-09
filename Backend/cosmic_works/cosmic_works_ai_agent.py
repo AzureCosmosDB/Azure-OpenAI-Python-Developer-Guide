@@ -176,20 +176,35 @@ def get_single_item_by_field_name(
             "name": "@value", 
             "value": field_value
         }
-    ]    
-    item = list(container.query_items(
+    ]
+    items = list(container.query_items(
         query=query,
         parameters=parameters,
         enable_cross_partition_query=True
-    ))[0]
-    item_casted = model(**item)    
+    ))
+    
+    # Check if any item is returned
+    if not items:
+        return None  # Return None if no item is found
+
+    # Cast the item to the provided model
+    item_casted = model(**items[0])
     return item_casted
+    # item = list(container.query_items(
+    #     query=query,
+    #     parameters=parameters,
+    #     enable_cross_partition_query=True
+    # ))[0]
+    # item_casted = model(**item)    
+    # return item_casted
 
 def get_product_by_id(product_id: str) -> str:
     """
     Retrieves a product by its ID.    
     """
     item = get_single_item_by_field_name(product_v_container, "id", product_id, Product)
+    if item is None:
+        return json.dumps({"error": "Product with 'id' ({id}) not found."}, indent=4)
     delete_attribute_by_alias(item, "contentVector")
     return json.dumps(item, indent=4, default=str)    
 
@@ -198,6 +213,8 @@ def get_product_by_sku(sku: str) -> str:
     Retrieves a product by its sku.
     """
     item = get_single_item_by_field_name(product_v_container, "sku", sku, Product)
+    if item is None:
+        return json.dumps({"error": "Product with 'sku' ({sku}) not found."}, indent=4)
     delete_attribute_by_alias(item, "contentVector")
     return json.dumps(item, indent=4, default=str)
     
@@ -206,4 +223,6 @@ def get_sales_by_id(sales_id: str) -> str:
     Retrieves a sales order by its ID.
     """
     item = get_single_item_by_field_name(sales_order_container, "id", sales_id, SalesOrder)
+    if item is None:
+        return json.dumps({"error": "SalesOrder with 'id' ({id}) not found."}, indent=4)
     return json.dumps(item, indent=4, default=str)
