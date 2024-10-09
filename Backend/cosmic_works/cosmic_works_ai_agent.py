@@ -7,18 +7,19 @@ Description:
 """
 import os
 import json
-from datetime import datetime
-from pydantic import BaseModel, Field
-from typing import Type, TypeVar, List
+from pydantic import BaseModel
+from typing import Type, TypeVar
 from dotenv import load_dotenv
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
-from azure.cosmos import CosmosClient, ContainerProxy, PartitionKey
+from azure.cosmos import CosmosClient, ContainerProxy
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import StructuredTool
 from langchain.agents.agent_toolkits import create_retriever_tool
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from models import Product, SalesOrder
 from retrievers import AzureCosmosDBNoSQLRetriever
+
+from chat_session_state.cosmosdb_chat_session_state_provider import CosmosDBChatSessionStateProvider
 
 T = TypeVar('T', bound=BaseModel)
 
@@ -37,15 +38,10 @@ db = client.get_database_client("cosmic_works")
 product_v_container = db.get_container_client("product_v")
 sales_order_container = db.get_container_client("salesOrder")
 
-# Initialize the chat session container, create if not exists
-db.create_container_if_not_exists(id="chat_session", partition_key=PartitionKey(path="/id"))
-chat_session_container = db.get_container_client("chat_session")
+# Create an instance of the CosmosDBChatSessionStateProvider class
+# This will be used to load or create Chat Sessions
+chat_session_state_provider = CosmosDBChatSessionStateProvider()
 
-
-class ChatSession(BaseModel):
-    id: str # The session ID
-    title: str # The title of the chat session
-    history: List[dict] = Field(default_factory=list) # The chat history
 
 class CosmicWorksAIAgent:
     """
@@ -56,7 +52,7 @@ class CosmicWorksAIAgent:
     def __init__(self, session_id: str):
         self.session_id = session_id
 
-        self.chat_session = self.load_or_create_chat_session(session_id)
+        self.chat_session = chat_session_state_provider.load_or_create_chat_session(session_id)
 
         llm = AzureChatOpenAI(
             temperature = 0,
@@ -128,28 +124,9 @@ class CosmicWorksAIAgent:
         self.chat_session.history.append({"role": "assistant", "content": response})
 
         # Save updated session chat history to Cosmos DB
-        chat_session_container.upsert_item(self.chat_session.model_dump())
+        chat_session_state_provider.upsert_session(self.chat_session)
 
         return response
-
-    def load_or_create_chat_session(self, session_id: str) -> ChatSession:
-        """
-        Load an existing session from the Cosmos DB container, or create a new one if not found.
-        """
-        try:
-            # Try to read the session from Cosmos DB
-            session_item = chat_session_container.read_item(item=session_id, partition_key=session_id)
-            return ChatSession(**session_item)
-        except Exception:
-            # If the session is not found, create a new one
-            new_session = ChatSession(
-                id=session_id,
-                session_id=session_id,
-                title=f"{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}",
-                chat_history=[]
-            )
-            chat_session_container.upsert_item(new_session.model_dump())
-            return new_session
         
 # Tools helper methods
 def delete_attribute_by_alias(instance: BaseModel, alias:str):
