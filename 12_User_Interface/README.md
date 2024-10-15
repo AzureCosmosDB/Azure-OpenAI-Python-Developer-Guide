@@ -29,7 +29,7 @@ These example questions are:
 
 > **Note**: It's possible the first time you ask a question within the Front end application there may be an error. Occasionally when the Azure Bicep template deploys the front end application there will be an issue configuring the use of the `API_ENDPOINT` app setting. If this happens, simply navigate to **Deployment** -> **Deployment Center**, then click **Sync** to have the Web App refresh the deployment of the front end app from it's GitHub repository source code. This should fix that error.
 
-The chat user interface presents as a traditional chat application style interface when asking questions.
+The chat user interface presents as a traditional chat application style interface when asking questions. It also includes a "New chat" button to open new chat sessions, and the list of previous chat sessions on the left side of the UI that enables you to toggle between sessions.
 
 ![Chat user interface screenshot with question and generated answer displayed](images/2024-10-15-11-49-18.png)
 
