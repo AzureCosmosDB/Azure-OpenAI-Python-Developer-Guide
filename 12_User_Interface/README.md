@@ -20,7 +20,7 @@ While the code for the SPA web application is outside the scope of this dev guid
 
 To ask the AI questions about the CosmicWorks company data, type the questions in to the front-end application chat user interface. The web application includes tiles with a couple example questions to get started. To use these, simply click on the question tile and it will generate an answer.
 
-![Front-end Web Application User Interface](images/2024-09-03-12-33-31.png)
+![Front-end Web Application User Interface](images/2024-10-15-11-48-17.png)
 
 These example questions are:
 - What was the price of the product with sku `FR-R92B-58`?
@@ -31,7 +31,7 @@ These example questions are:
 
 The chat user interface presents as a traditional chat application style interface when asking questions.
 
-![Chat user interface screenshot with question and generated answer displayed](images/2024-09-03-12-37-32.png)
+![Chat user interface screenshot with question and generated answer displayed](images/2024-10-15-11-49-18.png)
 
 Go ahead, ask the service a few questions about CosmicWorks and observe the responses.
 
