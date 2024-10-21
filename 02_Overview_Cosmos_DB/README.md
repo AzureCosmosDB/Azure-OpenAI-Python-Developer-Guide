@@ -1,6 +1,6 @@
 # Overview of Azure Cosmos DB
 
-[Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/introduction) is a globally distributed and serverless vector database for storing and querying both NoSQL and vector data, with a serverless option. It has multiple APIs, the most notable being the native NoSQL document API and MongoDB API. It provides turnkey global distribution, elastic and dynamic scaling of throughput and storage, and a comprehensive SLA (service level agreement) for single-digit millisecond latency and 99.999% high-availability.
+[Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/introduction) is a globally distributed database for storing and querying both NoSQL and vector data, with a serverless option. It has multiple APIs, the most notable being the native NoSQL document API and MongoDB API. It provides turnkey global distribution, elastic and dynamic scaling of throughput and storage, and a comprehensive SLA (service level agreement) for single-digit millisecond latency and 99.999% high-availability.
 
 ## Azure Cosmos DB and AI
 
