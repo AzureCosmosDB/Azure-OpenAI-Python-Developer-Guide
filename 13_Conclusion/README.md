@@ -4,12 +4,12 @@ This guide has provided a comprehensive walkthrough for creating intelligent sol
 
 The benefits of building a chat bot experience using Azure Cosmos DB for NoSQL with vector search capabilities powered by DiskANN and Azure OpenAI services includes:
 
-- **Unified data and vector management**: Store both operational data and vectors together in a single database, reducing complexity and improving performance.
+- **Unified data and vector management**: Storing both operational data and vectors together in a single database reduces complexity, improves performance, and eliminates the need to synchronize data between multiple databases.
 - **No need for synchronization**: By keeping data and vectors in one place, you avoid the overhead of synchronizing two different databases.
 - **Flexible schema**: Adapt to changing data structures effortlessly, ensuring your system remains flexible and scalable as your application evolves.
 - **Support for latency-sensitive applications**: Azure Cosmos DB is optimized for applications requiring low-latency responses, making it suitable for real-time, interactive use cases.
 - **High elasticity and throughput**: Azure Cosmos DB can scale seamlessly to handle high-throughput workloads, making it perfect for applications that need to grow dynamically with demand.
-- **Store chat history and vector data**: Easily manage chat histories alongside vector data, making it ideal for chat bot and other interactive applications.
+- **Store chat history and vector data**: Easily manage chat histories alongside vector and operational data, making it ideal for chat bot and other interactive applications.
 
 This guide was designed to provide an insightful journey for Python developers to get started with Azure Cosmos DB for NoSQL as it applies to creating exciting AI-enabled applications using existing skills. We hope you found this guide helpful and informative.
 

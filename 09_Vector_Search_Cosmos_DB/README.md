@@ -36,7 +36,9 @@ In this example, assume textual data is vectorized and stored within an Azure Co
 
 ## Why use Azure Cosmos DB for NoSQL as a vector store?
 
-It is common practice to store vectorized data in a dedicated vector store as vector search indexing is not a common capability of most databases. However, this introduces additional complexity to the solution as the data must be stored in two different locations. Azure Cosmos DB for NoSQL supports vector search indexing, which means that the vectorized data can be stored in the same document as the original data. This reduces the complexity of the solution and allows for a single database to be used for both the vector store and the original data.
+It is common practice to store vectorized data in a dedicated vector store as vector search indexing is not a common capability of most databases. However, this introduces additional complexity to the solution as the data must be stored in two different locations. Azure Cosmos DB for NoSQL supports vector search indexing, which means that the vectorized data can be stored in the same document as the operational NoSQL data. This reduces the complexity of the solution and allows for a single database to be used for both the vector store and the operational NoSQL data.
+
+Azure Cosmos DB offers the ability to run serverless workloads, allowing for cost-effective, on-demand scaling for applications that don't require constant high performance. As your workloads grow, you can seamlessly transition to provisioned throughput, unlocking advanced capabilities such as low latency and high availability. This ability to scale both up and down means you can optimize for both performance and cost-efficiency, ensuring that vector search operations meet the demands of your application without compromising on response times or availability.
 
 ## Vector index options in Azure Cosmos DB for NoSQL
 
@@ -215,8 +217,6 @@ product_v_container = db.create_container_if_not_exists(
     vector_embedding_policy=vector_embedding_policy
 )
 ```
-
-
 
 ### Performing a vector search query
 
