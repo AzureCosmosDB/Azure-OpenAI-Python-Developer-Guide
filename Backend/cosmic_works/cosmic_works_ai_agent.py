@@ -34,7 +34,7 @@ AOAI_API_VERSION = "2024-06-01"
 
 # Initialize the Azure Cosmos DB client, database and product (with vector) container
 client = CosmosClient.from_connection_string(CONNECTION_STRING)
-db = client.get_database_client("cosmic_works")
+db = client.get_database_client("cosmic_works_pv")
 product_v_container = db.get_container_client("product_v")
 sales_order_container = db.get_container_client("salesOrder")
 

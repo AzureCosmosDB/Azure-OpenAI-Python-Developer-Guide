@@ -13,7 +13,7 @@ load_dotenv()
 # Initialize Cosmos DB client and container globally within the module
 CONNECTION_STRING = os.environ.get("COSMOS_DB_CONNECTION_STRING")
 client = CosmosClient.from_connection_string(CONNECTION_STRING)
-db = client.get_database_client("cosmic_works")
+db = client.get_database_client("cosmic_works_pv")
 
 # Initialize the chat session container, create if not exists
 db.create_container_if_not_exists(id="chat_session", partition_key=PartitionKey(path="/id"))
