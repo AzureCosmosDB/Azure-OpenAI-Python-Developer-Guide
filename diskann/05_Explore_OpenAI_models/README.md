@@ -73,8 +73,4 @@ This labs demonstrates using an Azure OpenAI model to obtain a completion respon
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
-<<<<<<<< HEAD:vcore/05_Explore_OpenAI_models/README.md
-Visit the lab repository to complete [this lab](/vcore/Labs/lab_0_explore_and_use_models.ipynb).
-========
 Visit the lab repository to complete [this lab](../Labs/lab_0_explore_and_use_models.ipynb).
->>>>>>>> local/main:diskann/05_Explore_OpenAI_models/README.md

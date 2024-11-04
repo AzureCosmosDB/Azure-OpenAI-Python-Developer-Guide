@@ -8,8 +8,4 @@ This lab also requires the data provided in the previous lab titled [Load data i
 
 >**Note**: It is highly recommended to use a [virtual environment](https://python.land/virtual-environments/virtualenv) for all labs.
 
-<<<<<<<< HEAD:vcore/11_Backend_API/README.md
-Please visit the lab repository to complete [this lab](/vcore/Labs/lab_4_langchain.ipynb).
-========
 Please visit the lab repository to complete [this lab](../Labs/lab_5_backend_api.md).
->>>>>>>> local/main:diskann/11_Backend_API/README.md

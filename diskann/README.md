@@ -1,6 +1,5 @@
 # Azure Cosmos DB for NoSQL + DiskANN + Azure OpenAI Python Developer Guide
 
-Choose one of the following developer guides:
 1. [Introduction](00_Introduction/README.md)
 1. [Azure Overview](01_Azure_Overview/README.md)
 1. [Overview of Azure Cosmos DB](02_Overview_Cosmos_DB/README.md)
@@ -15,6 +14,8 @@ Choose one of the following developer guides:
 1. [Backend API](11_Backend_API/README.md)
 1. [Connect the chat user interface with the chatbot API](12_User_Interface/README.md)
 1. [Conclusion](13_Conclusion/README.md)
+
+![Azure Cosmos DB for NoSql + DiskANN + Azure OpenAI Python Developer Guide Architecture Diagram](06_Provision_Azure_Resources/media/architecture.jpg)
 
 ## Contributing
 

@@ -25,8 +25,4 @@ This lab will walk you through deploying the Azure resources necessary for the s
 
 > **Note**: You will need an Azure Subscription and have the necessary permissions to provision the Azure resources.
 
-<<<<<<<< HEAD:vcore/06_Provision_Azure_Resources/README.md
-Please visit the lab repository to complete [this lab](/vcore/Labs/deploy/deploy.md).
-========
 Please visit the lab repository to complete [this lab](../Labs/deploy/deploy.md).
->>>>>>>> local/main:diskann/06_Provision_Azure_Resources/README.md
