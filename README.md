@@ -4,6 +4,8 @@ Choose one of the following developer guides:
 
 - [Azure Cosmos DB for MongoDB (vCore) + Azure OpenAI Python Developer Guide
 ](/vcore/README.md)
+- [Azure Cosmos DB for NoSQL + DiskANN + Azure OpenAI Python Developer Guide
+](/diskann/README.md)
 
 ## Contributing
 
