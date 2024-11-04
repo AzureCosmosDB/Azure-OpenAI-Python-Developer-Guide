@@ -2,7 +2,7 @@
 Azure Cosmos DB + Azure OpenAI Python developer guide lab
 ******************************************************************
 This Azure resource deployment template uses some of the following practices:
-- [Abbrevation examples for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Abbrevation examples for Azure resources](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 */
 
 

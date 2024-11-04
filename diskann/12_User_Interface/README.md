@@ -10,7 +10,7 @@ The following screenshot shows where to find the front-end application URL:
 
 Navigating to this URL in the browser accesses the front-end application. Through this front-end application User Interface, questions can be submitted to the Azure OpenAI model about the CosmicWorks company data, then it will generate responses accordingly.
 
-![Front-end Web Application User Interface](images/2024-01-17-12-42-59.png)
+![Front-end Web Application User Interface](images/2024-10-15-11-48-17.png)
 
 While the code for the SPA web application is outside the scope of this dev guide. It's worth noting that the Web App is configured with the URL for the Backend API using **App settings** with the variable named `API_ENDPOINT` under the **Settings** -> **Environment variables** pane. When the application was deployed as part of the Azure template deployment, it was automatically configured with this URL to connect the front-end SPA web application to the Backend API.
 

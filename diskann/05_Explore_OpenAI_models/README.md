@@ -2,7 +2,7 @@
 
 ## Azure OpenAI Models
 
-[Azure OpenAI is powered by a diverse set of models](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models) with different capabilities.
+[Azure OpenAI is powered by a diverse set of models](https://learn.microsoft.com/azure/ai-services/openai/concepts/models) with different capabilities.
 
 | Model | Description |
 | -- | --- |

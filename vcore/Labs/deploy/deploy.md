@@ -15,6 +15,7 @@ Create a folder to house the repository. Open a terminal and navigate to the fol
 git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
 
 cd Azure-OpenAI-Python-Developer-Guide
+cd vcore
 cd Labs
 cd deploy
 ```

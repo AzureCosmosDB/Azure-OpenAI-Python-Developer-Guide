@@ -2,7 +2,7 @@
 Azure Cosmos DB + Azure OpenAI Python developer guide lab
 ******************************************************************
 This Azure resource deployment template uses some of the following practices:
-- [Abbrevation examples for Azure resources](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Abbrevation examples for Azure resources](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 */
 
 /* *************************************************************** */
@@ -98,7 +98,7 @@ var appServiceSettings = {
 // Define a variable for the tag values
 var tags = {
   name: 'AzureCosmosDB-DevGuide'
-  repo: 'https://github.com/solliancenet/cosmos-db-nosql-openai-python-dev-guide'
+  repo: 'https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide/blob/main/diskann/README.md'
 }
 
 /* *************************************************************** */
@@ -126,7 +126,7 @@ resource cosmosAccount 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
         name: 'EnableServerless'
       }
       {
-        /* https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature */
+        /* https://learn.microsoft.com/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature */
         name: 'EnableNoSQLVectorSearch'
       }
     ]

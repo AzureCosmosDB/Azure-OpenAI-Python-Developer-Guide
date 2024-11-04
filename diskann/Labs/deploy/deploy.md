@@ -12,9 +12,10 @@
 Create a folder to house the repository. Open a terminal and navigate to the folder. Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
 
 ```bash
-git clone https://github.com/solliancenet/Cosmos-DB-NoSQL-OpenAI-Python-Dev-Guide.git
+git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
 
 cd Cosmos-DB-NoSQL-OpenAI-Python-Dev-Guide
+cd diskann
 cd Labs
 cd deploy
 ```
