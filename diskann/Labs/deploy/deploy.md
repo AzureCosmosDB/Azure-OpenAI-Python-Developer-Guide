@@ -9,18 +9,21 @@
 
 ## Clone the repository
 
-Create a folder to house the repository. Open a terminal and navigate to the folder. Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
+Create a folder to house the repository.
+Open a terminal and navigate to the folder.
+Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
 
 ```bash
 git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
 
-cd Cosmos-DB-NoSQL-OpenAI-Python-Dev-Guide
+cd Azure-OpenAI-Python-Developer-Guide
 cd diskann
 cd Labs
 cd deploy
 ```
 
 Open the `azuredeploy.parameters.json` file, and inspect the values, modify as deemed appropriate.
+When the Azure Bicep template is deployed, this parameters file will be used to configure the Mongo DB Password and other parameters when provisioning the Azure resources.
 
 ## Login to Azure
 
@@ -52,7 +55,9 @@ Deploy the solution resources using the following command (this will take a few 
 New-AzResourceGroupDeployment -ResourceGroupName cosmos-devguide-rg -TemplateFile .\azuredeploy.bicep -TemplateParameterFile .\azuredeploy.parameters.json -c
 ```
 
-> **Enable Vector Search Feature**: This Azure Bicep template will automatically [enable the "Vector Search" feature within Azure Cosmos DB for NoSQL](https://learn.microsoft.com/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature). If it's not enabled, this Azure PowerShell command can be run to enable it on an Azure Cosmos DB for NoSQL Account:
-> ````powershell
-> Update-AzCosmosDBAccount -ResourceGroupName <resource-group-name> -Name <account-name> -Capabilities @{name="EnableNoSQLVectorSearch"}
-> ````
+> **Enable Vector Search Feature**: This Azure Bicep template will automatically [enable the "Vector Search" feature within Azure Cosmos DB for NoSQL](https://learn.microsoft.com/azure/cosmos-db/nosql/vector-search#enroll-in-the-vector-search-preview-feature).
+
+If it's not enabled, this Azure PowerShell command can be run to enable it on an Azure Cosmos DB for NoSQL Account:
+```powershell
+Update-AzCosmosDBAccount -ResourceGroupName <resource-group-name> -Name <account-name> -Capabilities @{name="EnableNoSQLVectorSearch"}
+```
