@@ -10,7 +10,7 @@
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) with [WSL 2 backend (if on Windows)](https://learn.docker.com/desktop/wsl/)
 - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli)
 - [Bicep CLI](https://learn.microsoft.com/azure/azure-resource-manager/bicep/install#install-manually)
-- [Powershell](https://learn.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7.3)
+- [Powershell](https://learn.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7.5)
 
 ## Why use this guide?
 
