@@ -9,7 +9,9 @@
 
 ## Clone the repository
 
-Create a folder to house the repository. Open a terminal and navigate to the folder. Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
+Create a folder to house the repository.
+Open a terminal and navigate to the folder.
+Clone the repository, then navigate to the `Labs/deploy` folder within the repository.
 
 ```bash
 git clone https://github.com/AzureCosmosDB/Azure-OpenAI-Python-Developer-Guide.git
