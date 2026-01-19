@@ -1,17 +1,16 @@
 # Overview of Azure Cosmos DB
 
-[Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/introduction) is a globally distributed, multi-model database service for both NoSQL and relational workloads.
-It supports multiple APIs: NoSQL, MongoDB, PostgreSQL, Cassandra, Gremlin, and Table—covering document, relational, column-family, graph, and key-value data models.
+[Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/introduction) is Microsoft's cloud-native, serverless NoSQL and vector database for mission-critical and globally distributed applications. It provides a native JSON document model with a SQL-like query language, combining flexible data modeling with familiar query semantics. With built-in vector search capabilities, Azure Cosmos DB enables AI-powered scenarios such as semantic search, retrieval-augmented generation, and intelligent applications. As an Azure-native service, it integrates deeply with Azure and delivers predictable performance and availability backed by industry-leading service level agreements (SLAs).
 The service offers turnkey global distribution with elastic scaling of throughput and storage.
 It delivers single-digit millisecond latencies at the 99th percentile and guarantees high availability through multi-homing capabilities.
-Azure Cosmos DB provides comprehensive service level agreements (SLAs) covering throughput, latency, availability, and consistency—a unique combination among cloud database services.
+Azure Cosmos DB provides comprehensive SLAs covering throughput, latency, availability, and consistency—a unique combination among cloud database services.
 
 ## Azure Cosmos DB and AI
 
 The surge of AI-powered applications has led to the need to integrate data from multiple data stores, introducing another layer of complexity as each data store tends to have its own workflow and operational performance.
-Azure Cosmos DB simplifies this process by providing a unified platform for all data types, including AI data.
-Azure Cosmos DB supports relational, document, vector, key-value, graph, and table data models, making it an ideal platform for AI applications.
-The wide array of data model support combined with guaranteed high availability, high throughput, low latency, and tunable consistency are huge advantages when building these types of applications.
+Azure Cosmos DB simplifies this process by providing a unified platform for document and vector data.
+Azure Cosmos DB provides a native JSON document model combined with built-in vector search capabilities, making it an ideal platform for AI applications.
+This document and vector support combined with guaranteed high availability, high throughput, low latency, and tunable consistency are huge advantages when building these types of applications.
 
 ## Azure DocumentDB
 
