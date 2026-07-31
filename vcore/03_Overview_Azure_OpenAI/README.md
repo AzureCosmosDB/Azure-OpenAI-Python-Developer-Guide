@@ -1,4 +1,4 @@
-# Overview of Azure OpenAI and Foundry Tools
+# Overview of Azure OpenAI in Foundry Models and Foundry Tools
 
 Azure OpenAI is a collaboration between Microsoft Azure and OpenAI, a leading research organization in artificial intelligence.
 It is a cloud-based platform that enables developers and data scientists to build and deploy AI models quickly and easily.
@@ -17,7 +17,7 @@ Here are ways that Azure OpenAI can help developers:
 These measures help ensure that AI models are unbiased, explainable, trustworthy, and used in a responsible and compliance manner.
 - **Community support** - With an active developer community developers can seek help via forums and other community support channels.
 
-## Comparison of Azure OpenAI and OpenAI
+## Comparison of Azure OpenAI in Foundry Models and OpenAI
 
 Azure OpenAI Service gives customers advanced language AI with OpenAI GPT-4, GPT-3, Codex, DALL-E, and Whisper models with the security and enterprise promise of Azure.
 Azure OpenAI co-develops the APIs with OpenAI, ensuring compatibility and a smooth transition from one to the other.
@@ -25,20 +25,23 @@ Azure OpenAI co-develops the APIs with OpenAI, ensuring compatibility and a smoo
 With Azure OpenAI, customers get the security capabilities of Microsoft Azure while running the same models as OpenAI.
 Azure OpenAI offers private networking, regional availability, and responsible AI content filtering.
 
-## Azure OpenAI Data Privacy and Security
+## Data Privacy and Security
 
-Azure OpenAI stores and processes data to provide the service and to monitor for uses that violate the applicable product terms.
-Azure OpenAI is fully controlled by Microsoft.
-Microsoft hosts the OpenAI models in Microsoft Azure for the usage of Azure OpenAI, and does not interact with any services operated by OpenAI.
+Azure OpenAI in Foundry Models stores and processes data to provide the service and monitor for uses that violate applicable product terms. Azure OpenAI in Foundry Models is fully controlled by Microsoft. Microsoft hosts the OpenAI models in Microsoft Azure and does not interact with any services operated by OpenAI.
 
-Here are a few important things to know in regards to the security and privacy of prompts (inputs) and completions (outputs), embeddings, and training data when using Azure OpenAI:
+**Your data privacy is protected:**
 
-- are NOT available to other customers.
-- are NOT available to OpenAI.
-- are NOT used to improve OpenAI models.
-- are NOT used to improve any Microsoft or 3rd party products or services.
-- are NOT used for automatically improving Azure OpenAI models for use in the deployed resource (The models are stateless, unless explicitly fine-tuning models with explicitly provided training data).
-- Fine-tuned Azure OpenAI models are available exclusively for the account in which it was created.
+Your prompts (inputs), completions (outputs), embeddings, and training data:
+
+- Are NOT available to other customers
+- Are NOT available to OpenAI
+- Are NOT used to improve OpenAI models
+- Are NOT used to improve any Microsoft or third-party products or services
+- Are NOT used for automatically improving Azure OpenAI models (models are stateless unless you explicitly fine-tune them with your own training data)
+
+**Your fine-tuned models:**
+
+- Fine-tuned Azure OpenAI in Foundry Models models are available exclusively to the account that created them
 
 ## Azure AI Platform
 
@@ -128,27 +131,27 @@ Here are a couple differentiators to help determine which of these to services t
 
 If the solution requires other more task specific AI features, then one of the other Foundry Tools should be considered.
 
-### Azure AI Studio
+### Microsoft Foundry
 
-Azure AI Studio is a web portal that brings together multiple Azure AI-related services into a single, unified development environment.
+Microsoft Foundry is a unified Azure platform for building and deploying generative AI applications. It provides developers with an integrated environment that combines models, tools, and infrastructure in one place.
 
-Specifically, Azure AI Studio combines:
+**Key capabilities:**
 
-- The model catalog and prompt flow development capabilities of Azure Machine Learning service.
+- Access to a comprehensive model catalog with models from OpenAI, Meta, and other providers
+- Interactive playgrounds for testing and refining AI applications
+- Built-in evaluation and monitoring tools for quality assurance
+- Integration with Foundry Tools for speech, vision, language, document intelligence, and content safety
+- Collaboration features for teams working on AI projects
 
-- The generative AI model deployment, testing, and custom data integration capabilities of Azure OpenAI service.
-
-- Integration with Foundry Tools for speech, vision, language, document intelligence, and content safety.
-
-Azure AI Studio enables teams to collaborate efficiently and effectively on AI projects, such as developing custom copilot applications that use large language models (LLMs).
+Microsoft Foundry is designed for building custom copilot applications and other solutions powered by large language models (LLMs).
 
 ![Microsoft AI Foundry screenshot](images/Microsoft_AI_Foundry_2025_11_30.png)
 
-Tasks accomplished using Azure AI Studio include:
+**Common workflows in Microsoft Foundry:**
 
-- Deploying models from the model catalog to real-time inferencing endpoints for client applications to consume.
-- Deploying and testing generative AI models in an Azure OpenAI service.
-- Integrating data from custom data sources to support a retrieval augmented generation (RAG) approach to prompt engineering for generative AI models.
-- Using prompt flow to define workflows that integrate models, prompts, and custom processing.
-- Integrating content safety filters into a generative AI solution to mitigate potential harms.
-- Extending a generative AI solution with multiple AI capabilities using Foundry Tools.
+- Deploy models from the catalog to real-time inferencing endpoints
+- Build and test generative AI applications using interactive playgrounds
+- Implement retrieval augmented generation (RAG) by integrating custom data sources
+- Evaluate model performance and application quality
+- Add content safety filters to mitigate potential harms
+- Extend applications with additional AI capabilities from Foundry Tools
